@@ -1,0 +1,51 @@
+:root{
+    --menu-width:200px;
+    --head-height:50px;
+}
+#div_root{
+    margin: 0;
+    width:100%;
+    background-color: black;
+}
+#div_head{
+    width:100%;
+    height: var(--head-height);
+}
+#div_body{
+    width:100%;
+    height: calc(100% - var(--head-height));
+}
+#div_menu{
+    width:var(--menu-width);
+    height: 100%;
+    float: left;
+    background-color: rgb(48, 48, 48);
+}
+#div_content{
+    width:calc(100% - var(--menu-width));
+    height:100%;
+    float: left;
+    background-color: white;
+}
+#div_banner{
+    width:135px;
+    height:100%;
+    margin-left: 20px;
+    color:white;
+    line-height: var(--head-height);
+}
+
+.menu_item {
+	display: block;
+    font-size: 20px;
+    margin-bottom: 50px;
+    color:white;
+}
+
+.stage{
+    font-size:15px;
+    height: 20px;
+    margin-left:20%;
+    margin-top:20%;
+    color:white;
+}
