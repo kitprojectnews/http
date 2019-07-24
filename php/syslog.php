@@ -1,5 +1,5 @@
 <html>
-    <title>LogView</title>
+    <title>SYSLOG</title>
     <body>
         <form>
             <table border=1>
