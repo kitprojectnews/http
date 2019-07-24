@@ -28,7 +28,7 @@
                     <li class="menu_item"><a href="#">group</a></li>
                 </ul>
                 <ul id="log_menu" style ="display:none">
-                    <li class="menu_item"><a href="#">syslog</a></li>
+                    <li class="menu_item"><a href="php/syslog.php" target="frame">syslog</a></li>
                     <li class="menu_item"><a href="#">event</a></li>
                 </ul>
             </div>
