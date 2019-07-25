@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/Observer_tag.css" />
     <?php
     session_start();
-    if (!isset($_SESSION['user_num'])) 
+    if (!isset($_SESSION['u_num'])) 
     {
         header('Location:./index.html');
     }
