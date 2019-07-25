@@ -3,6 +3,13 @@
     <link rel="stylesheet" type="text/css" href="css/Observer_animaiton.css" />
     <link rel="stylesheet" type="text/css" href="css/Observer_div.css" />
     <link rel="stylesheet" type="text/css" href="css/Observer_tag.css" />
+    <?php
+    session_start();
+    if (!isset($_SESSION['user_num'])) 
+    {
+        header('Location:./index.html');
+    }
+    ?>
 </head>
 <body>
     <div id="div_root">
