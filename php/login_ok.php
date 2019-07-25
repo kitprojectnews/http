@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-// session_start();
+session_start();
 // if (!isset($_SESSION['user_num'])) 
 // {
 //     header('Location:./index.html');
@@ -25,7 +25,9 @@ $conn = mysqli_connect($hostName, $dbuserName, $passWord, $dbName);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$sql = "SELECT u_num, u_id, u_pw FROM test.account WHERE u_id = '$user' and u_pw = sha2('$pass', 256)";
+$hashpw = base64_encode(hash('sha256', $pass, true));
+
+$sql = "SELECT u_num, u_id, u_active, u_update, r_sel, r_update FROM test.account WHERE u_id = '$user' and u_pw = '$hashpw'";
 $result = $conn->query($sql);
 
 // $result->fetch_assoc();
@@ -35,9 +37,16 @@ if ($result->num_rows != 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) 
     {
-        $_SESSION['user_id'] = $user;
-        $_SESSION['user_num'] = $row["u_num"];
+        $_SESSION['u_num'] = $row["u_num"];
+        $_SESSION['u_id']  = $row["u_id"];
+        $_SESSION['u_active'] = $row["u_active"];
+        $_SESSION['u_update'] = $row["u_update"];
+        $_SESSION['r_sel']    = $row["r_sel"];
+        $_SESSION['r_update'] = $row["r_update"];
+
+
         $conn->close();
+        
         Header("Location:../default.php");
     }
 } 
@@ -48,6 +57,5 @@ else {
 
 
 ?>
-
 </body>
 </html>

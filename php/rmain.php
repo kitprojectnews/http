@@ -186,7 +186,7 @@ table, th, td {
 			<td>
 				<select id="direction" style="width:300px;height:20px;">
 					<option value="->">-></option>
-					<option value="<->"><-></option>
+					<option value="<>"><></option>
 				</select>
 			</td>
 		</tr>
