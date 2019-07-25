@@ -3,6 +3,13 @@
     <link rel="stylesheet" type="text/css" href="css/Observer_animaiton.css" />
     <link rel="stylesheet" type="text/css" href="css/Observer_div.css" />
     <link rel="stylesheet" type="text/css" href="css/Observer_tag.css" />
+    <?php
+    session_start();
+    if (!isset($_SESSION['user_num'])) 
+    {
+        header('Location:./index.html');
+    }
+    ?>
 </head>
 <body>
     <div id="div_root">
@@ -18,18 +25,18 @@
                 </div>
                 <ul id="root_menu">
                     <li class="menu_item"><a href="#">사용자 관리</a></li>
-                    <li class="menu_item"><a href="#">룰</a></li>
+                    <li class="menu_item"><a href="php/rlist.php">룰</a></li>
                     <li class="menu_item"><a href="#" onclick=animation(this) name="object">오브젝트</a></li>
                     <li class="menu_item"><a href="#" onclick=animation(this) name="log">로그</a></li>
                 </ul>
                 <ul id="object_menu" style ="display:none">
-                    <li class="menu_item"><a href="#">ip</a></li>
-                    <li class="menu_item"><a href="#">port</a></li>
-                    <li class="menu_item"><a href="#">group</a></li>
+                    <li class="menu_item"><a href="php/ipvar.php">ip</a></li>
+                    <li class="menu_item"><a href="php/portvar.php">port</a></li>
+                    <li class="menu_item"><a href="php/group.php">group</a></li>
                 </ul>
                 <ul id="log_menu" style ="display:none">
                     <li class="menu_item"><a href="php/syslog.php" target="frame">syslog</a></li>
-                    <li class="menu_item"><a href="#">event</a></li>
+                    <li class="menu_item"><a href="php/event.php" target="frame">event</a></li>
                 </ul>
             </div>
             <div id="div_content">
