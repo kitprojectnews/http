@@ -7,7 +7,7 @@
     </head>
     <body>
         <div id="home_div_root">
-        <?php echo get_server_up_time();?>
+            <?php echo get_server_up_time();?>
             <div id="home_div_resource">
                 <canvas id="myChart"></canvas>                
             </div>

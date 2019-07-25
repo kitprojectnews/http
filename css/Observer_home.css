@@ -1,0 +1,13 @@
+#home_div_root{
+    width:100%;
+    background-color: rgb(197, 189, 75);
+}
+#home_div_resource{
+    width:50%;
+    height:50%;
+    background-color: rgb(255, 255, 255);
+}
+#home_div_logcount{
+    width:50%;
+    height:50%;
+}
