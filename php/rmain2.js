@@ -1105,7 +1105,7 @@ function getoption()
 				return -1;
 			}
 			else{
-				fulloption+="content:"+gcontent.value+"; ";
+				fulloption+="content:\""+gcontent.value+"\"; ";
 			}
 			var gdepth=document.getElementById("depth"+i);
 			if(!(gdepth.value =="")){
