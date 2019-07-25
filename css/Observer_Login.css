@@ -27,7 +27,7 @@
 
 body, html {
     height: 100%;
-    background: #000000;
+    background: #666666;
 	font-family: Ubuntu-Regular, sans-serif;
 }
 
@@ -134,7 +134,7 @@ iframe {
   font-family: Ubuntu-Bold;
   font-size: 33px;
   color: #fff;
-  line-height: 1.33;
+  line-height: 1;
   text-transform: uppercase;
   text-align: center;
 
@@ -206,7 +206,6 @@ iframe {
   background-color: #e6e6e6;
   border: 1px solid transparent;
   border-radius: 3px;
-  align-content: center;
 }
 
 
@@ -277,7 +276,7 @@ iframe {
 
 /*==================================================================
 [ Restyle Checkbox ]*/
-
+/* 
 .input-checkbox100 {
   display: none;
 }
@@ -324,7 +323,7 @@ iframe {
 
 .input-checkbox100:checked + .label-checkbox100::before {
   color: #827ffe;
-}
+} */
 
 
 /*------------------------------------------------------------------
