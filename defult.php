@@ -29,7 +29,7 @@
                 </ul>
                 <ul id="log_menu" style ="display:none">
                     <li class="menu_item"><a href="php/syslog.php" target="frame">syslog</a></li>
-                    <li class="menu_item"><a href="#">event</a></li>
+                    <li class="menu_item"><a href="php/event.php" target="frame">event</a></li>
                 </ul>
             </div>
             <div id="div_content">
