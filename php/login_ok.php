@@ -7,7 +7,7 @@
 // session_start();
 // if (!isset($_SESSION['user_num'])) 
 // {
-//     header('Location:./index.php');
+//     header('Location:./index.html');
 // }
 
 
@@ -38,7 +38,7 @@ if ($result->num_rows != 0) {
         $_SESSION['user_id'] = $user;
         $_SESSION['user_num'] = $row["u_num"];
         $conn->close();
-        Header("Location:../defult.php");
+        Header("Location:../default.php");
     }
 } 
 else {
