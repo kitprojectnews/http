@@ -1,10 +1,6 @@
 
 (function ($) {
     "use strict";
-function himy() 
-{
-    print("hihihihi");
-}
 
     /*==================================================================
     [ Validate ]*/
