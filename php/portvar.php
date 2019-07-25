@@ -1,9 +1,11 @@
 <?php
     include 'dbconn.php';
 ?>
-<table border=1 >
+<h2 align=center>Port Variable List</h2>
+<a href="addport.php" align=center>Port 변수 추가</a>
+<table border=1 align=center>
 	<tr><td colspan=3 align=center>Port tables</tr>
-	<tr><td>Value Name<td colspan=2>Values</tr>
+	<tr><td>Value Name<td>Values</tr>
 	<?php 
 		$sql2="select * from sig_port_variables;";
 		$result2 = $conn->query($sql2);
