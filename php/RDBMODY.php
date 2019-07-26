@@ -37,7 +37,7 @@
     $sql="select * from signature where sig_id=".$Rule_id.";";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    $Rule_rev=$row["sig_rev"]++;
+    $Rule_rev=(int)$row["sig_rev"]+1;
     if($Rule_GroupNum==$row["sig_gid"]){ //그룹이 그대로
         $Rule_num=$row["sig_sid"];
     }else{ //그룹 변경됨
