@@ -7,17 +7,7 @@
 <title>PacketViewer</title>
 <!----------------------------------------------------------------->
 <?php
-$hostName = 'localhost';
-$dbuserName = 'jwh';
-$passWord = 'Qwer!234';
-$dbName = 'test';
-// Create connection
-$conn = mysqli_connect($hostName, $dbuserName, $passWord, $dbName);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include 'dbconn.php';
 $parameter = $_GET["eid"];
 $sql = 'SELECT * FROM data';
 

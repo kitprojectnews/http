@@ -8,7 +8,7 @@
         window.open('event_packetView.php?eid=' + eid, 'PacketViewer', 'width = 800, height = 600, menubar = no, status = no, toolbar = no');
     }
 
-    function detail(eid){
+    function detail(eid) {
         alert("미구현");
     }
 </script>
@@ -31,17 +31,7 @@
             </thead>
             <tbody>
                 <?php
-                $hostName = 'localhost';
-                $dbuserName = 'jwh';
-                $passWord = 'Qwer!234';
-                $dbName = 'test';
-                // Create connection
-                $conn = mysqli_connect($hostName, $dbuserName, $passWord, $dbName);
-
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
+                include 'dbconn.php';
                 $sql = 'SELECT * FROM event,signature,(SELECT src_ip, dst_ip, data.eid as eid, src_port, dst_port FROM data,iphdr,tcphdr WHERE data.eid=iphdr.eid and data.eid=tcphdr.eid) AS tmp WHERE event.eid=tmp.eid';
 
                 $result = $conn->query($sql);
