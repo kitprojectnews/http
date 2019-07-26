@@ -7,9 +7,9 @@
     function packetView(eid) {
         window.open('event_packetView.php?eid=' + eid, 'PacketViewer', 'width = 800, height = 600, menubar = no, status = no, toolbar = no');
     }
-
-    function detail(eid) {
-        alert("미구현");
+    //sig_msg에 하이퍼링크 걸기, 패킷뷰에 탭넣어서 ipheader들 볼수있게 TODOTODO
+    function detail(eid, sig_id) {
+        window.open('event_detailView.php?eid=' + eid + '&sig_id=' + sig_id, 'detailViewer', 'width = 1200, height = 800, menubar = no, status = no, toolbar = no ');
     }
 </script>
 <title></title>
@@ -45,7 +45,7 @@
                         echo ("<td>" . $row["src_port"] . "</td>");
                         echo ("<td>" . long2ip($row["dst_ip"]) . "</td>");
                         echo ("<td>" . $row["dst_port"] . "</td>");
-                        echo ("<td> <input type=button value=패킷뷰 onClick='packetView(" . $row["eid"] . ")'/>&nbsp;<input type=button value=자세히 onClick='detail(" . $row["eid"] . ")' /></td>");
+                        echo ("<td> <input type=button value=패킷뷰 onClick='packetView(" . $row["eid"] . ")'/>&nbsp;<input type=button value=자세히 onClick='detail(" . $row["eid"] . "," . $row["sig_id"] . ")' /></td>");
                         echo ("</tr>");
                         //echo "eid:" . $row["eid"] . " sig_id:" . $row["sig_id"] . " src_ip:" . $row["src_ip"] . " src_port:" . $row["src_port"] . "<br>";
                     }

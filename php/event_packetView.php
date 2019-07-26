@@ -26,10 +26,10 @@ function hexfilter($payload)
             echo ("<br>");
             echo ($payload_hex[$i]);
         } else if ($i % 16 == 0) {
-            echo ("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+            echo ("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
             echo ($payload_hex[$i]);
         } else if ($i % 8 == 0) {
-            echo ("&nbsp;&nbsp;&nbsp;&nbsp;");
+            echo ("&nbsp;&nbsp;&nbsp;");
             echo ($payload_hex[$i]);
         } else if ($i % 2 == 0) {
             echo ("&nbsp;");
@@ -55,13 +55,6 @@ function asciifilter($payload)
             echo ($payload[$i]);
         } else if ($i % 8 == 0) {
             echo ("&nbsp;&nbsp;&nbsp;&nbsp;");
-            if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (". ");
-                continue;
-            }
-            echo ($payload[$i]);
-        } else if ($i % 2 == 0) {
-            echo ("&nbsp;");
             if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
                 echo (". ");
                 continue;
