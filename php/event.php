@@ -3,6 +3,15 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../css/Observer_event.css" />
 </head>
+<script launguage='JAVASCRIPT'>
+    function packetView(eid) {
+        window.open('event_packetView.php?eid=' + eid, 'PacketViewer', 'width = 800, height = 600, menubar = no, status = no, toolbar = no');
+    }
+
+    function detail(eid){
+        alert("미구현");
+    }
+</script>
 <title></title>
 
 <body>
@@ -46,7 +55,7 @@
                         echo ("<td>" . $row["src_port"] . "</td>");
                         echo ("<td>" . long2ip($row["dst_ip"]) . "</td>");
                         echo ("<td>" . $row["dst_port"] . "</td>");
-                        echo ("<td> <button onClick='window.open(\"event_packetView.php\",\"PacketViewer\",\"width=10\",\"height=10\")'>패킷뷰</button>&nbsp;<button/>룰뷰</td>");
+                        echo ("<td> <input type=button value=패킷뷰 onClick='packetView(" . $row["eid"] . ")'/>&nbsp;<input type=button value=자세히 onClick='detail(" . $row["eid"] . ")' /></td>");
                         echo ("</tr>");
                         //echo "eid:" . $row["eid"] . " sig_id:" . $row["sig_id"] . " src_ip:" . $row["src_ip"] . " src_port:" . $row["src_port"] . "<br>";
                     }
