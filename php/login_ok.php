@@ -5,6 +5,7 @@
 <body>
 <?php
 session_start();
+include "dbconn.php";
 // if (!isset($_SESSION['user_num'])) 
 // {
 //     header('Location:./index.html');
@@ -14,17 +15,6 @@ session_start();
 $user = $_POST["user"];
 $pass = $_POST["pass"];
 
-$hostName='localhost';
-$dbuserName='msr';
-$passWord='Qwer!234';
-$dbName='test';
-
-// Create connection
-$conn = mysqli_connect($hostName, $dbuserName, $passWord, $dbName);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 $hashpw = base64_encode(hash('sha256', $pass, true));
 
 $sql = "SELECT u_num, u_id, u_active, u_update, r_sel, r_update FROM test.account WHERE u_id = '$user' and u_pw = '$hashpw'";
