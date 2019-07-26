@@ -2,7 +2,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css/Observer_animaiton.css" />
     <link rel="stylesheet" type="text/css" href="css/Observer_div.css" />
-    <link rel="stylesheet" type="text/css" href="css/Observer_tag.css" />
     <?php
     session_start();
     //if (!isset($_SESSION['u_num'])) 
@@ -15,9 +14,19 @@
     <div id="div_root">
         <div id="div_head">
             <div id="div_banner">
-                <h1>Observer</h1>
+                Observer
+            </div>
+            <div id="div_login">
+                <table width=100% height=100%><tr><td>
+                <div class="login_text">
+                    hahahaah
+                </div>
+                </td></tr></table>
             </div>
         </div>
+
+        <div id="hr"><hr></div>
+        
         <div id="div_body">
             <div id="div_menu">
                 <div class="stage" id="stage_menu">
