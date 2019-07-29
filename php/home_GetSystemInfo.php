@@ -17,4 +17,8 @@
         $uptime = $exec_uptime[2];
         return $uptime;
     }
+    function get_server_disk_usage(){
+        $df = 100-round((disk_free_space("/")/disk_total_space("/"))*100, 2);
+        return $df;
+    }
 ?>
