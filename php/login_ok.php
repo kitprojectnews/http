@@ -10,7 +10,7 @@ include "dbconn.php";
 session_start();
 // if (!isset($_SESSION['user_num']))//세션 확인
 // {
-//     header('Location:./index.html');
+//     header('Location:../index.html');
 // }
 // if(!$_SESSION['u_active'])//활성 유저 여부 
 // {
