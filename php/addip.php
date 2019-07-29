@@ -1,5 +1,10 @@
 <title>Variable</title>
 
+<script type="text/javascript">
+window.opener.location.reload();
+window.close();
+</script>
+
 <?php
     include 'dbconn.php';
     
