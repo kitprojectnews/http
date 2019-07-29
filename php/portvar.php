@@ -10,7 +10,8 @@
 ?>
 
 <script src="rmain2.js"></script>
-<h2 align=center>Port Variable List</h2>
+<a href="addport.php" align=center>Port 변수 추가</a>
+<h2 align=center>ADD</h2>
 
 <form method=post 
     <?php 
@@ -37,6 +38,7 @@
         } 
     ?>
 >
+<h2 align=center>LIST</h2>
 <table border=1 align=center>
 <tr>
     <td>NAME</td>
@@ -62,14 +64,15 @@
 <tr>
 </tr>
 </table>
+<div align=center>
 <?php if($vname != "") { ?>
         <input type="submit" value="수정하기" >  
         <?php } else { ?>
         <input type="submit" value="추가하기" >
         <?php } ?>
-
+<div>
 </form>
-<a href="addport.php" align=center>Port 변수 추가</a>
+
 <table border=1 align=center>
 	<tr><td colspan=3 align=center>Port tables</tr>
 	<tr><td>Value Name<td>Values</tr>
