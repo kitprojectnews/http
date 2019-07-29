@@ -72,7 +72,7 @@ GENERIC BUTTON STYLES
 .btn.btn-red:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 
 /*CONCRETE BUTTON STYLES*/		
-.btn.btn-concrete{background-color: #7e8c8d; border-color: #7e8c8d; -webkit-box-shadow: 0 3px 0 #4e5b5c; box-shadow: 0 3px 0 #4e5b5c;}
+.btn.btn-concrete{background-color: #7e8c8d; border-color: #7e8c8d;}
 .btn.btn-concrete:hover{background-color:#6a7879;}
 .btn.btn-concrete:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 		
