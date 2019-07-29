@@ -6,7 +6,7 @@
 <a href="addip.php" align=center>ip변수 추가</a>
 
 <h2 align=center>LIST</h2>
-<input type="button" value="ADD">
+<input type="button" value="ADD" onclick="window.open('addip.php', '_blank', 'width=800px,height=200px,toolbars=no,scrollbars=no'); return false;">
 <table border=1 align=center>
 	<tr>
 		<td colspan=4 align=center>IP tables</td>
