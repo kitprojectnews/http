@@ -2,7 +2,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/Observer_Login.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/Observer_tags.css" />
     <style>
         .tablink {
             background-color: #555;
@@ -52,10 +53,10 @@ function hexfilter($payload)
             echo ("<br>");
             echo ($payload_hex[$i]);
         } else if ($i % 16 == 0) {
-            echo ("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+            echo ("&nbsp;&nbsp;&nbsp;&nbsp;");
             echo ($payload_hex[$i]);
         } else if ($i % 8 == 0) {
-            echo ("&nbsp;&nbsp;&nbsp;");
+            echo ("&nbsp;&nbsp;");
             echo ($payload_hex[$i]);
         } else if ($i % 2 == 0) {
             echo ("&nbsp;");
@@ -75,20 +76,20 @@ function asciifilter($payload)
         if ($i % 16 == 0) {
             echo ("<br>");
             if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (". ");
+                echo (".");
                 continue;
             }
             echo ($payload[$i]);
         } else if ($i % 8 == 0) {
             echo ("&nbsp;&nbsp;&nbsp;&nbsp;");
             if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (". ");
+                echo (".");
                 continue;
             }
             echo ($payload[$i]);
         } else {
             if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (". ");
+                echo (".");
                 continue;
             }
             echo ($payload[$i]);
@@ -110,7 +111,7 @@ $result_sigRule = $conn->query($sql);
     <div id="RuleView" class="tabcontent">
         <br />
         <h1>RuleView</h1>
-        <table border=1 width=90% align=center>
+        <table width=90%>
             <tr>
                 <th>id</th>
                 <th>msg</th>
@@ -127,7 +128,7 @@ $result_sigRule = $conn->query($sql);
                 <th>rule_option</th>
             </tr>
 
-            <tr align=center>
+            <tr>
                 <?php
                 if ($result_sigRule->num_rows > 0) {
                     while ($row = $result_sigRule->fetch_assoc()) {
@@ -162,7 +163,7 @@ $result_sigRule = $conn->query($sql);
         <br />
 
         <h2>IP Header</h2>
-        <table border=1 align=center width=60%>
+        <table width=70%>
             <tr>
                 <th>src_ip</th>
                 <th>dst_ip</th>
@@ -171,7 +172,7 @@ $result_sigRule = $conn->query($sql);
                 <th>more_frag</th>
                 <th>dont_frag</th>
             </tr>
-            <tr align=center>
+            <tr>
                 <?php
                 $sql = 'SELECT * FROM iphdr WHERE iphdr.eid=' . $eid;
                 $result_iphdr = $conn->query($sql);
@@ -201,8 +202,8 @@ $result_sigRule = $conn->query($sql);
                 while ($row = $result_tcphdr->fetch_assoc()) {
                     if ($eid == $row["eid"]) {
                         echo ("<h2>TCP Header</h2>");
-                        echo ("<table border=1 align=center width=60%>");
-                        echo ("<tr align=center>");
+                        echo ("<table width=70%>");
+                        echo ("<tr>");
                         echo ("<th>src_port</th>");
                         echo ("<th>dst_port</th>");
                         echo ("<th>seq_num</th>");
@@ -214,7 +215,7 @@ $result_sigRule = $conn->query($sql);
                         echo ("<th>syn</th>");
                         echo ("<th>fin</th>");
                         echo ("<th>win_size</th>");
-                        echo ("</tr><tr align=center>");
+                        echo ("</tr><tr>");
 
                         echo ("<td>" . $row["src_port"] . "</td>");
                         echo ("<td>" . $row["dst_port"] . "</td>");
@@ -239,13 +240,13 @@ $result_sigRule = $conn->query($sql);
                 while ($row = $result_udphdr->fetch_assoc()) {
                     if ($eid == $row["eid"]) {
                         echo ("<h2>UDP Header</h2>");
-                        echo ("<table border=1 align=center width=60%>");
-                        echo ("<tr align=center>");
+                        echo ("<table width=70%>");
+                        echo ("<tr>");
 
                         echo ("<th>src_port</th>");
                         echo ("<th>dst_port</th>");
 
-                        echo ("</tr><tr align=center>");
+                        echo ("</tr><tr>");
                         echo ("<td>" . $row["src_port"] . "</td>");
                         echo ("<td>" . $row["dst_port"] . "</td></table>");
                         $result_udphdr->close();
@@ -260,13 +261,13 @@ $result_sigRule = $conn->query($sql);
                 while ($row = $result_icmphdr->fetch_assoc()) {
                     if ($eid == $row["eid"]) {
                         echo ("<h2>ICMP Header</h2>");
-                        echo ("<table border=1 align=center width=60%>");
-                        echo ("<tr align=center>");
+                        echo ("<table width=70%>");
+                        echo ("<tr >");
 
                         echo ("<th>type</th>");
                         echo ("<th>code</th>");
 
-                        echo ("</tr><tr align=center>");
+                        echo ("</tr><tr>");
                         echo ("<td>" . $row["type"] . "</td>");
                         echo ("<td>" . $row["code"] . "</td></table>");
                         $result_icmphdr->close();
@@ -282,7 +283,7 @@ $result_sigRule = $conn->query($sql);
     <div id="PacketView" class="tabcontent">
         <br />
         <h1>Packet Payload View</h1>
-        <table align=center>
+        <table width=80%>
             <tr>
                 <td>
                     <?php

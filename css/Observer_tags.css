@@ -2,6 +2,7 @@ table{
     background: #464545;
     border:2;
     align-items:center;
+    margin: auto;
 }
 tr{
     color:#fff;
@@ -9,10 +10,15 @@ tr{
 th{
     width:10%;
     color:#fff;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
 }
 td{
     width:15%;
     text-align: center;
     color:#fff;
     background: #909090;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    font-family: 'Courier New', Courier, monospace;
 }
