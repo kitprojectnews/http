@@ -3,6 +3,15 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../css/Observer_event.css" />
 </head>
+<script launguage='JAVASCRIPT'>
+    function packetView(eid) {
+        window.open('event_packetView.php?eid=' + eid, 'PacketViewer', 'width = 800, height = 600, menubar = no, status = no, toolbar = no');
+    }
+    //sig_msg에 하이퍼링크 걸기, 패킷뷰에 탭넣어서 ipheader들 볼수있게 TODOTODO
+    function detail(eid, sig_id) {
+        window.open('event_detailView.php?eid=' + eid + '&sig_id=' + sig_id, 'detailViewer', 'width = 1200, height = 800, menubar = no, status = no, toolbar = no ');
+    }
+</script>
 <title></title>
 
 <body>
@@ -22,17 +31,7 @@
             </thead>
             <tbody>
                 <?php
-                $hostName = 'localhost';
-                $dbuserName = 'jwh';
-                $passWord = 'Qwer!234';
-                $dbName = 'test';
-                // Create connection
-                $conn = mysqli_connect($hostName, $dbuserName, $passWord, $dbName);
-
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
+                include 'dbconn.php';
                 $sql = 'SELECT * FROM event,signature,(SELECT src_ip, dst_ip, data.eid as eid, src_port, dst_port FROM data,iphdr,tcphdr WHERE data.eid=iphdr.eid and data.eid=tcphdr.eid) AS tmp WHERE event.eid=tmp.eid';
 
                 $result = $conn->query($sql);
@@ -46,7 +45,7 @@
                         echo ("<td>" . $row["src_port"] . "</td>");
                         echo ("<td>" . long2ip($row["dst_ip"]) . "</td>");
                         echo ("<td>" . $row["dst_port"] . "</td>");
-                        echo ("<td> <button onClick='window.open(\"event_packetView.php\",\"PacketViewer\",\"width=10\",\"height=10\")'>패킷뷰</button>&nbsp;<button/>룰뷰</td>");
+                        echo ("<td> <input type=button value=패킷뷰 onClick='packetView(" . $row["eid"] . ")'/>&nbsp;<input type=button value=자세히 onClick='detail(" . $row["eid"] . "," . $row["sig_id"] . ")' /></td>");
                         echo ("</tr>");
                         //echo "eid:" . $row["eid"] . " sig_id:" . $row["sig_id"] . " src_ip:" . $row["src_ip"] . " src_port:" . $row["src_port"] . "<br>";
                     }
