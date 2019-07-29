@@ -15,16 +15,15 @@
                     <th scope="cols">time</th>
                     <th scope="cols">sig_msg</th>
                     <th scope="cols">src_ip</th>
-                    <th scope="cols">src_port</th>
                     <th scope="cols">dst_ip</th>
-                    <th scope="cols">dst_port</th>
+                    <th scope="cols">protocol</th>
                     <th scope="cols">ETC</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 include 'dbconn.php';
-                $sql = 'SELECT * FROM event,signature,(SELECT src_ip, dst_ip, data.eid as eid, src_port, dst_port FROM data,iphdr,tcphdr WHERE data.eid=iphdr.eid and data.eid=tcphdr.eid) AS tmp WHERE event.eid=tmp.eid';
+                $sql = 'SELECT * FROM event,signature,(SELECT src_ip, dst_ip, data.eid as eid FROM data,iphdr WHERE data.eid=iphdr.eid) AS tmp WHERE event.eid=tmp.eid;';
 
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -34,9 +33,8 @@
                         echo ("<td>" . $row["time"] . "</td>");
                         echo ("<td>" . $row['sig_msg'] . "</td>");
                         echo ("<td>" . long2ip($row["src_ip"]) . "</td>");
-                        echo ("<td>" . $row["src_port"] . "</td>");
                         echo ("<td>" . long2ip($row["dst_ip"]) . "</td>");
-                        echo ("<td>" . $row["dst_port"] . "</td>");
+                        echo ("<td>" . $row["sig_protocol"] . "</td>");
                         echo ("<td> <input type=button value=자세히 onClick='detail(" . $row["eid"] . "," . $row["sig_id"] . ")' /></td>");
                         echo ("</tr>");
                         //echo "eid:" . $row["eid"] . " sig_id:" . $row["sig_id"] . " src_ip:" . $row["src_ip"] . " src_port:" . $row["src_port"] . "<br>";
