@@ -86,8 +86,3 @@
 </table>
 </body>
 </html>
-<?php
-$sql->close();
-$conn->close();
-echo "db close<br>";
-?>
