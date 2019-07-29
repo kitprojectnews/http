@@ -4,8 +4,8 @@
 
 <script src="rmain2.js"></script>
 <script>
-	w = 800; // POPUP W
-	h = 200; // POPUP H
+	w = 500; // POPUP W
+	h = 150; // POPUP H
 	
 	// MID
 	LeftPosition=(screen.width-w)/2;
