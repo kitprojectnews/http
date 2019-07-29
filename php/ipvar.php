@@ -40,7 +40,6 @@
 	}
 </script>
 
-<input type="button" value="ADD" onclick="popup_open()";">
 <table border=1 align=center>
 	<tr>
 		<td colspan=4 align=center>IP tables</td>
@@ -77,3 +76,6 @@
 		}
 	?>
 </table>
+<div align="center">
+<input type="button" value="ADD" onclick="popup_open()";">
+</div>
