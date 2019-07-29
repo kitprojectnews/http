@@ -142,6 +142,11 @@ table, th, td {
 			else
 				$sivar = substr($row["sig_srcIP"], 1);
 		}
+			
+		if($row["sig_srcIP"] == "any")
+		{
+			$siptk[0] = "";
+		}
 		?>
 			<td style="width:25%" align=center>Source IP</td>
 			<td>
@@ -225,6 +230,11 @@ table, th, td {
 			{
 				$spttk[0] = substr($spttk[0], 1);
 			}
+		
+			if($row["sig_srcPort"] == "any")
+			{
+				$spttk[0] = "";
+			}
 			
 		?>
 		<tr><!-- ######### SOURCE PORT ########## -->
@@ -307,6 +317,11 @@ table, th, td {
 					$divar = substr($row["sig_dstIP"], 2);
 				else
 					$divar = substr($row["sig_dstIP"], 1);
+			}
+			
+			if($row["sig_dstIP"] == "any")
+			{
+				$diptk[0] = "";
 			}
 		?>
 			<td style="width:25%" align=center>Destination IP</td>
@@ -393,6 +408,11 @@ table, th, td {
 			if(strchr($row["sig_dstPort"], '!'))
 			{
 				$dpttk[0] = substr($dpttk[0], 1);
+			}
+			
+			if($row["sig_dstPort"] == "any")
+			{
+				$dpptk[0] = "";
 			}
 		?>
 

@@ -1,38 +1,92 @@
 :root{
     --menu-width:200px;
-    --head-height:50px;
+    --head-height:70px;
+    --hr-height:10px;
+    --login-width:250px;
+    --banner-margin:20px;
+    --title-font:90px;
 }
+
+@font-face {
+    font-family: "Title";
+    src:url('../fonts/white_rabbit/whitrabt.ttf');
+}
+
 #div_root{
     margin: 0;
     width:100%;
-    background-color: black;
+    background-color: white;
 }
+
 #div_head{
     width:100%;
     height: var(--head-height);
 }
+
+#div_banner{
+    width:calc(100% - var(--login-width));
+    height:100%;
+    margin-left: var(--banner-margin);
+    line-height: var(--title-font);
+    color:rgb(70, 70, 70);
+    font-size:var(--title-font);
+    font-family: "Title";
+    float: left;
+}
+
+
+#div_login{
+    width:calc(var(--login-width) - var(--banner-margin));
+    height:100%;
+    background-color: aquamarine;
+    float: left;
+    position: relative;
+}
+.login_text{
+    position:absolute;
+    right:0;
+    bottom:0;
+    font-size:20px;
+}
+
+
+#hr {
+    height:var(--hr-height);
+    border:0;
+    width: 100%;
+}
+#hr hr{
+    height: 1px;
+    background-color: rgb(70, 70, 70);
+}
+
+
+
 #div_body{
     width:100%;
-    height: calc(100% - var(--head-height));
+    height: calc(100% - var(--head-height) - var(--hr-height) - 10px);
 }
+
 #div_menu{
     width:var(--menu-width);
     height: 100%;
     float: left;
-    background-color: rgb(48, 48, 48);
+    background-color: rgb(70, 70, 70);
+    font-family: 'Courier New', Courier, monospace;
 }
+#div_menu a{
+    text-decoration: none;
+    color: white;
+}
+
 #div_content{
     width:calc(100% - var(--menu-width));
     height:100%;
     float: left;
     background-color: white;
 }
-#div_banner{
-    width:135px;
-    height:100%;
-    margin-left: 20px;
-    color:white;
-    line-height: var(--head-height);
+#div_content iframe{
+    border:none;
 }
 
 .menu_item {

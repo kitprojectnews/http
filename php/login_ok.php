@@ -4,27 +4,34 @@
 </head>
 <body>
 <?php
-session_start();
-// if (!isset($_SESSION['user_num'])) 
-// {
-//     header('Location:./index.html');
-// }
+include "dbconn.php";
 
+//How to use - 세션 확인 + 활성 유저 여부 + 각각 필요한 권한
+session_start();
+// if (!isset($_SESSION['user_num']))//세션 확인
+// {
+//     header('Location:../index.html');
+// }
+// if(!$_SESSION['u_active'])//활성 유저 여부 
+// {
+//     echo " <script>alert('비활성화된 사용자입니다. '); history.back(); </script>";
+// }
+// if(!$_SESSION['u_update'])//유저 관리권한 여부
+// {
+//     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
+// }
+// if(!$_SESSION['r_sel'])//룰 확인 여부
+// {
+//     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
+// }
+// if(!$_SESSION['r_update'])//룰 추가 수정 삭제 가능 여부
+// {
+//     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
+// }
 
 $user = $_POST["user"];
 $pass = $_POST["pass"];
 
-$hostName='localhost';
-$dbuserName='msr';
-$passWord='Qwer!234';
-$dbName='test';
-
-// Create connection
-$conn = mysqli_connect($hostName, $dbuserName, $passWord, $dbName);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 $hashpw = base64_encode(hash('sha256', $pass, true));
 
 $sql = "SELECT u_num, u_id, u_active, u_update, r_sel, r_update FROM test.account WHERE u_id = '$user' and u_pw = '$hashpw'";

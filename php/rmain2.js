@@ -689,7 +689,7 @@ function lastoptions_parse(){
 			}
 			addoption("content");
 			content_flag=true;
-			document.getElementById("content"+lcount).value =p_col[1];
+			document.getElementById("content"+lcount).value =p_col[1].substr(1,p_col[1].length-2);
 			continue;
 		}else if(p_semi[i]=="nocase"){
 			document.getElementById("nocase"+lcount).checked=true;
