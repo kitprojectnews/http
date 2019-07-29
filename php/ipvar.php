@@ -13,7 +13,7 @@
 ?>
 
 <script src="rmain2.js"></script>
-
+<h2 align=center>IP Variable List</h2>
 <form method=post 
     <?php 
         if($vname == "")
@@ -26,7 +26,7 @@
         } 
     ?>
 >
-<table border=1>
+<table border=1 align=center>
 <tr>
     <td align=center>NAME</td>
     <td>
@@ -76,7 +76,6 @@
         <?php } ?>
 </form>
 
-<h2 align=center>IP Variable List</h2>
 <a href="addip.php" align=center>ip변수 추가</a>
 <table border=1 align=center>
 	<tr><td colspan=3 align=center>IP tables</tr>
