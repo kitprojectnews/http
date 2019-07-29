@@ -23,7 +23,8 @@
                 <meta http-equiv="refresh" content="0,group.php">
         <?php 
                 }
-        }       
+        }
+    else{
     $group=trim($_POST["group"]);
     if($group==""){
 ?>
@@ -49,5 +50,6 @@
         <meta http-equiv="refresh" content="0,group.php">
 <?php
         }
-    }       
+    }   
+  }
 ?>
