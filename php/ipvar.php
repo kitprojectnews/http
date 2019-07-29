@@ -39,9 +39,7 @@
 	"width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no, toolbar=no, location=no, resizable=no, status=no, menubar=no");
 	}
 </script>
-<a href="addip.php" align=center>ip변수 추가</a>
 
-<h2 align=center>LIST</h2>
 <input type="button" value="ADD" onclick="popup_open()";">
 <table border=1 align=center>
 	<tr>
