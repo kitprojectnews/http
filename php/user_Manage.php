@@ -24,7 +24,8 @@ session_start();
 <body>
 <form>
 <table width=100%>
-<tr><th>관리번호</th><th>ID</th><th>활성여부</th><th>유저 관리권한</th><th>룰 확인</th><th>룰 추가/수정/삭제</th><th>수정 및 삭제</th></tr>
+<button onclick="window.open('user_Add.php', 'userAdd', 'width = 500, height = 250, menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');">추가</button>
+<tr><th>관리번호</th><th>ID</th><th>활성여부</th><th>유저 관리권한</th><th>룰 추가/수정/삭제</th><th>수정 및 삭제</th></tr>
 <?php
 include "dbconn.php";
 $sql = "SELECT u_num, u_id, u_active, u_update, r_sel, r_update FROM account ORDER BY u_num DESC";
@@ -36,7 +37,6 @@ if ($result->num_rows > 0) {
         <td><?=$row["u_id"]?></td>
         <td><?=$row["u_active"]?></td>
         <td><?=$row["u_update"]?></td>
-        <td><?=$row["r_sel"]?></td>
         <td><?=$row["r_update"]?></td>
         <td><input type=button value="수정" onClick='userhref("<?=$row["u_num"]?>")'>&nbsp;<input type=submit value=삭제 onClick='delhref("<?=$row["u_num"]?>")'></td>
     </tr><?php
@@ -51,7 +51,7 @@ if ($result->num_rows > 0) {
 <script launguage='JAVASCRIPT'>
     //sig_msg에 하이퍼링크 걸기, 패킷뷰에 탭넣어서 ipheader들 볼수있게 TODOTODO
     function userhref(u_num) {
-        window.open('user_Modi.php?u_num='+u_num, 'userModi', 'width = 700, height = 250, menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
+        window.open('user_Modi.php?u_num='+u_num, 'userModi', 'width = 500, height = 250, menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
     }
     function delhref(u_num) {
         a = confirm("관리번호 "+u_num+" 정말로 삭제하시겠습니까?");

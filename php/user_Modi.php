@@ -28,20 +28,19 @@ session_start();
 $u_num = $_GET["u_num"];
 ?>
 <form action="user_modi_ok.php" method="POST">
-<table width=70% align="center">
+<table width=100% align="center">
 <?php
 include "dbconn.php";
 
-$sql = "SELECT u_num, u_id, u_active, u_update, r_sel, r_update FROM account Where u_num ='".$u_num."'";
+$sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM account Where u_num ='".$u_num."'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) { ?>
-        <tr><th colspan=2>관리번호&nbsp;<?=$row["u_num"]?> <input type="hidden" name="u_num" value="<?=$row["u_num"]?>"></tr>
+        <tr><th colspan=2><h2>관리번호&nbsp;<?=$row["u_num"]?> </h2><input type="hidden" name="u_num" value="<?=$row["u_num"]?>"></tr>
         <tr><th>ID</th><td><?= $row["u_id"]?></td></tr>
         <tr><th>PW</th><td> <input name="u_pw" type='password' value=""></td></tr>
         <tr><th>활성여부</th><td><input name="u_active" type='checkbox' value="1" <?php if($row["u_active"] == "1") { ?> checked <?php } ?>></td></tr>
         <tr><th>관리권한</th><td><input name="u_update" type='checkbox' <?php if($row["u_update"] == "1") { ?> checked <?php } ?>></td></tr>
-        <tr><th>룰 조회</th><td><input name="r_sel" type='checkbox' <?php if($row["r_sel"] == "1") { ?> checked <?php } ?>></td></tr>
         <tr><th>룰 추가/수정/삭제</th><td><input name="r_update" type='checkbox' <?php if($row["r_update"] == "1") { ?> checked <?php } ?>></td></tr>
         <tr><td colspan="2"><input type="submit" value="수정">&nbsp;&nbsp;<button onClick="<script> self.close(); </script>">취소</button> </td></tr>
         <?php
