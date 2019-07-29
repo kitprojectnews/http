@@ -1,5 +1,5 @@
 <?php
-include "dbconn.php";
+include "php/dbconn.php";
 // session_start();
 // if (!isset($_SESSION['user_num'])) 
 // {
@@ -23,7 +23,7 @@ $pass = "123";
 // }
 $hashpw = base64_encode(hash('sha256', $pass, true));
 echo $hashpw."<br>";
-$sql = "INSERT INTO test.account (u_id, u_pw, u_active, u_update, r_sel, r_update) VALUES ( '$user.','.$hashpw.', 1, 1, 1, 1)";
+$sql = "INSERT INTO test.account (u_id, u_pw, u_active, u_update, r_sel, r_update) VALUES ( '$user','$hashpw', 1, 1, 1, 1)";
 
 if ($conn->query($sql) == TRUE) {
     echo "ok<br>";
