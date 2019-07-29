@@ -2,7 +2,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/Observer_Login.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/Observer_tags.css" />
     <style>
         .tablink {
             background-color: #555;
@@ -52,10 +53,10 @@ function hexfilter($payload)
             echo ("<br>");
             echo ($payload_hex[$i]);
         } else if ($i % 16 == 0) {
-            echo ("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+            echo ("&nbsp;&nbsp;&nbsp;&nbsp;");
             echo ($payload_hex[$i]);
         } else if ($i % 8 == 0) {
-            echo ("&nbsp;&nbsp;&nbsp;");
+            echo ("&nbsp;&nbsp;");
             echo ($payload_hex[$i]);
         } else if ($i % 2 == 0) {
             echo ("&nbsp;");
@@ -75,20 +76,20 @@ function asciifilter($payload)
         if ($i % 16 == 0) {
             echo ("<br>");
             if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (". ");
+                echo (".");
                 continue;
             }
             echo ($payload[$i]);
         } else if ($i % 8 == 0) {
             echo ("&nbsp;&nbsp;&nbsp;&nbsp;");
             if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (". ");
+                echo (".");
                 continue;
             }
             echo ($payload[$i]);
         } else {
             if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (". ");
+                echo (".");
                 continue;
             }
             echo ($payload[$i]);
@@ -108,9 +109,9 @@ $result_sigRule = $conn->query($sql);
     <button class="tablink" onclick="openView('PacketView', this, 'gray')">PacketView</button>
 
     <div id="RuleView" class="tabcontent">
-        <br/>
+        <br />
         <h1>RuleView</h1>
-        <table border=1 width=90% align=center>
+        <table width=90%>
             <tr>
                 <th>id</th>
                 <th>msg</th>
@@ -127,7 +128,7 @@ $result_sigRule = $conn->query($sql);
                 <th>rule_option</th>
             </tr>
 
-            <tr align=center>
+            <tr>
                 <?php
                 if ($result_sigRule->num_rows > 0) {
                     while ($row = $result_sigRule->fetch_assoc()) {
@@ -138,6 +139,7 @@ $result_sigRule = $conn->query($sql);
                             echo ("<td>" . $row["sig_sid"] . "</td>");
                             echo ("<td>" . $row["sig_gid"] . "</td>");
                             echo ("<td>" . $row["sig_action"] . "</td>");
+                            $sig_protocol = $row["sig_protocol"];
                             echo ("<td>" . $row["sig_protocol"] . "</td>");
                             echo ("<td>" . $row["sig_srcIP"] . "</td>");
                             echo ("<td>" . $row["sig_srcPort"] . "</td>");
@@ -145,6 +147,7 @@ $result_sigRule = $conn->query($sql);
                             echo ("<td>" . $row["sig_dstIP"] . "</td>");
                             echo ("<td>" . $row["sig_dstPort"] . "</td>");
                             echo ("<td>" . $row["sig_rule_option"] . "</td>");
+                            $result_sigRule->close();
                             break;
                         }
                     }
@@ -155,12 +158,132 @@ $result_sigRule = $conn->query($sql);
     </div>
 
     <div id="Header" class="tabcontent">
-        <h1>Header</h1>
-        <p>HELLO I'M Header</p>
+        <br />
+        <h1>HeaderView</h1>
+        <br />
+
+        <h2>IP Header</h2>
+        <table width=70%>
+            <tr>
+                <th>src_ip</th>
+                <th>dst_ip</th>
+                <th>tos</th>
+                <th>ttl</th>
+                <th>more_frag</th>
+                <th>dont_frag</th>
+            </tr>
+            <tr>
+                <?php
+                $sql = 'SELECT * FROM iphdr WHERE iphdr.eid=' . $eid;
+                $result_iphdr = $conn->query($sql);
+                if ($result_iphdr->num_rows > 0) {
+                    while ($row = $result_iphdr->fetch_assoc()) {
+                        if ($eid == $row["eid"]) {
+                            echo ("<td>" . long2ip($row["src_ip"]) . "</td>");
+                            echo ("<td>" . long2ip($row["dst_ip"]) . "</td>");
+                            echo ("<td>" . $row["tos"] . "</td>");
+                            echo ("<td>" . $row["ttl"] . "</td>");
+                            echo ("<td>" . $row["more_frag"] . "</td>");
+                            echo ("<td>" . $row["dont_frag"] . "</td>");
+                            $result_iphdr->close();
+                            break;
+                        }
+                    }
+                }
+                ?>
+            </tr>
+        </table>
+        <br>
+        <?php
+        if ($sig_protocol == "tcp") {
+            $sql = 'SELECT * FROM tcphdr WHERE tcphdr.eid=' . $eid;
+            $result_tcphdr = $conn->query($sql);
+            if ($result_tcphdr->num_rows > 0) {
+                while ($row = $result_tcphdr->fetch_assoc()) {
+                    if ($eid == $row["eid"]) {
+                        echo ("<h2>TCP Header</h2>");
+                        echo ("<table width=70%>");
+                        echo ("<tr>");
+                        echo ("<th>src_port</th>");
+                        echo ("<th>dst_port</th>");
+                        echo ("<th>seq_num</th>");
+                        echo ("<th>ack_num</th>");
+                        echo ("<th>urg</th>");
+                        echo ("<th>ack</th>");
+                        echo ("<th>psh</th>");
+                        echo ("<th>rst</th>");
+                        echo ("<th>syn</th>");
+                        echo ("<th>fin</th>");
+                        echo ("<th>win_size</th>");
+                        echo ("</tr><tr>");
+
+                        echo ("<td>" . $row["src_port"] . "</td>");
+                        echo ("<td>" . $row["dst_port"] . "</td>");
+                        echo ("<td>" . $row["seq_num"] . "</td>");
+                        echo ("<td>" . $row["ack_num"] . "</td>");
+                        echo ("<td>" . $row["urg"] . "</td>");
+                        echo ("<td>" . $row["ack"] . "</td>");
+                        echo ("<td>" . $row["psh"] . "</td>");
+                        echo ("<td>" . $row["rst"] . "</td>");
+                        echo ("<td>" . $row["syn"] . "</td>");
+                        echo ("<td>" . $row["fin"] . "</td>");
+                        echo ("<td>" . $row["win_size"] . " bytes</td></table>");
+                        $result_tcphdr->close();
+                        break;
+                    }
+                }
+            }
+        } else if ($sig_protocol == "udp") {
+            $sql = 'SELECT * FROM udphdr WHERE udphdr.eid=' . $eid;
+            $result_udphdr = $conn->query($sql);
+            if ($result_udphdr->num_rows > 0) {
+                while ($row = $result_udphdr->fetch_assoc()) {
+                    if ($eid == $row["eid"]) {
+                        echo ("<h2>UDP Header</h2>");
+                        echo ("<table width=70%>");
+                        echo ("<tr>");
+
+                        echo ("<th>src_port</th>");
+                        echo ("<th>dst_port</th>");
+
+                        echo ("</tr><tr>");
+                        echo ("<td>" . $row["src_port"] . "</td>");
+                        echo ("<td>" . $row["dst_port"] . "</td></table>");
+                        $result_udphdr->close();
+                        break;
+                    }
+                }
+            }
+        } else if ($sig_protocol == "icmp") {
+            $sql = 'SELECT * FROM icmphdr WHERE icmphdr.eid=' . $eid;
+            $result_icmphdr = $conn->query($sql);
+            if ($result_icmphdr->num_rows > 0) {
+                while ($row = $result_icmphdr->fetch_assoc()) {
+                    if ($eid == $row["eid"]) {
+                        echo ("<h2>ICMP Header</h2>");
+                        echo ("<table width=70%>");
+                        echo ("<tr >");
+
+                        echo ("<th>type</th>");
+                        echo ("<th>code</th>");
+
+                        echo ("</tr><tr>");
+                        echo ("<td>" . $row["type"] . "</td>");
+                        echo ("<td>" . $row["code"] . "</td></table>");
+                        $result_icmphdr->close();
+                        break;
+                    }
+                }
+            }
+        }
+        ?>
+
     </div>
 
     <div id="PacketView" class="tabcontent">
-        <table>
+        <br />
+        <h1>Packet Payload View</h1>
+        <table width=80%>
             <tr>
                 <td>
                     <?php

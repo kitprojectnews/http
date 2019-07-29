@@ -1,3 +1,5 @@
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
+
 <head>
 	<meta charset="UTF-8">
 </head>
