@@ -70,8 +70,11 @@ function asciifilter($payload)
 {
     for ($i = 0; $i < strlen($payload); $i++) {
         if ($i == 0) {
+            if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
+                echo (".");
+                continue;
+            }
             echo ($payload[$i]);
-            continue;
         }
         if ($i % 16 == 0) {
             echo ("<br>");
@@ -285,7 +288,7 @@ $result_sigRule = $conn->query($sql);
         <h1>Packet Payload View</h1>
         <table width=80%>
             <tr>
-                <td>
+                <td style="text-align: left;">
                     <?php
                     if ($result_hex->num_rows > 0) {
                         while ($row = $result_hex->fetch_assoc()) {
@@ -297,7 +300,7 @@ $result_sigRule = $conn->query($sql);
                     }
                     ?>
                 </td>
-                <td>
+                <td style="text-align: left;">
                     <?php
                     if ($result_asc->num_rows > 0) {
                         while ($row = $result_asc->fetch_assoc()) {

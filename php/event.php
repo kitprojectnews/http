@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th scope="cols">eid</th>
-                    <th scope="cols">sig_id</th>
+                    <th scope="cols">time</th>
                     <th scope="cols">sig_msg</th>
                     <th scope="cols">src_ip</th>
                     <th scope="cols">src_port</th>
@@ -31,7 +31,7 @@
                     while ($row = $result->fetch_assoc()) {
                         echo ("<tr>");
                         echo ("<th scope='row'>" . $row["eid"] . "</th>");
-                        echo ("<td>" . $row["sig_id"] . "</td>");
+                        echo ("<td>" . $row["time"] . "</td>");
                         echo ("<td>" . $row['sig_msg'] . "</td>");
                         echo ("<td>" . long2ip($row["src_ip"]) . "</td>");
                         echo ("<td>" . $row["src_port"] . "</td>");
