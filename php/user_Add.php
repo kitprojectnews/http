@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <link rel="stylesheet" type="text/css" href="../css/Observer_user_Manage.css">
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <?php
 session_start();
 // if (!isset($_SESSION['user_num']))//세션 확인
@@ -30,7 +31,8 @@ session_start();
 <tr><th>활성여부</th><td><input name="u_active" type='checkbox'checked></td></tr>
 <tr><th>관리권한</th><td><input name="u_update" type='checkbox'></td></tr>
 <tr><th>룰 추가/수정/삭제</th><td><input name="r_update" type='checkbox'></td></tr>
-<tr><td colspan="2"><input type="button" value="추가" onclick="ckfild()">&nbsp;&nbsp;<button onClick="<script> self.close(); </script>">취소</button> </td></tr>
+<tr><td colspan="2"><input type="button" value="추가" onclick="ckfild()">&nbsp;&nbsp;
+<input type="button" value="취소" onClick="window.close();"></td></tr>
 </table>
 </form>    
 </body>

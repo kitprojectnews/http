@@ -33,7 +33,7 @@
                 <a href="php/home.php" onclick=stage_animation(this) name="All" target="frame">All</a>
                 </div>
                 <ul id="root_menu">
-                    <li class="menu_item"><a href="#">사용자 관리</a></li>
+                    <li class="menu_item"><a href="php/user_Manage.php" target="frame">사용자 관리</a></li>
                     <li class="menu_item"><a href="php/rlist.php" target="frame">룰</a></li>
                     <li class="menu_item"><a href="#" onclick=animation(this) name="object">오브젝트</a></li>
                     <li class="menu_item"><a href="#" onclick=animation(this) name="log">로그</a></li>
