@@ -17,14 +17,15 @@
 	//팝업 호출
 	function popup_edit() {
 		var myForm = document.edit;
- 		var url = "ipvar.php";
+ 		var url = "addip.php";
 		window.open(
 			"addip.php", 
-			"_blank",
+			"popupView",
 			"width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no, toolbar=no, location=no, resizable=no, status=no, menubar=no");
+		
 		myForm.action = url; 
 		myForm.method = "post";
-		myForm.target = "edit";
+		myForm.target = "popupView";
 		
 		myForm.submit();
 	}
