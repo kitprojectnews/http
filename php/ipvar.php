@@ -16,7 +16,8 @@
 	
 	//팝업 호출
 	function popup_edit() {
-		var myForm = document.edit;
+		var myForm = document.getElementById('editid');
+		
  		var url = "addip.php";
 		window.open(
 			"addip.php", 
@@ -63,10 +64,10 @@
 			<input type="hidden" name="ipdel" value=<?=$row1["v_name"]?>>
         		<input type=submit value="삭제" >
         		</form>
-        		<form method=post name="edit" action="addip.php">
-        		<input type="hidden" name="vname" value=<?=$row1["v_name"]?>>
-	    		<!--<input type="submit" value="수정">-->
-			<input type="button" value="EDIT" onclick="popup_edit()">
+        		<form method=post id="editid" name="edit" action="addip.php">
+        			<input type="hidden" name="vname" value=<?=$row1["v_name"]?>>
+	    			<!--<input type="submit" value="수정">-->
+				<input type="button" value="EDIT" onclick="popup_edit()">
         		</form>
 		</td>
     		<td> MEMO </td>
