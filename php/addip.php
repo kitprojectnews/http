@@ -29,7 +29,7 @@
     ?>
 >
 
-<h1>ADD IP Variable</h1>
+<!--<h1>ADD IP Variable</h1>-->
 <table border=1>
 <tr>
     <td align=center>NAME</td>
