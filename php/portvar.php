@@ -35,7 +35,6 @@
         } 
     ?>
 >
-<h1>ADD Port Variable</h1>
 <table border=1>
 <tr>
     <td>NAME</td>
