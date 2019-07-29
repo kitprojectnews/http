@@ -1,12 +1,48 @@
+<link href="Observer_Button.css" rel="stylesheet" type='text/css'>
+
+<head>
+	<meta charset="UTF-8">
+</head>
 <?php
     include 'dbconn.php';
 ?>
 
 <script src="rmain2.js"></script>
+<script>
+	w = 500; // POPUP W
+	h = 150; // POPUP H
+	
+	// MID
+	LeftPosition=(screen.width-w)/2;
+	TopPosition=(screen.height-h)/2;
+	
+	//팝업 호출
+	function popup_edit(hid) {
+		var myForm = document.getElementById('editid');
+		
+ 		var url = "addip.php";
+		window.open(
+			"addip.php", 
+			"popupView",
+			"width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no, toolbar=no, location=no, resizable=no, status=no, menubar=no");
+		
+		myForm.action = url; 
+		myForm.method = "post";
+		myForm.target = "popupView";
+		myForm.vname.value = hid;
+		myForm.submit();
+	}
+	function popup_open() { 
+	window.open(
+	"addip.php", 
+	"_blank",
+	"width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no, toolbar=no, location=no, resizable=no, status=no, menubar=no");
+	}
+</script>
 <a href="addip.php" align=center>ip변수 추가</a>
 
 <h2 align=center>LIST</h2>
-<input type="button" value="ADD" onclick="window.open('addip.php', '_blank', 'width=800px,height=200px,toolbars=no,scrollbars=no'); return false;">
+<input type="button" value="ADD" onclick="popup_open()";">
 <table border=1 align=center>
 	<tr>
 		<td colspan=4 align=center>IP tables</td>
@@ -30,9 +66,10 @@
 			<input type="hidden" name="ipdel" value=<?=$row1["v_name"]?>>
         		<input type=submit value="삭제" >
         		</form>
-        		<form method=post action="addip.php">
-        		<input type="hidden" name="vname" value=<?=$row1["v_name"]?>>
-	    		<input type="submit" value="수정">
+        		<form method=post id="editid" name="edit" action="addip.php">
+        			<input type="hidden" name="vname">
+	    			<!--<input type="submit" value="수정">-->
+				<input type="button" value="EDIT" onclick="popup_edit('<?=$row1["v_name"]?>')">
         		</form>
 		</td>
     		<td> MEMO </td>

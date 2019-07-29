@@ -36,4 +36,8 @@
 		}
 	}
 ?>
-<meta http-equiv="refresh" content="0,ipvar.php">
+<!--<meta http-equiv="refresh" content="0,ipvar.php">-->
+<script type="text/javascript">
+window.opener.location.reload();
+window.close();
+</script>
