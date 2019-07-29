@@ -53,7 +53,7 @@
 <script launguage='JAVASCRIPT'>
     //sig_msg에 하이퍼링크 걸기, 패킷뷰에 탭넣어서 ipheader들 볼수있게 TODOTODO
     function detail(eid, sig_id) {
-        window.open('event_detailView.php?eid=' + eid + '&sig_id=' + sig_id, 'detailViewer', 'width = 1200, height = 800, menubar = no, status = no, toolbar = no ');
+        window.open('event_detailView.php?eid=' + eid + '&sig_id=' + sig_id, 'detailViewer', 'width = 1000, height = 800, menubar = no, status = no, toolbar = no ');
     }
 
 </script>
