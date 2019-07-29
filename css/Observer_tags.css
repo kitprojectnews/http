@@ -1,0 +1,18 @@
+table{
+    background: #464545;
+    border:2;
+    align-items:center;
+}
+tr{
+    color:#fff;
+}
+th{
+    width:10%;
+    color:#fff;
+}
+td{
+    width:15%;
+    text-align: center;
+    color:#fff;
+    background: #909090;
+}
