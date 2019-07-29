@@ -67,7 +67,7 @@
         		<form method=post id="editid" name="edit" action="addip.php">
         			<input type="hidden" name="vname">
 	    			<!--<input type="submit" value="수정">-->
-				<input type="button" value="EDIT" onclick="popup_edit(<?=$row1["v_name"]?>)">
+				<input type="button" value="EDIT" onclick="popup_edit('<?=$row1["v_name"]?>')">
         		</form>
 		</td>
     		<td> MEMO </td>
