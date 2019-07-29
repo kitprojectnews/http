@@ -1,3 +1,6 @@
+<head>
+	<meta charset="UTF-8">
+</head>
 <?php
     include 'dbconn.php';
 ?>
@@ -15,7 +18,7 @@
 	function popup_open() { 
 	window.open(
 	"addip.php", 
-	"ADD IP Variable",
+	"_blank",
 	"width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no, toolbar=no, location=no, resizable=no, status=no, menubar=no");
 }
 </script>
