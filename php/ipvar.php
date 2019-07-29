@@ -15,7 +15,7 @@
 	TopPosition=(screen.height-h)/2;
 	
 	//팝업 호출
-	function popup_edit() {
+	function popup_edit(hid) {
 		var myForm = document.getElementById('editid');
 		
  		var url = "addip.php";
@@ -27,7 +27,7 @@
 		myForm.action = url; 
 		myForm.method = "post";
 		myForm.target = "popupView";
-		
+		myForm.vname.value = hid;
 		myForm.submit();
 	}
 	function popup_open() { 
@@ -65,9 +65,9 @@
         		<input type=submit value="삭제" >
         		</form>
         		<form method=post id="editid" name="edit" action="addip.php">
-        			<input type="hidden" name="vname" value=<?=$row1["v_name"]?>>
+        			<input type="hidden" name="vname">
 	    			<!--<input type="submit" value="수정">-->
-				<input type="button" value="EDIT" onclick="popup_edit()">
+				<input type="button" value="EDIT" onclick="popup_edit(<?=$row1["v_name"]?>)">
         		</form>
 		</td>
     		<td> MEMO </td>
