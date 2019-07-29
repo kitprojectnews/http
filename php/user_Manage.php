@@ -25,7 +25,7 @@ session_start();
 <form>
 <table width=100%>
 
-<tr><th>추가<button onclick="addhref()"></button>관리번호</th><th>ID</th><th>활성여부</th><th>유저 관리권한</th><th>룰 추가/수정/삭제</th><th>수정 및 삭제</th></tr>
+<tr><th>관리번호</th><th>ID</th><th>활성여부</th><th>유저 관리권한</th><th>룰 추가/수정/삭제</th><th>수정 및 삭제</th></tr>
 <?php
 include "dbconn.php";
 $sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM account ORDER BY u_num DESC";
@@ -38,14 +38,17 @@ if ($result->num_rows > 0) {
         <td><?php if($row["u_active"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
         <td><?php if($row["u_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
         <td><?php if($row["r_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
-        <td><input type=button value="수정" onClick='userhref("<?=$row["u_num"]?>")'>&nbsp;<input type=submit value=삭제 onClick='delhref("<?=$row["u_num"]?>")'></td>
+        <td><input type=button value="수정" onClick='userhref("<?=$row["u_num"]?>")'>&nbsp;<input type=button value=삭제 onClick='delhref("<?=$row["u_num"]?>")'></td>
     </tr><?php
         }
 } else {
     echo "0 results<br>";
 }
 ?>
-</table>
+</table><p>
+<div align="right">
+<button onclick="addhref()">추가</button>
+</div>
 </form>
 </body>
 <script launguage='JAVASCRIPT'>
