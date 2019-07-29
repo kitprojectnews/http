@@ -48,7 +48,12 @@
 			$sql="insert into sig_ip_variables values('$".$ipname."','".$ip."');";
       $result = $conn->query($sql);
 			?>
-			<meta http-equiv="refresh" content="0,ipvar.php">
+			<!--<meta http-equiv="refresh" content="0,ipvar.php">-->
+			<script type="text/javascript">
+			window.opener.location.reload();
+			window.close();
+			</script>
+
 			<?php
 			}
 		}
