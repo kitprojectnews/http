@@ -11,8 +11,8 @@
         $sm = explode('/', $ip[3]);
     }
 ?>
-
 <script src="rmain2.js"></script>
+<a href="addip.php" align=center>ip변수 추가</a>
 <h2 align=center>IP Variable List</h2>
 <form method=post 
     <?php 
@@ -68,15 +68,16 @@
         style="ime-mode:disabled" value=<?=$sm[1]?>>
     </td>
 </tr>
-</table>    
+</table>
+<div align=center>
     <?php if($vname != "") { ?>
         <input type="submit" value="수정하기" >
         <?php } else { ?>
         <input type="submit" value="추가하기" >
         <?php } ?>
+</div>
 </form>
 
-<a href="addip.php" align=center>ip변수 추가</a>
 <table border=1 align=center>
 	<tr><td colspan=3 align=center>IP tables</tr>
 	<tr><td>Value Name<td>Values</tr>
