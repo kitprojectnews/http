@@ -71,18 +71,14 @@
 </tr>
 </table>
 <div align=center>
-    <?php if($vname != "") { ?>
-        <input type="submit" value="수정하기" >
-        <?php } else { ?>
-        <input type="submit" value="추가하기" >
-        <?php } ?>
+	<input type="submit" value="ADD">
 </div>
 </form>
 
 <h2 align=center>LIST</h2>
 <table border=1 align=center>
-	<tr><td colspan=3 align=center>IP tables</tr>
-	<tr><td>Value Name<td>Values</tr>
+	<tr><td colspan=4 align=center>IP tables</tr>
+	<tr><td>Value Name<td>Values<td>Edit<td>Description</tr>
 	<?php 
 		$sql1="select * from sig_ip_variables;";
 		$result1 = $conn->query($sql1);
@@ -103,6 +99,7 @@
 	    <input type="submit" value="수정">
         </form>
     </td>
+    <td> MEMO </td>
     </tr>
 	<?php 
 			}
