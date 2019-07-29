@@ -10,6 +10,8 @@
 ?>
 
 <script src="rmain2.js"></script>
+<h2 align=center>Port Variable List</h2>
+
 <form method=post 
     <?php 
         if($vname == "")
@@ -35,7 +37,7 @@
         } 
     ?>
 >
-<table border=1>
+<table border=1 align=center>
 <tr>
     <td>NAME</td>
     <td><input type="text" name="portname" <?php if($vname != "") { ?> readonly <?php } ?> value="<?=substr($vname, 1)?>" ></td>
@@ -67,7 +69,6 @@
         <?php } ?>
 
 </form>
-<h2 align=center>Port Variable List</h2>
 <a href="addport.php" align=center>Port 변수 추가</a>
 <table border=1 align=center>
 	<tr><td colspan=3 align=center>Port tables</tr>
