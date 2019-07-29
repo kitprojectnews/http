@@ -3,10 +3,26 @@
 ?>
 
 <script src="rmain2.js"></script>
+<script>
+	w = 800; // POPUP W
+	h = 200; // POPUP H
+	
+	// MID
+	LeftPosition=(screen.width-w)/2;
+	TopPosition=(screen.height-h)/2;
+	
+	//팝업 호출
+	function popup_open() { 
+	window.open(
+	"addip.php", 
+	"ADD IP Variable",
+	"width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no, toolbar=no, location=no, resizable=no, status=no, menubar=no");
+}
+</script>
 <a href="addip.php" align=center>ip변수 추가</a>
 
 <h2 align=center>LIST</h2>
-<input type="button" value="ADD" onclick="window.open('addip.php', '_blank', 'width=800px,height=200px,toolbars=no,scrollbars=no'); return false;">
+<input type="button" value="ADD" onclick="popup_open()";">
 <table border=1 align=center>
 	<tr>
 		<td colspan=4 align=center>IP tables</td>
