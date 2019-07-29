@@ -26,7 +26,7 @@
         } 
     ?>
 >
-<h2 align=center>LIST</h2>
+
 <table border=1 align=center>
 <tr>
     <td align=center>NAME</td>
@@ -79,6 +79,7 @@
 </div>
 </form>
 
+<h2 align=center>LIST</h2>
 <table border=1 align=center>
 	<tr><td colspan=3 align=center>IP tables</tr>
 	<tr><td>Value Name<td>Values</tr>
