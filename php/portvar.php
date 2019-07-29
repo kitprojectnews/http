@@ -38,7 +38,7 @@
         } 
     ?>
 >
-<h2 align=center>LIST</h2>
+
 <table border=1 align=center>
 <tr>
     <td>NAME</td>
@@ -73,6 +73,7 @@
 <div>
 </form>
 
+<h2 align=center>LIST</h2>
 <table border=1 align=center>
 	<tr><td colspan=3 align=center>Port tables</tr>
 	<tr><td>Value Name<td>Values</tr>
