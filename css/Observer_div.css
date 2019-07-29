@@ -8,7 +8,7 @@
 }
 
 @font-face {
-    font-family: "Title";
+    font-family: "font_Title";
     src:url('../fonts/white_rabbit/whitrabt.ttf');
 }
 
@@ -30,7 +30,7 @@
     line-height: var(--title-font);
     color:rgb(70, 70, 70);
     font-size:var(--title-font);
-    font-family: "Title";
+    font-family: "font_Title";
     float: left;
 }
 

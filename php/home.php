@@ -1,5 +1,5 @@
 <?php 
-    include 'GetSystemInfo.php';
+    include 'home_GetSystemInfo.php';
     include 'dbconn.php';
     include 'home_log_amount.php';
     $data_date=DataPerDate();
