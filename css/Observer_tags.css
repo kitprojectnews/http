@@ -27,3 +27,7 @@ td{
 input[type=button]{color: #fff; text-align: center; background-color: #7e8c8d; border-color: #7e8c8d;}
 input[type=button]:hover{color: #fff; text-align: center; background-color:#6a7879;}
 input[type=button]:active{color: #fff; text-align: center; top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+
+input[type=submit]{color: #fff; text-align: center; background-color: #7e8c8d; border-color: #7e8c8d;}
+input[type=submit]:hover{color: #fff; text-align: center; background-color:#6a7879;}
+input[type=submit]:active{color: #fff; text-align: center; top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}

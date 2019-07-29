@@ -1,16 +1,27 @@
 #home_div_root{
     width:100%;
-    background-color: rgb(197, 189, 75);
+}
+#home_div_info{
+    width:50%;
+    height:50%;
+    background-color: rgb(192, 192, 192);
+    float: left;
 }
 #home_div_resource{
     width:50%;
     height:50%;
     background-color: rgb(255, 255, 255);
-    float: left;
+    float: right;
 }
 #home_div_logcount{
     width:50%;
     height:50%;
     background-color: rgb(255, 255, 255);
     float: left;
+}
+#home_div_logcount_hour{
+    width:50%;
+    height:50%;
+    background-color: rgb(255, 255, 255);
+    float: right;
 }

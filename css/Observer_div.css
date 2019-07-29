@@ -2,14 +2,18 @@
     --menu-width:200px;
     --head-height:70px;
     --hr-height:10px;
-    --login-width:250px;
+    --login-width:400px;
     --banner-margin:20px;
-    --title-font:90px;
+    --title-font:80px;
 }
 
 @font-face {
-    font-family: "Title";
-    src:url('../fonts/white_rabbit/whitrabt.ttf');
+    font-family: "title_font";
+    src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
+}
+@font-face {
+    font-family: "menu_font";
+    src: url('../fonts/BMHANNAAir_ttf.ttf'); 
 }
 
 #div_root{
@@ -30,7 +34,7 @@
     line-height: var(--title-font);
     color:rgb(70, 70, 70);
     font-size:var(--title-font);
-    font-family: "Title";
+    font-family: "title_font";
     float: left;
 }
 
@@ -38,15 +42,20 @@
 #div_login{
     width:calc(var(--login-width) - var(--banner-margin));
     height:100%;
-    background-color: aquamarine;
     float: left;
     position: relative;
+}
+#div_login a{
+    text-decoration: none;
+    color:rgb(70, 70, 70);
 }
 .login_text{
     position:absolute;
     right:0;
-    bottom:0;
+    top:0;
     font-size:20px;
+    font-family: 'menu_font';
+    color:rgb(70, 70, 70);
 }
 
 
@@ -72,7 +81,7 @@
     height: 100%;
     float: left;
     background-color: rgb(70, 70, 70);
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'menu_font';
 }
 #div_menu a{
     text-decoration: none;
@@ -91,14 +100,14 @@
 
 .menu_item {
 	display: block;
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 50px;
     color:white;
 }
 
 .stage{
-    font-size:15px;
-    height: 20px;
+    font-size:20px;
+    height: 25px;
     margin-left:20%;
     margin-top:20%;
     color:white;

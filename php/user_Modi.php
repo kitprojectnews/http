@@ -6,6 +6,7 @@
 
 <!-- <link rel="stylesheet" type="text/css" href="../css/Observer_Login.css"> -->
 <link rel="stylesheet" type="text/css" href="../css/Observer_user_Manage.css">
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <?php
 session_start();
 // if (!isset($_SESSION['user_num']))//세션 확인

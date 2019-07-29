@@ -4,10 +4,10 @@
     <link rel="stylesheet" type="text/css" href="css/Observer_div.css" />
     <?php
     session_start();
-    //if (!isset($_SESSION['u_num'])) 
-    //{
-    //    header('Location:./index.html');
-    //}
+    if (!isset($_SESSION['u_num'])) 
+    {
+        header('Location:./index.html');
+    }
     ?>
 </head>
 <body>
@@ -19,7 +19,10 @@
             <div id="div_login">
                 <table width=100% height=100%><tr><td>
                 <div class="login_text">
-                    hahahaah
+                    <?php 
+                        echo $_SESSION["u_id"]."님으로 로그인 되어있습니다.&nbsp&nbsp&nbsp";
+                        echo "<a href='php/logout.php'>logout</a>&nbsp";
+                    ?>
                 </div>
                 </td></tr></table>
             </div>
@@ -33,7 +36,10 @@
                 <a href="php/home.php" onclick=stage_animation(this) name="All" target="frame">All</a>
                 </div>
                 <ul id="root_menu">
-                    <li class="menu_item"><a href="#">사용자 관리</a></li>
+                    <?php 
+                        if($_SESSION["u_update"]==1)
+                            echo '<li class="menu_item"><a href="php/user_Manage.php" target="frame">사용자 관리</a></li>';
+                    ?>
                     <li class="menu_item"><a href="php/rlist.php" target="frame">룰</a></li>
                     <li class="menu_item"><a href="#" onclick=animation(this) name="object">오브젝트</a></li>
                     <li class="menu_item"><a href="#" onclick=animation(this) name="log">로그</a></li>
