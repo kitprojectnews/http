@@ -17,7 +17,7 @@
 	//팝업 호출
 	function popup_edit() {
 		var myForm = document.edit;
- 		var url = "/test/popForm.do";
+ 		var url = "ipvar.php";
 		window.open(
 			"addip.php", 
 			"_blank",
