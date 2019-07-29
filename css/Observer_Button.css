@@ -34,7 +34,9 @@ a{text-decoration:none;}
 /********************
 GENERIC BUTTON STYLES
 ********************/
-.btn {font-size: 18px; white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; line-height:18px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative; -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear; transition: border .25s linear, color .25s linear, background-color .25s linear;}
+/*.btn {font-size: 18px; white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; line-height:18px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative; -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear; transition: border .25s linear, color .25s linear, background-color .25s linear;}
+*/
+.btn {white-space:nowrap; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; line-height:18px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative; -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear; transition: border .25s linear, color .25s linear, background-color .25s linear;}
 
 /*SEA GREEN BUTTON STYLES*/		
 .btn.btn-sea{background-color: #08bc9a; border-color: #08bc9a; -webkit-box-shadow: 0 3px 0 #088d74; box-shadow: 0 3px 0 #088d74;}
@@ -71,7 +73,8 @@ GENERIC BUTTON STYLES
 .btn.btn-red:hover{background-color:#a53422;}
 .btn.btn-red:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 
-/*CONCRETE BUTTON STYLES*/		
+/*CONCRETE BUTTON STYLES*/
+/* USE */
 .btn.btn-concrete{background-color: #7e8c8d; border-color: #7e8c8d;}
 .btn.btn-concrete:hover{background-color:#6a7879;}
 .btn.btn-concrete:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
