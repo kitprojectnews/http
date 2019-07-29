@@ -12,10 +12,6 @@
     // {
     //     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
     // }
-    // if(!$_SESSION['r_sel'])//룰 확인 여부
-    // {
-    //     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
-    // }
     // if(!$_SESSION['r_update'])//룰 추가 수정 삭제 가능 여부
     // {
     //     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";

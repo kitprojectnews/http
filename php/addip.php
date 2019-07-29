@@ -1,3 +1,4 @@
+<title>Variable</title>
 
 <?php
     include 'dbconn.php';
@@ -29,7 +30,8 @@
     ?>
 >
 
-<h1>ADD IP Variable</h1>
+<!--<h1>ADD IP Variable</h1>-->
+<div align=center>
 <table border=1>
 <tr>
     <td align=center>NAME</td>
@@ -72,10 +74,11 @@
         style="ime-mode:disabled" value=<?=$sm[1]?>>
     </td>
 </tr>
-</table>    
+</table>
     <?php if($vname != "") { ?>
         <input type="submit" value="수정하기" >
         <?php } else { ?>
         <input type="submit" value="추가하기" >
         <?php } ?>
 </form>
+</div>

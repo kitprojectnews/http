@@ -4,7 +4,7 @@ body, html {
 	font-family: Ubuntu-Regular, sans-serif;
 }
 table{
-    background: #000000;
+    background: #464545;
     border:2;
     align-items:center;
 }
@@ -12,13 +12,14 @@ tr{
     color:#fff;
 }
 th{
-    width:10%;
+    width:20%;
     color:#fff;
 }
 td{
-    width:15%;
+    width:16%;
     text-align: center;
     color:#fff;
+    background: #909090;
 }
 /*------------------------------------------------------------------
 [ Button ]*/
@@ -61,3 +62,9 @@ td{
   .login100-form-btn:hover {
     background-color: #333333;
   }
+
+
+
+input[type=button]{color: #fff; text-align: center; background-color: #7e8c8d; border-color: #7e8c8d;}
+input[type=button]:hover{color: #fff; text-align: center; background-color:#6a7879;}
+input[type=button]:active{color: #fff; text-align: center; top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}

@@ -38,7 +38,7 @@
                 <ul id="root_menu">
                     <?php 
                         if($_SESSION["u_update"]==1)
-                            echo '<li class="menu_item"><a href="#">사용자 관리</a></li>';
+                            echo '<li class="menu_item"><a href="php/user_Manage.php" target="frame">사용자 관리</a></li>';
                     ?>
                     <li class="menu_item"><a href="php/rlist.php" target="frame">룰</a></li>
                     <li class="menu_item"><a href="#" onclick=animation(this) name="object">오브젝트</a></li>

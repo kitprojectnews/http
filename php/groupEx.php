@@ -23,9 +23,17 @@
                 <meta http-equiv="refresh" content="0,group.php">
         <?php 
                 }
-        }       
-    $group=$_POST["group"];
-    if($group){
+        }
+    else{
+    $group=trim($_POST["group"]);
+    if($group==""){
+?>
+<script>
+        alert("공백은 사용할 수 없습니다.");
+</script>
+        <meta http-equiv="refresh" content="0,group.php">
+<?php
+    }else{
         $sql="select gname from sig_group where gname='".$group."' ;";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -42,5 +50,6 @@
         <meta http-equiv="refresh" content="0,group.php">
 <?php
         }
-    }
+    }   
+  }
 ?>

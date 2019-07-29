@@ -11,31 +11,30 @@
     $sql="select * from signature;";
     $result = $conn->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/tableaction.js"></script>
 </head>
 <body>
 <a href="rmain.php">룰 추가</a>
-<table border=1 >
+<h2 align=center>Rule List</h2>
+<table border="1" cellspacing="0" id="myTable">
     <tr align="center">
-        <th colspan=13>Rule List</th>
-    </tr>
-    <tr align="center">
-        <td width=200 >Rule name
-        <td width=100>Sid
-        <td width=150>Group Name
-        <td width=100>Rev
-        <td>action
-        <td>protocol
-        <td>srcIP
-        <td>srcPort
-        <td>direction
-        <td>dstIP
-        <td>dstPort
-        <td>Rule Option
-        <td>Edit
+        <th width=200 onclick="sortTable(0)">Rule name</th>
+        <th width=100 onclick="sortTable(1)">Sid</th>
+        <th width=150 onclick="sortTable(2)">Group Name</th>
+        <th width=100 onclick="sortTable(3)">Rev</th>
+        <th onclick="sortTable(4)">action</th>
+        <th onclick="sortTable(5)">protocol</th>
+        <th onclick="sortTable(6)">srcIP</th>
+        <th onclick="sortTable(7)">srcPort</th>
+        <th onclick="sortTable(8)">direction</th>
+        <th onclick="sortTable(9)">dstIP</th>
+        <th onclick="sortTable(10)">dstPort</th>
+        <th onclick="sortTable(11)">Rule Option</th>
+        <th onclick="sortTable(12)">Edit</th>
     </tr>
         <?php
             if ($result->num_rows > 0) {
