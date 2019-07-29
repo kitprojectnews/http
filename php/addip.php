@@ -1,3 +1,4 @@
+<title>Variable</title>
 
 <?php
     include 'dbconn.php';
