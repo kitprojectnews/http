@@ -33,7 +33,7 @@
         <div id="div_body">
             <div id="div_menu">
                 <div class="stage" id="stage_menu">
-                <a href="php/home.php" onclick=stage_animation(this) name="All" target="frame">All</a>
+                <div style="float:left;"><a href="php/home.php" onclick=stage_animation(this) name="All" target="frame">All</a></div><div id="next" style="float:left;"></div>
                 </div>
                 <ul id="root_menu">
                     <?php 

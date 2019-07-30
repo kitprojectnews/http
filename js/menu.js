@@ -7,14 +7,14 @@ function animation(selected_menu) {
             e.style.display = "block";
             e.className = "slidein";
             current_menu="object_menu";
-            document.getElementById("stage_menu").innerHTML+='->오브젝트';
+            document.getElementById("next").innerHTML='->오브젝트';
             break;
         case "log":
             var e = document.getElementById("log_menu");
             e.style.display = "block";
             e.className = "slidein";
             current_menu="log_menu";
-            document.getElementById("stage_menu").innerHTML+='->로그';
+            document.getElementById("next").innerHTML='->로그';
             break;
     }
 }
@@ -29,7 +29,7 @@ function stage_animation(selected_menu) {
             e.style.display = "block";
             e.className = "slidein";
             current_menu="root_menu";
-            document.getElementById("stage_menu").innerHTML='<a href="php/home.php" onclick=stage_animation(this) name="All">All</a>';
+            document.getElementById("next").innerHTML="";
             break;
     }
 }
