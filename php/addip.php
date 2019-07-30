@@ -34,13 +34,13 @@
 <div align=center>
 <table border=1>
 <tr>
-    <td align=center>NAME</td>
+    <th align=center>NAME</th>
     <td>
         <input type="text" id="ipid" name="ipname" value="<?=substr($vname, 1)?>" <?php if($vname) { ?> readonly <?php } ?> >
     </td>
 </tr>
 <tr>
-    <td align=center>VALUE</td>
+    <th align=center>VALUE</th>
     <td>
         <input type="text" size=3 id="var_value_ip1" name="ip1" 
         onkeydown="return onlyNumber(event)" 
