@@ -51,14 +51,18 @@
     <td><?=substr($row2["v_name"],1)?>
 	<td><?=$row2["v_value"]?>
     <td>
-    <form method=post action=delport.php>
+	    <div style="float:left;">
+    <form method=post action=delport.php style="display:inline;">
         <input type="hidden" name="portdel" value=<?=$row2["v_name"]?>>
         <input type=submit value="삭제">
     </form>
-    <form method=post id="editid" name="edit" action=addport.php>
+	    </div>
+	    <div style="float:right;">
+    <form method=post id="editid" name="edit" action=addport.php style="display:inline;">
         <input type="hidden" name="vname">
 	<input type="button" value="EDIT" onclick="popup_edit('<?=$row2["v_name"]?>')">
     </form>
+	    </div>
     </td>
     <td> M E M O</td>
     </tr>
@@ -67,6 +71,7 @@
 		}
 	?>
 </table>
+<br>
 <div align="center">
-<input type="button" value="ADD" onclick="popup_open()";">
+<input type="button" value="ADD" onclick="popup_open()" style="width:200; height:30;">
 </div>
