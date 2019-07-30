@@ -21,21 +21,30 @@
         <script src="../js/node_modules/chart.js/dist/Chart.js">
         </script>
         <link rel="stylesheet" type="text/css" href="../css/Observer_home.css" />
+        <meta name="viewport" content="target-densitydpi=device-dpi, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width" />
     </head>
     <body>
         <div id="home_div_root">
             <?php //echo get_server_up_time();?>
             <div id="home_div_info">
-                <canvas id="info"></canvas>
+                <div class="center">
+                    <canvas id="info" class="chart"></canvas>
+                </div>
             </div>
             <div id="home_div_resource">
-                <canvas id="sysinfo"></canvas>                
+                <div class="center">
+                    <canvas id="sysinfo" class="chart"></canvas>                
+                </div>
             </div>
             <div id="home_div_logcount">
-                <canvas id="log_amount"></canvas>
+                <div class="center">
+                    <canvas id="log_amount" class="chart"></canvas>
+                </div>
             </div>
             <div id="home_div_logcount_hour">
-                <canvas id="log_amount_hour"></canvas>
+                <div class="center">
+                    <canvas id="log_amount_hour" class="chart"></canvas>
+                </div>
             </div>
         </div>
     </body>
@@ -145,16 +154,25 @@
         var logChart = new Chart(log_amount_hour, {
             type: 'line',
             data: {
-                datasets: [
-                    {x: 10, y: 20}, 
-                    {x: 15, y: 10}
+                labels: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+                datasets: [{ 
+                    data: [86,114,106,106,107,111,133,221,783,13, 222, 444,121],
+                    borderColor: "#3e95cd",
+                    fill: false
+                }
                 ]
             },
             options: {
-                elements: {
-                    line: {
-                        tension: 0 // disables bezier curves
-                     }
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: '시간별 로그 발생량',
+                    fontSize: 15,
+                    position: 'bottom',
+                    responsive:true,
+                    maintainAspectRatio:false
                 }
             }
         });
