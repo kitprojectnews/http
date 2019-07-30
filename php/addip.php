@@ -1,3 +1,4 @@
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <title>Variable</title>
 
 <?php
