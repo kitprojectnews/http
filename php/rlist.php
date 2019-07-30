@@ -63,8 +63,8 @@
         ?>
 		<tr>
         <td><?php echo $row["sig_msg"] ?>
-        <td><?php echo $row["sig_sid"] ?>
-        <td>
+        <td align=center><?php echo $row["sig_sid"] ?>
+        <td align=center>
         <?php
             //그룹명 변환
             $ssql="select gname from sig_group where gid=".$row["sig_gid"].";";
@@ -75,11 +75,11 @@
         <td align=center><?php echo $row["sig_rev"] ?>
         <td align=center><?php echo $row["sig_action"] ?>
         <td align=center><?php echo $row["sig_protocol"] ?>
-        <td><?php echo $row["sig_srcIP"] ?>
-        <td><?php echo $row["sig_srcPort"] ?>
+        <td align=center><?php if($row["sig_srcIP"][0]=='$'){ echo substr($row["sig_srcIP"],1);} else if($row["sig_srcIP"][1]=='$'){ echo "!".substr($row["sig_srcIP"],2);} else{ echo $row["sig_srcIP"];} ?>
+        <td align=center><?php if($row["sig_srcPort"][0]=='$'){ echo substr($row["sig_srcPort"],1);} else if($row["sig_srcPort"][1]=='$'){ echo "!".substr($row["sig_srcPort"],2);} else{ echo $row["sig_srcPort"];}?>
         <td align=center><?php echo $row["sig_direction"] ?>
-        <td><?php echo $row["sig_dstIP"] ?>
-        <td><?php echo $row["sig_dstPort"] ?>
+        <td align=center><?php if($row["sig_dstIP"][0]=='$'){ echo substr($row["sig_dstIP"],1);} else if($row["sig_dstIP"][1]=='$'){ echo "!".substr($row["sig_dstIP"],2);} else{ echo $row["sig_dstIP"];}?>
+        <td align=center><?php if($row["sig_dstPort"][0]=='$'){ echo substr($row["sig_dstPort"],1);} else if($row["sig_dstPort"][1]=='$'){ echo "!".substr($row["sig_dstPort"],2);} else{ echo $row["sig_dstPort"];}?>
         <td><?php echo $row["sig_rule_option"] ?></td>
         <td>
         <div style="float:left;">
