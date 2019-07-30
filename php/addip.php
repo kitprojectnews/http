@@ -16,7 +16,7 @@
     }
 ?>
 
-<script src="rmain2.js"></script>
+<script src="../js/rmain.js"></script>
 
 <form method=post 
     <?php 

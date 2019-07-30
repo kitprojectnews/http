@@ -10,7 +10,8 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
-<script src="rmain2.js"></script>
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
+<script src="../js/rmain.js"></script>
 </head>
 <body>
 <h1 align="center">Rule Maker</h1>

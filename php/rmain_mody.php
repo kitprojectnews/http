@@ -41,6 +41,7 @@ include 'dbconn.php';
 	
 ?>
 <!DOCTYPE html>
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <html>
 <head>
 <style>
@@ -49,7 +50,7 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
-<script src="rmain2.js"></script>
+<script src="../js/rmain.js"></script>
 </head>
 <body onload=lastoptions_parse()>
 <input type=hidden id=hidden_loption value='<?=$row["sig_rule_option"]?>'>
