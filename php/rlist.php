@@ -12,11 +12,12 @@
     $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <html>
 <head>
 <script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/colResizable-1.6.min.js"></script>
 <script src="../js/tableaction.js"></script>
-
 </head>
 <body>
 <a href="rmain.php">룰 추가</a>
@@ -36,7 +37,6 @@
 		}
 	?>
 </select></td><br>
-
 <table border="1" cellspacing="0" id="myTable">
     <thead align="center">
         <th width=200 onclick="sortTable(0)">Rule name</th>
@@ -80,16 +80,20 @@
         <td><?php echo $row["sig_dstPort"] ?>
         <td><?php echo $row["sig_rule_option"] ?></td>
         <td>
-        <form method=post action="rmain_mody.php" >
+        <div style="float:left;">
+        <form method=post action="rmain_mody.php" style="display:inline;">
         <input type="hidden" name="sid" value=<?=$row["sig_id"]?>>
         <input type="submit" value="수정">
         <!--<input type=button value="수정" onclick=location.href='rmain_mody.php?sid='>-->
         </form>
-        <form method=post action="rlistd.php">
+        </div>
+        <div style="float:right;">
+        <form method=post action="rlistd.php" style="display:inline;">
         <input type="hidden" name="del" value=<?=$row["sig_id"]?>>
         <input type="submit" value="삭제">
         <!--<input type=button value="삭제" onclick=location.href='rlist.php?del='></td>-->
         </form> 
+        </div>
 		</tr>
         <?php
                 }
