@@ -31,11 +31,11 @@ if ($result->num_rows > 0) {
         ?>
     <tr>
         <th scope='row'><?=$row["u_num"]?></th>
-        <td><?=$row["u_id"]?></td>
-        <td><?php if($row["u_active"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
-        <td><?php if($row["u_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
-        <td><?php if($row["r_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
-        <td><input type=button value="수정" onClick='userhref("<?=$row["u_num"]?>")'>&nbsp;
+        <td align=center ><?=$row["u_id"]?></td>
+        <td align=center ><?php if($row["u_active"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
+        <td align=center ><?php if($row["u_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
+        <td align=center ><?php if($row["r_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
+        <td align=center ><input type=button value="수정" onClick='userhref("<?=$row["u_num"]?>")'>&nbsp;
         <?php if($row["u_num"] != "1") { echo "<input type=button value=삭제 onClick='delhref(".$row["u_num"].")'>";}?> </td>
     </tr>
     
@@ -55,10 +55,10 @@ if ($result->num_rows > 0) {
     var popupX = (window.screen.width / 2) - (500 / 2);
     var popupY= (window.screen.height / 2) - (250 / 2);
     function addhref() {
-        window.open('user_Add.php', 'userAdd', 'width = 500, height = 280, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
+        window.open('user_Add.php', 'userAdd', 'width = 400, height = 280, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
     }
     function userhref(u_num) {
-        window.open('user_Modi.php?u_num='+u_num, 'userModi', 'width = 500, height = 280, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
+        window.open('user_Modi.php?u_num='+u_num, 'userModi', 'width = 400, height = 280, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
     }
     function delhref(u_num) {
         a = confirm("관리번호 "+u_num+" 정말로 삭제하시겠습니까?");

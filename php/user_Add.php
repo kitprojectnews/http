@@ -23,12 +23,12 @@ if(!$_SESSION['u_update'])//유저 관리권한 여부
 <form action="user_add_ok.php" method="POST" name=frm1>
 <table width=100% align="center">
 <tr><th colspan=2><h2>유저 추가 </h2></th></tr>
-<tr><th>ID</th><td><input name="u_id" type='text' value=""></td></tr>
-<tr><th>PW</th><td> <input name="u_pw" type='password' value=""></td></tr>
-<tr><th>활성여부</th><td><input name="u_active" type='checkbox'checked></td></tr>
-<tr><th>관리권한</th><td><input name="u_update" type='checkbox'></td></tr>
-<tr><th>룰 추가/수정/삭제</th><td><input name="r_update" type='checkbox'></td></tr>
-<tr><td colspan="2"><input type="button" value="추가" onclick="ckfild()">&nbsp;&nbsp;
+<tr><th>ID</th><td align=center><input name="u_id" type='text' value=""></td></tr>
+<tr><th>PW</th><td align=center> <input name="u_pw" type='password' value=""></td></tr>
+<tr><th>활성여부</th><td align=center><input name="u_active" type='checkbox'checked></td></tr>
+<tr><th>관리권한</th><td align=center><input name="u_update" type='checkbox'></td></tr>
+<tr><th>룰 추가/수정/삭제</th><td align=center><input name="r_update" type='checkbox'></td></tr>
+<tr><td align=center colspan="2"><input type="button" value="추가" onclick="ckfild()">&nbsp;&nbsp;
 <input type="button" value="취소" onClick="window.close();"></td></tr>
 </table>
 </form>    

@@ -33,12 +33,12 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) { ?>
         <tr><th colspan=2><h2>관리번호&nbsp;<?=$row["u_num"]?> </h2><input type="hidden" name="u_num" value="<?=$row["u_num"]?>"></tr>
-        <tr><th>ID</th><td><input name="u_id" type='text' value="<?= $row["u_id"]?>" readonly></td></tr>
-        <tr><th>PW</th><td> <input name="u_pw" type='password' value=""></td></tr>
-        <tr><th>활성여부</th><td><input name="u_active" type='checkbox' value="1" <?php if($row["u_active"] == "1") { ?> checked <?php } ?> <?php if($row["u_num"] == "1") { ?> disabled <?php } ?>></td></tr>
-        <tr><th>관리권한</th><td><input name="u_update" type='checkbox' <?php if($row["u_update"] == "1") { ?> checked <?php } ?> <?php if($row["u_num"] == "1") { ?> disabled <?php } ?>></td></tr>
-        <tr><th>룰 추가/수정/삭제</th><td><input name="r_update" type='checkbox' <?php if($row["r_update"] == "1") { ?> checked <?php } ?> <?php if($row["u_num"] == "1") { ?> disabled <?php } ?>></td></tr>
-        <tr><td colspan="2"><input type="submit" value="수정">&nbsp;&nbsp;<input type="button" value="취소" onClick="window.close();"></td></tr>
+        <tr><th>ID</th><td align=center ><input name="u_id" type='text' value="<?= $row["u_id"]?>" readonly></td></tr>
+        <tr><th>PW</th><td align=center > <input name="u_pw" type='password' value=""></td></tr>
+        <tr><th>활성여부</th><td align=center ><input name="u_active" type='checkbox' value="1" <?php if($row["u_active"] == "1") { ?> checked <?php } ?> <?php if($row["u_num"] == "1") { ?> disabled <?php } ?>></td></tr>
+        <tr><th>관리권한</th><td align=center ><input name="u_update" type='checkbox' <?php if($row["u_update"] == "1") { ?> checked <?php } ?> <?php if($row["u_num"] == "1") { ?> disabled <?php } ?>></td></tr>
+        <tr><th>룰 추가/수정/삭제</th><td align=center ><input name="r_update" type='checkbox' <?php if($row["r_update"] == "1") { ?> checked <?php } ?> <?php if($row["u_num"] == "1") { ?> disabled <?php } ?>></td></tr>
+        <tr><td align=center colspan="2"><input type="submit" value="수정">&nbsp;&nbsp;<input type="button" value="취소" onClick="window.close();"></td></tr>
         <?php
         }
 } else {
