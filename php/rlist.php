@@ -52,8 +52,8 @@
         <th width=70 onclick="sortTable(8)">direction</th>
         <th width=100 onclick="sortTable(9)">dstIP</th>
         <th width=100 onclick="sortTable(10)">dstPort</th>
-        <th width=200 onclick="sortTable(11)">Rule Option</th>
-        <th width=90  onclick="sortTable(12)">Edit</th>
+        <th width=500 onclick="sortTable(11)">Rule Option</th>
+        <th width=85  onclick="sortTable(12)">Edit</th>
     </thead>
     <tbody>
         <?php
