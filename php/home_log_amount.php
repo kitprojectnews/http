@@ -17,11 +17,11 @@ function DataPerHour()
 {
     include "dbconn.php";
     $data_hour=array();
-    $sql = "SELECT HOUR(`time`) AS `hour`, count(`eid`) AS `amount` FROM test.event where `time`>SUBDATE(NOW(), INTERVAL 5 HOUR) GROUP BY `hour`";
+    $sql = "SELECT DATE(`time`) AS `date`, HOUR(`time`) AS `hour`, count(`eid`) AS `amount` FROM test.event where `time`>SUBDATE(NOW(), INTERVAL 23 HOUR) GROUP BY `date`, `hour`";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $data_hour[$row["hour"]]= $row["amount"];
+            $data_hour[$row["date"]." ".$row["hour"]]= $row["amount"];
         }
     }
     return $data_hour;

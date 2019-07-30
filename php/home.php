@@ -6,44 +6,45 @@
     date_default_timezone_set("Asia/Seoul");
     for ($i=0; $i < 5; $i++) { 
         $days[$i]=date("Y-m-d", strtotime("-$i day"));
-        if( !$data_date[$days[$i]])
+        if( !array_key_exists($days[$i], $data_date))
             $data_date[$days[$i]]=0;
     }
     $data_hour=DataPerHour();
-    for ($i=0; $i < 5; $i++) { 
-        $hours[$i]=date("G", strtotime("-$i hour"));
-        if( !$data_hour[$hours[$i]])
+    for ($i=0; $i < 24; $i++) { 
+        $j=23-$i;
+        $hours[$i]=date("Y-m-d G", strtotime("-$j hour"));
+        if( !array_key_exists($hours[$i], $data_hour))
             $data_hour[$hours[$i]]=0;
     }
 ?>
 <html>
     <head>
-        <script src="../js/node_modules/chart.js/dist/Chart.js">
-        </script>
+        <script src="../js/node_modules/chart.js/dist/Chart.js"></script>
+        <script src="../js/clock.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/Observer_home.css" />
-        <meta name="viewport" content="target-densitydpi=device-dpi, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width" />
     </head>
     <body>
         <div id="home_div_root">
             <?php //echo get_server_up_time();?>
             <div id="home_div_info">
                 <div class="center">
-                    <canvas id="info" class="chart"></canvas>
+                    <div id="curtime"></div>
+                    <div id="uptime"></div>
                 </div>
             </div>
             <div id="home_div_resource">
                 <div class="center">
-                    <canvas id="sysinfo" class="chart"></canvas>                
+                    <canvas id="sysinfo"></canvas>                
                 </div>
             </div>
             <div id="home_div_logcount">
                 <div class="center">
-                    <canvas id="log_amount" class="chart"></canvas>
+                    <canvas id="log_amount"></canvas>
                 </div>
             </div>
             <div id="home_div_logcount_hour">
                 <div class="center">
-                    <canvas id="log_amount_hour" class="chart"></canvas>
+                    <canvas id="log_amount_hour"></canvas>
                 </div>
             </div>
         </div>
@@ -154,9 +155,25 @@
         var logChart = new Chart(log_amount_hour, {
             type: 'line',
             data: {
-                labels: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+                labels: [
+                    <?php 
+                        echo "'".explode ( " ", $hours[0] )[1]."'";
+                        for ($i=1; $i < 24; $i++) { 
+                            echo ",";
+                            echo "'".explode ( " ", $hours[$i] )[1]."'";
+                        }
+                    ?>
+                ],
                 datasets: [{ 
-                    data: [86,114,106,106,107,111,133,221,783,13, 222, 444,121],
+                    data: [
+                        <?php 
+                            echo $data_hour[$hours[0]];
+                            for ($i=1; $i < 24; $i++) { 
+                                echo ",";
+                                echo $data_hour[$hours[$i]];
+                            }
+                        ?>
+                    ],
                     borderColor: "#3e95cd",
                     fill: false
                 }
