@@ -38,8 +38,8 @@
 </script>
 
 <table border=1 align=center>
-	<tr><td colspan=4 align=center>Port tables</tr>
-	<tr><td>Value Name<td>Values<td>Edit<td>Description</tr>
+	<tr><th colspan=4 align=center>Port tables</tr>
+	<tr><th>Value Name<th>Values<th>Edit<th>Description</tr>
 	<?php 
 		$sql2="select * from sig_port_variables;";
 		$result2 = $conn->query($sql2);
