@@ -18,6 +18,10 @@ if(!$_SESSION['u_update'])//유저 관리권한 여부
     <title>유저 관리 페이지 </title>
 </head>
 <body>
+<h1 align=center>User Management</h1>
+<p>
+<div style="margin-left:15px">
+<input type=button value="유저 추가" onclick="addhref()">
 <form>
 <table width=100%>
 
@@ -45,11 +49,9 @@ if ($result->num_rows > 0) {
     echo "0 results<br>";
 }
 ?>
-</table><p>
-<div align="center">
-<input type=button value="추가" onclick="addhref()">
-</div>
+</table>
 </form>
+</div>
 </body>
 <script launguage='JAVASCRIPT'>
     var popupX = (window.screen.width / 2) - (500 / 2);
