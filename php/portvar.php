@@ -4,7 +4,7 @@
     include 'dbconn.php';
 ?>
 
-<script src="rmain2.js"></script>
+<script src="../js/rmain.js"></script>
 <script>
 	w = 500; // POPUP W
 	h = 150; // POPUP H

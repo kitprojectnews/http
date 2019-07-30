@@ -11,7 +11,7 @@ table, th, td {
 }
 </style>
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
-<script src="rmain2.js"></script>
+<script src="../js/rmain.js"></script>
 </head>
 <body>
 <h1 align="center">Rule Maker</h1>
