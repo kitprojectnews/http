@@ -2,7 +2,7 @@
 //<script src="../js/jquery-3.4.1.min.js"></script>
 //<script src="../js/tableresize.js"></script>
 
-document.write('<script src="colResizable-1.6.min.js"></script>');
+//document.write('<script src="./colResizable-1.6.min.js"></script>');
 $(function(){
   var onSampleResized = function(e){  
     var table = $(e.currentTarget); //reference to the resized table
