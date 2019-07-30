@@ -42,13 +42,13 @@
 
 <table border=1 align=center>
 	<tr>
-		<td colspan=4 align=center>IP tables</td>
+		<th colspan=4 align=center>IP tables</td>
 	</tr>
 	<tr>
-		<td>Value Name</td>
-		<td>Values</td>
-		<td>Edit</td>
-		<td>Description</td>
+		<th>Value Name</th>
+		<th>Values</th>
+		<th>Edit</th>
+		<th>Description</th>
 	</tr>   <?php 
 		$sql1="select * from sig_ip_variables;";
 		$result1 = $conn->query($sql1);
