@@ -1,9 +1,5 @@
 <?php
     session_start();
-    // if (!isset($_SESSION['u_num'])) 
-    // {
-    //    header('Location:../test.php');
-    // }
     // if(!$_SESSION['u_active'])//활성 유저 여부 
     // {
     //     echo " <script>alert('비활성화된 사용자입니다. '); history.back(); </script>";
