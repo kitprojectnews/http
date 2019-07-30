@@ -134,6 +134,8 @@ table, th, td {
 			<td style="width:25%" align=center>Source Port</td>
 			<td>
 				<input type="checkbox" id="s2c" onchange="div_hidden_cbox('s2c', 'srcport_div1', 'srcport_div2')">직접 입력하기
+				&nbsp;&nbsp;&nbsp;
+                		<input type="checkbox" id="s2not">NOT
 				<!--
 				<input type="radio" checked name="s2" onclick="div_hidden('srcport_div1', 'srcport_div2')">직접입력 |
 				<input type="radio" name="s2"  onclick="div_hidden('srcport_div2', 'srcport_div1')">변수 -->
@@ -188,7 +190,7 @@ table, th, td {
 			<td><!-- ######### DESTINATION IP ########## -->
 				<input type="checkbox" id="d1c" onchange="div_hidden_cbox('d1c', 'dstip_div1', 'dstip_div2')">직접 입력하기
                 &nbsp;&nbsp;&nbsp;
-                <input type="checkbox" id="s1not">NOT
+                <input type="checkbox" id="d1not">NOT
                 <!--
 				<input type="radio" checked name="d1" onclick="div_hidden('dstip_div1', 'dstip_div2')">직접입력 |
 				<input type="radio" name="d1"  onclick="div_hidden('dstip_div2', 'dstip_div1')">변수 -->
@@ -249,6 +251,8 @@ table, th, td {
 			<td style="width:25%" align=center>Destination Port</td>
 			<td><!-- ######### DESTINATION PORT ########## -->
 				<input type="checkbox" id="d2c" onchange="div_hidden_cbox('d2c', 'dstport_div1', 'dstport_div2')">직접 입력하기
+				&nbsp;&nbsp;&nbsp;
+                		<input type="checkbox" id="d2not">NOT
 
 				<!--<input type="radio" checked name="d2" onclick="div_hidden('dstport_div1', 'dstport_div2')">직접입력 |
 				<input type="radio" name="d2"  onclick="div_hidden('dstport_div2', 'dstport_div1')">변수 -->
