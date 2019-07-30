@@ -83,5 +83,5 @@
 </table>
 <div align="center">
 <br>
-<input type="button" value="ADD" onclick="popup_open()";" astyle="width:200; height:30;"">
+<input type="button" value="ADD" onclick="popup_open()" style="width:200; height:30;">
 </div>
