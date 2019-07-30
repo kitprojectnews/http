@@ -53,10 +53,10 @@ function makeString()
 
 	
 	// Source IP
-	id = document.getElementById("src_ip_opt");
+	id = document.getElementById("srcip_v");
 	if(id.options[id.selectedIndex].value != "any")
 	{
-		if(id.options[id.selectedIndex].value == "not")
+		if(document.getElementById("s1not").checked == true)
 			str += "!";
 		
 		if(document.getElementById("s1c").checked == false)
@@ -88,10 +88,10 @@ function makeString()
 		str += "any ";
 	
 	// Source Port
-	id = document.getElementById("src_port_opt");
+	id = document.getElementById("srcport_v");
 	if(id.options[id.selectedIndex].value != "any")
 	{
-		if(id.options[id.selectedIndex].value == "not")
+		if(document.getElementById("s2not").checked == true)
 			str += "!";
 		
 		if(document.getElementById("s2c").checked == false)
@@ -121,10 +121,10 @@ function makeString()
 	str += space;
 
 	// Destination IP
-	id = document.getElementById("dest_ip_opt");
+	id = document.getElementById("dstip_v");
 	if(id.options[id.selectedIndex].value != "any")
 	{
-		if(id.options[id.selectedIndex].value == "not")
+		if(document.getElementById("d1not").checked == true)
 			str += "!";
 		
 		if(document.getElementById("d1c").checked == false)
@@ -156,10 +156,10 @@ function makeString()
 		str += "any ";
 
 	// Destination Port
-	id = document.getElementById("dest_port_opt");
+	id = document.getElementById("dstport_v");
 	if(id.options[id.selectedIndex].value != "any")
 	{
-		if(id.options[id.selectedIndex].value == "not")
+		if(document.getElementById("d2not").checked == true)
 			str += "!";
 		
 		if(document.getElementById("d2c").checked == false)
