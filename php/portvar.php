@@ -71,6 +71,7 @@
 		}
 	?>
 </table>
+<br>
 <div align="center">
 <input type="button" value="ADD" onclick="popup_open()" style="width:200; height:30;">
 </div>
