@@ -15,6 +15,14 @@
         if( !$data_hour[$hours[$i]])
             $data_hour[$hours[$i]]=0;
     }
+    $str   = @file_get_contents('/proc/uptime');
+    $num   = floatval($str);
+    $secs  = fmod($num, 60); $num = intdiv($num, 60);
+    $secs=substr($secs,0,2);
+    $mins  = $num % 60;      $num = intdiv($num, 60);
+    $hours = $num % 24;      $num = intdiv($num, 24);
+    $days  = $num;
+
 ?>
 <html>
     <head>
@@ -22,7 +30,7 @@
         </script>
         <link rel="stylesheet" type="text/css" href="../css/Observer_home.css" />
     </head>
-    <body>
+    <body onload=printClock()>
         <div id="home_div_root">
             <?php //echo get_server_up_time();?>
             <div id="home_div_info">
@@ -160,3 +168,48 @@
         });
     </script>
 </html>
+<script>
+    var days=<?=json_encode($days)?>;
+    var hours=<?=json_encode($hours)?>;
+    var mins=<?=json_encode($mins)?>;
+    var secs=<?=json_encode($secs)?>;
+function printClock() {
+    var clock = document.getElementById("home_div_info");            // 출력할 장소 선택
+    var currentDate = new Date();                                     // 현재시간
+    var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
+    var amPm = 'AM'; // 초기값 AM
+    var currentHours = addZeros(currentDate.getHours(),2); 
+    var currentMinute = addZeros(currentDate.getMinutes() ,2);
+    var currentSeconds =  addZeros(currentDate.getSeconds(),2);
+    if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+    	amPm = 'PM';
+    	currentHours = addZeros(currentHours - 12,2);
+    }
+    secs++;
+    if(secs>=60){
+        secs=0;
+        mins++;
+    }if(mins>=60){
+        mins=0;
+        hours++;
+    }if(hours>=24){
+        hours=0;
+        days++;
+    }
+    var uptime=days+"d "+hours+":"+mins+":"+secs;
+    clock.innerHTML ="<span style='font-size:150px;'>"+currentHours+":"+currentMinute+":"+currentSeconds+"</span><span style='font-size:50px;'>"+ amPm+"</span><br><span style='font-size:30px;'>UP Time:"+uptime+"</span>"; //날짜를 출력해 줌
+    
+    setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
+}
+
+function addZeros(num, digit) { // 자릿수 맞춰주기
+	  var zero = '';
+	  num = num.toString();
+	  if (num.length < digit) {
+	    for (i = 0; i < digit - num.length; i++) {
+	      zero += '0';
+	    }
+	  }
+	  return zero + num;
+}
+</script>
