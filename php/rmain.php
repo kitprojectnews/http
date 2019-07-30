@@ -73,21 +73,23 @@ table, th, td {
 		<tr><!-- ######### SOURCE IP ########## -->
 			<td style="width:25%" align=center>Source IP</td>
 			<td>
-				<input type="checkbox" id="s1c" onchange="div_hidden_cbox('s1c', 'srcip_div1', 'srcip_div2')">직접 입력하기
+                <input type="checkbox" id="s1c" onchange="div_hidden_cbox('s1c', 'srcip_div1', 'srcip_div2')">직접 입력하기
+                &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="s1not">NOT
+
 				<!-- Source IP Var -->
 				<div id="srcip_div1">
-				<select id="srcip_v" style="width:300px;height:20px;">
-					<?php 
-						 $ipsql="select * from sig_ip_variables;";
-						 $ipresult = $conn->query($ipsql);
-						 if ($ipresult->num_rows > 0) {
+                <select id="srcip_v" style="width:300px;height:20px;">
+                    <option value="none">NONE</option>
+                    <option value="any">ANY</option>
+					<?php   $ipsql="select * from sig_ip_variables;";
+						    $ipresult = $conn->query($ipsql);
+						    if ($ipresult->num_rows > 0) {
 							// output data of each row
-							while($iprow = $ipresult->fetch_assoc()) {
-							?>
-					<option><?=substr($iprow["v_name"],1)?></option>
-					<?php 
-							}
-						}
+							    while($iprow = $ipresult->fetch_assoc()) { ?>
+					                <option><?=substr($iprow["v_name"],1)?></option> <?php 
+							    }
+						    }
 					?>
 				</select>
 				</div>
@@ -125,13 +127,6 @@ table, th, td {
 				oninput="subnetmaskRange(this)" 
 				style="ime-mode:disabled">
 				</div>
-
-				<!-- Source IP Option-->
-				<select id="src_ip_opt" style="width:300px;height:20px;">
-					<option value="none">NONE</option>
-					<option value="not">NOT</option>
-					<option value="any">ANY</option>
-				</select>
 			</td>
 		</tr>
 
@@ -144,7 +139,9 @@ table, th, td {
 				<input type="radio" name="s2"  onclick="div_hidden('srcport_div2', 'srcport_div1')">변수 -->
 				<div id="srcport_div1">
 					<!--<input type="text" id="srcport_v">-->
-					<select id="srcport_v" style="width:300px;height:20px;">
+                    <select id="srcport_v" style="width:300px;height:20px;">
+                    <option value="none">NONE</option>
+                    <option value="any">ANY</option>
 						<?php 
 							 $portsql="select * from sig_port_variables;";
 							 $portresult = $conn->query($portsql);
@@ -173,12 +170,6 @@ table, th, td {
 				onfocusout="removeChar(event)" 
 				oninput="portRange(this)" 
 				style="ime-mode:disabled"></div>
-				
-				<select id="src_port_opt" style="width:300px;height:20px;">
-					<option value="none">NONE</option>
-					<option value="not">NOT</option>
-					<option value="any">ANY</option>
-				</select>
 			</td>
 		</tr>
 
@@ -196,11 +187,15 @@ table, th, td {
 			<td style="width:25%" align=center>Destination IP</td>
 			<td><!-- ######### DESTINATION IP ########## -->
 				<input type="checkbox" id="d1c" onchange="div_hidden_cbox('d1c', 'dstip_div1', 'dstip_div2')">직접 입력하기
-				<!--
+                &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="s1not">NOT
+                <!--
 				<input type="radio" checked name="d1" onclick="div_hidden('dstip_div1', 'dstip_div2')">직접입력 |
 				<input type="radio" name="d1"  onclick="div_hidden('dstip_div2', 'dstip_div1')">변수 -->
 				<div id="dstip_div1">
-					<select id="dstip_v" style="width:300px;height:20px;">
+                    <select id="dstip_v" style="width:300px;height:20px;">
+                    <option value="none">NONE</option>
+                    <option value="any">ANY</option>
 						<?php 
 							 $ipsql="select * from sig_ip_variables;";
 							 $ipresult = $conn->query($ipsql);
@@ -247,12 +242,6 @@ table, th, td {
 				onfocusout="removeChar(event)" 
 				oninput="subnetmaskRange(this)" 
 				style="ime-mode:disabled"></div>
-				
-				<select id="dest_ip_opt" style="width:300px;height:20px;">
-					<option value="none">NONE</option>
-					<option value="not">NOT</option>
-					<option value="any">ANY</option>
-				</select>
 			</td>
 		</tr>
 
@@ -264,7 +253,9 @@ table, th, td {
 				<!--<input type="radio" checked name="d2" onclick="div_hidden('dstport_div1', 'dstport_div2')">직접입력 |
 				<input type="radio" name="d2"  onclick="div_hidden('dstport_div2', 'dstport_div1')">변수 -->
 				<div id="dstport_div1">
-					<select id="dstport_v" style="width:300px;height:20px;">
+                    <select id="dstport_v" style="width:300px;height:20px;">
+                    <option value="none">NONE</option>
+                    <option value="any">ANY</option>
 						<?php 
 							 $portsql="select * from sig_port_variables;";
 							 $portresult = $conn->query($portsql);
@@ -293,12 +284,6 @@ table, th, td {
 				onfocusout="removeChar(event)" 
 				oninput="portRange(this)" 
 				style="ime-mode:disabled"></div>
-
-				<select id="dest_port_opt" style="width:300px;height:20px;">
-					<option value="none">NONE</option>
-					<option value="not">NOT</option>
-					<option value="any">ANY</option>
-				</select>
 			</td>
 		</tr>
 	</table>
