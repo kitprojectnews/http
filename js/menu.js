@@ -29,7 +29,7 @@ function stage_animation(selected_menu) {
             e.style.display = "block";
             e.className = "slidein";
             current_menu="root_menu";
-            document.getElementById("stage_menu").innerHTML='<a href="#" onclick=stage_animation(this) name="All">All</a>';
+            document.getElementById("stage_menu").innerHTML='<a href="php/home.php" onclick=stage_animation(this) name="All">All</a>';
             break;
     }
 }
