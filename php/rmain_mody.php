@@ -152,9 +152,13 @@ table, th, td {
 			<td style="width:25%" align=center>Source IP</td>
 			<td>
 				<input type="checkbox" id="s1c" onchange="div_hidden_cbox('s1c', 'srcip_div1', 'srcip_div2')" <?php if($srchid) { ?> checked <?php } ?>>직접 입력하기
+				&nbsp;&nbsp;&nbsp;
+		                <input type="checkbox" id="s1not" <?php if(strchr($row["sig_srcIP"], '!')) { ?> checked <?php } ?>>NOT
 				<!-- Source IP Var -->
 				<div id="srcip_div1" <?php if($srchid) { ?> style="display:none" <?php } ?>>
 				<select id="srcip_v" style="width:300px;height:20px;">
+					<option value="none">NONE</option>
+					<option value="any" <?php if($row["sig_srcIP"] == "any") { ?> selected <?php } ?>>ANY</option>
 					<?php 
 						 $ipsql="select * from sig_ip_variables;";
 						 $ipresult = $conn->query($ipsql);
@@ -203,12 +207,7 @@ table, th, td {
 				style="ime-mode:disabled">
 				</div>
 
-				<!-- Source IP Option-->
-				<select id="src_ip_opt" style="width:300px;height:20px;">
-					<option value="none">NONE</option>
-					<option value="not" <?php if(strchr($row["sig_srcIP"], '!')) { ?> selected <?php } ?>>NOT</option>
-					<option value="any" <?php if($row["sig_srcIP"] == "any") { ?> selected <?php } ?>>ANY</option>
-				</select>
+		
 			</td>
 		</tr>
         <?php 
@@ -242,12 +241,16 @@ table, th, td {
 			<td style="width:25%" align=center>Source Port</td>
 			<td>
 				<input type="checkbox" id="s2c" onchange="div_hidden_cbox('s2c', 'srcport_div1', 'srcport_div2')" <?php if($srcpthid) { ?> checked <?php } ?>>직접 입력하기
+				&nbsp;&nbsp;&nbsp;
+		                <input type="checkbox" id="s2not" <?php if(strchr($row["sig_srcPort"], '!')) { ?> checked <?php } ?>>NOT
 				<!--
 				<input type="radio" checked name="s2" onclick="div_hidden('srcport_div1', 'srcport_div2')">직접입력 |
 				<input type="radio" name="s2"  onclick="div_hidden('srcport_div2', 'srcport_div1')">변수 -->
 				<div id="srcport_div1" <?php if($srcpthid) { ?> style="display:none" <?php } ?>>
 					<!--<input type="text" id="srcport_v">-->
 					<select id="srcport_v" style="width:300px;height:20px;">
+					<option value="none">NONE</option>
+					<option value="any" <?php if($row["sig_srcPort"] == "any") { ?> selected <?php } ?>>ANY</option>
 						<?php 
 							 $portsql="select * from sig_port_variables;";
 							 $portresult = $conn->query($portsql);
@@ -276,12 +279,6 @@ table, th, td {
 				onfocusout="removeChar(event)" 
 				oninput="portRange(this)" 
 				style="ime-mode:disabled"></div>
-				
-				<select id="src_port_opt" style="width:300px;height:20px;">
-					<option value="none">NONE</option>
-					<option value="not" <?php if(strchr($row["sig_srcPort"], '!')) { ?> selected <?php } ?> >NOT</option>
-					<option value="any" <?php if($row["sig_srcPort"] == "any") { ?> selected <?php } ?>>ANY</option>
-				</select>
 			</td>
 		</tr>
 
@@ -329,11 +326,15 @@ table, th, td {
 			<td><!-- ######### DESTINATION IP ########## -->
 			
 				<input type="checkbox" id="d1c" onchange="div_hidden_cbox('d1c', 'dstip_div1', 'dstip_div2')" <?php if($dsthid) { ?> checked <?php } ?>>직접 입력하기
+				&nbsp;&nbsp;&nbsp;
+		                <input type="checkbox" id="d1not" <?php if(strchr($row["sig_dstIP"], '!')) { ?> checked <?php } ?> >NOT
 				<!--
 				<input type="radio" checked name="d1" onclick="div_hidden('dstip_div1', 'dstip_div2')">직접입력 |
 				<input type="radio" name="d1"  onclick="div_hidden('dstip_div2', 'dstip_div1')">변수 -->
 				<div id="dstip_div1" <?php if($dsthid) { ?> style="display:none" <?php } ?>>
 					<select id="dstip_v" style="width:300px;height:20px;">
+						<option value="none">NONE</option>
+						<option value="any" <?php if($row["sig_dstIP"] == "any") { ?> selected <?php } ?>>ANY</option>
 						<?php 
 							 $ipsql="select * from sig_ip_variables;";
 							 $ipresult = $conn->query($ipsql);
@@ -380,12 +381,6 @@ table, th, td {
 				onfocusout="removeChar(event)" 
 				oninput="subnetmaskRange(this)" 
 				style="ime-mode:disabled"></div>
-				
-				<select id="dest_ip_opt" style="width:300px;height:20px;">
-					<option value="none">NONE</option>
-					<option value="not" <?php if(strchr($row["sig_dstIP"], '!')) { ?> selected <?php } ?> >NOT</option>
-					<option value="any" <?php if($row["sig_dstIP"] == "any") { ?> selected <?php } ?>>ANY</option>
-				</select>
 			</td>
 		</tr>
 
@@ -420,11 +415,14 @@ table, th, td {
 			<td style="width:25%" align=center>Destination Port</td>
 			<td><!-- ######### DESTINATION PORT ########## -->
 				<input type="checkbox" id="d2c" onchange="div_hidden_cbox('d2c', 'dstport_div1', 'dstport_div2')" <?php if($dstpthid) { ?> checked <?php } ?>>직접 입력하기
-
+				&nbsp;&nbsp;&nbsp;
+		                <input type="checkbox" id="d2not" <?php if(strchr($row["sig_dstPort"], '!')) { ?> checked <?php } ?> >NOT
 				<!--<input type="radio" checked name="d2" onclick="div_hidden('dstport_div1', 'dstport_div2')">직접입력 |
 				<input type="radio" name="d2"  onclick="div_hidden('dstport_div2', 'dstport_div1')">변수 -->
 				<div id="dstport_div1" <?php if($dstpthid) { ?> style="display:none" <?php } ?>>
 					<select id="dstport_v" style="width:300px;height:20px;">
+						<option value="none">NONE</option>
+						<option value="any" <?php if($row["sig_dstPort"] == "any") { ?> selected <?php } ?>>ANY</option>
 						<?php 
 							 $portsql="select * from sig_port_variables;";
 							 $portresult = $conn->query($portsql);
@@ -453,12 +451,6 @@ table, th, td {
 				onfocusout="removeChar(event)" 
 				oninput="portRange(this)" 
 				style="ime-mode:disabled"></div>
-
-				<select id="dest_port_opt" style="width:300px;height:20px;">
-					<option value="none">NONE</option>
-					<option value="not" <?php if(strchr($row["sig_dstPort"], '!')) { ?> selected <?php } ?> >NOT</option>
-					<option value="any"<?php if($row["sig_dstPort"] == "any") { ?> selected <?php } ?> >ANY</option>
-				</select>
 			</td>
 		</tr>
 	</table>

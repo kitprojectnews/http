@@ -53,10 +53,10 @@ function makeString()
 
 	
 	// Source IP
-	id = document.getElementById("src_ip_opt");
+	id = document.getElementById("srcip_v");
 	if(id.options[id.selectedIndex].value != "any")
 	{
-		if(id.options[id.selectedIndex].value == "not")
+		if(document.getElementById("s1not").checked == true)
 			str += "!";
 		
 		if(document.getElementById("s1c").checked == false)
@@ -88,10 +88,10 @@ function makeString()
 		str += "any ";
 	
 	// Source Port
-	id = document.getElementById("src_port_opt");
+	id = document.getElementById("srcport_v");
 	if(id.options[id.selectedIndex].value != "any")
 	{
-		if(id.options[id.selectedIndex].value == "not")
+		if(document.getElementById("s2not").checked == true)
 			str += "!";
 		
 		if(document.getElementById("s2c").checked == false)
@@ -121,10 +121,10 @@ function makeString()
 	str += space;
 
 	// Destination IP
-	id = document.getElementById("dest_ip_opt");
+	id = document.getElementById("dstip_v");
 	if(id.options[id.selectedIndex].value != "any")
 	{
-		if(id.options[id.selectedIndex].value == "not")
+		if(document.getElementById("d1not").checked == true)
 			str += "!";
 		
 		if(document.getElementById("d1c").checked == false)
@@ -156,10 +156,10 @@ function makeString()
 		str += "any ";
 
 	// Destination Port
-	id = document.getElementById("dest_port_opt");
+	id = document.getElementById("dstport_v");
 	if(id.options[id.selectedIndex].value != "any")
 	{
-		if(id.options[id.selectedIndex].value == "not")
+		if(document.getElementById("d2not").checked == true)
 			str += "!";
 		
 		if(document.getElementById("d2c").checked == false)
@@ -319,7 +319,7 @@ var _ptcnt = 0;
 function onlyNumber(event){
 		event = event || window.event;
 		var keyID = (event.which) ? event.which : event.keyCode;
-		if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+		if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 9 || keyID == 46 || keyID == 37 || keyID == 39 ) 
 			return;
 		else
 			return false;
@@ -327,7 +327,7 @@ function onlyNumber(event){
 function removeChar(event) {
 	event = event || window.event;
 	var keyID = (event.which) ? event.which : event.keyCode;
-	if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+	if ( keyID == 8 || keyID == 9 || keyID == 46 || keyID == 37 || keyID == 39 ) 
 		return;
 	else
 		event.target.value = event.target.value.replace(/[^0-9]/g, "");
