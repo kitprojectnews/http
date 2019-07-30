@@ -17,7 +17,7 @@
 	function popup_edit(hid) {
 		var myForm = document.getElementById('editid');
 		
- 		var url = "addip.php";
+ 		var url = "addport.php";
 		window.open(
 			"addport.php", 
 			"popupView",
@@ -56,7 +56,7 @@
         <input type=submit value="삭제">
     </form>
     <form method=post id="editid" name="edit" action=addport.php>
-        <input type="hidden" name="vname" value=<?=$row2["v_name"]?>>
+        <input type="hidden" name="vname">
 	<input type="button" value="EDIT" onclick="popup_edit('<?=$row2["v_name"]?>')">
     </form>
     </td>
