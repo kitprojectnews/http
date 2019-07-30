@@ -4,6 +4,7 @@
 	$portname=$_POST["portname"];
 	$port1=$_POST["port1"];
 	$port2=$_POST["port2"];
+	$desc= $_POST["desc"];
 
 	if(strchr($portname, ' '))
 	{
@@ -46,7 +47,7 @@
 		</script>
 		<?php
 			}else{
-			$sql="insert into sig_port_variables values('$".$portname."','".$port."');";
+			$sql="insert into sig_port_variables values('$".$portname."','".$port."','".$desc."');";
 		    $result = $conn->query($sql);
 		?>
 			<script type="text/javascript">

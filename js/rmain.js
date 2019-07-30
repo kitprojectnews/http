@@ -1649,6 +1649,10 @@ function allCheck()
 		alert("<!> 룰 이름을 입력해주세요");
 		return 0;
 	}
+	else if((document.getElementById("s1c").checked != true) && (document.getElementById("srcip_v").value == "none"))
+	{
+		alert("<!> Source IP 변수를 선택해주세요");
+	}
 	else if((document.getElementById("s1c").checked == true) &&
 			((textCheck("src_ip1") == 0) ||
 			(textCheck("src_ip2") == 0) ||
@@ -1657,6 +1661,10 @@ function allCheck()
 	{
 		alert("<!> Source IP 입력을 제대로 해주세요");
 		return 0;
+	}
+	else if((document.getElementById("s2c").checked != true) && (document.getElementById("srcport_v").value == "none"))
+	{
+		alert("<!> Source Port 변수를 선택해주세요");
 	}
 	else if((document.getElementById("s2c").checked == true) &&
 			(textCheck("src_port1") == 0))
@@ -1671,6 +1679,10 @@ function allCheck()
 		alert("<!> Source Port 앞의 값이 더 작아야합니다");	
 		return 0;		
 	}
+	else if((document.getElementById("d1c").checked != true) && (document.getElementById("dstip_v").value == "none"))
+	{
+		alert("<!> Destination IP 변수를 선택해주세요");
+	}
 	else if((document.getElementById("d1c").checked == true) &&
 			((textCheck("dest_ip1") == 0) ||
 			(textCheck("dest_ip2") == 0) ||
@@ -1679,6 +1691,10 @@ function allCheck()
 	{
 		alert("<!> Destination IP 입력을 제대로 해주세요");
 		return 0;
+	}
+	else if((document.getElementById("d2c").checked != true) && (document.getElementById("dstport_v").value == "none"))
+	{
+		alert("<!> Source IP 변수를 선택해주세요");
 	}
 	else if((document.getElementById("d2c").checked == true) &&
 			(textCheck("dest_port1") == 0))

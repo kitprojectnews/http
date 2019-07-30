@@ -18,10 +18,14 @@ if(!$_SESSION['u_update'])//유저 관리권한 여부
     <title>유저 관리 페이지 </title>
 </head>
 <body>
+<h1 align=center>User Management</h1>
+<p>
+<div style="margin-left:15px">
+<input type=button value="유저 추가" onclick="addhref()">
 <form>
-<table width=100%>
+<table border="1" cellspacing="0" width=100%>
 
-<tr><th>관리번호</th><th>ID</th><th>활성여부</th><th>유저 관리권한</th><th>룰 추가/수정/삭제</th><th>수정 및 삭제</th></tr>
+<tr><th width=100>관리번호</th><th>ID</th><th width=200>활성여부</th><th width=200>유저 관리권한</th><th width=200>룰 추가/수정/삭제</th><th>수정</th></tr>
 <?php
 include "dbconn.php";
 $sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM account ORDER BY u_num DESC";
@@ -31,11 +35,11 @@ if ($result->num_rows > 0) {
         ?>
     <tr>
         <th scope='row'><?=$row["u_num"]?></th>
-        <td><?=$row["u_id"]?></td>
-        <td><?php if($row["u_active"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
-        <td><?php if($row["u_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
-        <td><?php if($row["r_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
-        <td><input type=button value="수정" onClick='userhref("<?=$row["u_num"]?>")'>&nbsp;
+        <td align=center ><?=$row["u_id"]?></td>
+        <td align=center ><?php if($row["u_active"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
+        <td align=center ><?php if($row["u_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
+        <td align=center ><?php if($row["r_update"] == "1") {echo "TRUE";}else {echo "FALSE";} ?></td>
+        <td width=110 align=center ><input type=button value="수정" onClick='userhref("<?=$row["u_num"]?>")'>
         <?php if($row["u_num"] != "1") { echo "<input type=button value=삭제 onClick='delhref(".$row["u_num"].")'>";}?> </td>
     </tr>
     
@@ -45,20 +49,18 @@ if ($result->num_rows > 0) {
     echo "0 results<br>";
 }
 ?>
-</table><p>
-<div align="center">
-<input type=button value="추가" onclick="addhref()">
-</div>
+</table>
 </form>
+</div>
 </body>
 <script launguage='JAVASCRIPT'>
     var popupX = (window.screen.width / 2) - (500 / 2);
     var popupY= (window.screen.height / 2) - (250 / 2);
     function addhref() {
-        window.open('user_Add.php', 'userAdd', 'width = 500, height = 280, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
+        window.open('user_Add.php', 'userAdd', 'width = 400, height = 280, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
     }
     function userhref(u_num) {
-        window.open('user_Modi.php?u_num='+u_num, 'userModi', 'width = 500, height = 280, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
+        window.open('user_Modi.php?u_num='+u_num, 'userModi', 'width = 400, height = 280, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no, scrollbars = no, resizable = no, location = no');
     }
     function delhref(u_num) {
         a = confirm("관리번호 "+u_num+" 정말로 삭제하시겠습니까?");

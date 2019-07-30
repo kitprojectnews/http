@@ -8,11 +8,12 @@
 
     //ip수정
     if($vname){
-        $sql="select v_value from sig_ip_variables where v_name='".$vname."';";
+        $sql="select * from sig_ip_variables where v_name='".$vname."';";
         $result = $conn->query($sql);
 		$row = $result->fetch_assoc();
 		$ip = explode('.', $row["v_value"]);
         $sm = explode('/', $ip[3]);
+        $desc = $row["v_description"];
     }
 ?>
 
@@ -73,6 +74,12 @@
         onfocusout="removeChar(event)" 
         oninput="subnetmaskRange(this)" 
         style="ime-mode:disabled" value=<?=$sm[1]?>>
+    </td>
+</tr>
+<tr>
+<th align=center>Description</th>
+    <td>
+        <input type=text name=desc value=<?=$desc?> >
     </td>
 </tr>
 </table>
