@@ -41,6 +41,7 @@ include 'dbconn.php';
 	
 ?>
 <!DOCTYPE html>
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <html>
 <head>
 <style>

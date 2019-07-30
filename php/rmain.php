@@ -10,6 +10,7 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <script src="rmain2.js"></script>
 </head>
 <body>

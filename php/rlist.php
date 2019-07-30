@@ -41,19 +41,19 @@
 </select><br>
 <table border="1" cellspacing="0" id="myTable">
     <thead align="center">
-        <th width=200 onclick="sortTable(0)">Rule name</th>
-        <th width=100 onclick="sortTable(1)">Sid</th>
+        <th width=150 onclick="sortTable(0)">Rule name</th>
+        <th width=30 onclick="sortTable(1)">Sid</th>
         <th width=150 onclick="sortTable(2)">Group Name</th>
-        <th width=100 onclick="sortTable(3)">Rev</th>
-        <th width=100 onclick="sortTable(4)">action</th>
-        <th width=100 onclick="sortTable(5)">protocol</th>
+        <th width=30 onclick="sortTable(3)">Rev</th>
+        <th width=80 onclick="sortTable(4)">action</th>
+        <th width=80 onclick="sortTable(5)">protocol</th>
         <th width=100 onclick="sortTable(6)">srcIP</th>
         <th width=100 onclick="sortTable(7)">srcPort</th>
-        <th width=100 onclick="sortTable(8)">direction</th>
+        <th width=70 onclick="sortTable(8)">direction</th>
         <th width=100 onclick="sortTable(9)">dstIP</th>
         <th width=100 onclick="sortTable(10)">dstPort</th>
-        <th width=150 onclick="sortTable(11)">Rule Option</th>
-        <th width=80 onclick="sortTable(12)">Edit</th>
+        <th width=200 onclick="sortTable(11)">Rule Option</th>
+        <th width=90  onclick="sortTable(12)">Edit</th>
     </thead>
     <tbody>
         <?php
@@ -72,12 +72,12 @@
             $grow = $sgid->fetch_assoc();
             echo $grow["gname"];
         ?>
-        <td><?php echo $row["sig_rev"] ?>
-        <td><?php echo $row["sig_action"] ?>
-        <td><?php echo $row["sig_protocol"] ?>
+        <td align=center><?php echo $row["sig_rev"] ?>
+        <td align=center><?php echo $row["sig_action"] ?>
+        <td align=center><?php echo $row["sig_protocol"] ?>
         <td><?php echo $row["sig_srcIP"] ?>
         <td><?php echo $row["sig_srcPort"] ?>
-        <td><?php echo $row["sig_direction"] ?>
+        <td align=center><?php echo $row["sig_direction"] ?>
         <td><?php echo $row["sig_dstIP"] ?>
         <td><?php echo $row["sig_dstPort"] ?>
         <td><?php echo $row["sig_rule_option"] ?></td>
