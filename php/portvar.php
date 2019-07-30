@@ -64,7 +64,7 @@
     </form>
 	    </div>
     </td>
-    <td> M E M O</td>
+    <td><?=$row2["v_description"]?></td>
     </tr>
 	<?php 
 			}

@@ -8,6 +8,7 @@
 	$ip3 = $_POST["ip3"];
 	$ip4 = $_POST["ip4"];
 	$ipsm = $_POST["ipsm"];
+	$desc=$_POST["desc"];
 
     if(strchr($ipname, ' '))
 	{
@@ -31,7 +32,7 @@
         
 	
 		if($ipname && $ip){
-			$sql="update sig_ip_variables SET v_value='".$ip."' where v_name='$".$ipname."' ;";
+			$sql="update sig_ip_variables SET v_value='".$ip."',v_description='".$desc."' where v_name='$".$ipname."' ;";
 			$conn->query($sql);
 		}
 	}

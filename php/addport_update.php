@@ -4,6 +4,7 @@
 	$portname=$_POST["portname"];
 	$port1=$_POST["port1"];
 	$port2=$_POST["port2"];
+	$desc= $_POST["desc"];
 
 	if(strchr($portname, ' '))
 	{
@@ -34,7 +35,7 @@
 		}
 	
 		if($portname && $port){
-			$sql="update sig_port_variables SET v_value='".$port."' where v_name='$".$portname."' ;";
+			$sql="update sig_port_variables SET v_value='".$port."',v_description='".$desc."' where v_name='$".$portname."' ;";
 			$conn->query($sql);
 		}
 	}

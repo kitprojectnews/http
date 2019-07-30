@@ -8,6 +8,7 @@
 	$ip3 = $_POST["ip3"];
 	$ip4 = $_POST["ip4"];
 	$ipsm = $_POST["ipsm"];
+	$desc= $_POST["desc"];
 	if(strchr($ipname, ' '))
 	{
 	?><script>
@@ -45,8 +46,8 @@
 			}
 			else
 			{
-			$sql="insert into sig_ip_variables values('$".$ipname."','".$ip."');";
-      $result = $conn->query($sql);
+			$sql="insert into sig_ip_variables values('$".$ipname."','".$ip."','".$desc."');";
+      		$result = $conn->query($sql);
 			?>
 			<!--<meta http-equiv="refresh" content="0,ipvar.php">-->
 			<script type="text/javascript">

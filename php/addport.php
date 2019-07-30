@@ -3,10 +3,11 @@
     include 'dbconn.php';
     $vname = $_POST["vname"];
     if($vname){
-        $sql="select v_value from sig_port_variables where v_name='".$vname."';";
+        $sql="select * from sig_port_variables where v_name='".$vname."';";
         $result = $conn->query($sql);
 		$row = $result->fetch_assoc();
-		$port = explode(':', $row["v_value"]);
+        $port = explode(':', $row["v_value"]);
+        $desc = $row["v_description"];
     }
 ?>
 
@@ -60,6 +61,10 @@
     </td>
 </tr>
 <tr>
+<th align=center>Description</th>
+    <td>
+        <input type=text name=desc value=<?=$desc?> >
+    </td>
 </tr>
 </table>
 <?php if($vname != "") { ?>
