@@ -39,4 +39,7 @@
 		}
 	}
 ?>
-<meta http-equiv="refresh" content="0,portvar.php">
+<script type="text/javascript">
+window.opener.location.reload();
+window.close();
+</script>

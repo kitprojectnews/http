@@ -42,13 +42,13 @@
 
 <table border=1 align=center>
 	<tr>
-		<td colspan=4 align=center>IP tables</td>
+		<th colspan=4 align=center >IP tables</td>
 	</tr>
 	<tr>
-		<td>Value Name</td>
-		<td>Values</td>
-		<td>Edit</td>
-		<td>Description</td>
+		<th>Value Name</th>
+		<th>Values</th>
+		<th>Edit</th>
+		<th>Description</th>
 	</tr>   <?php 
 		$sql1="select * from sig_ip_variables;";
 		$result1 = $conn->query($sql1);
@@ -57,25 +57,31 @@
 			while($row1= $result1->fetch_assoc()) { ?>
 	<tr>
 		<td><?=substr($row1["v_name"],1)?></td>
+		
 		<td><?=$row1["v_value"]?></td>
-    		<td>
-        		<form method=post action="delip.php">
-			<input type="hidden" name="ipdel" value=<?=$row1["v_name"]?>>
+    	
+		<td>
+			<div style="float:left;">
+        	<form method=post action="delip.php" style="display:inline;">
+				<input type="hidden" name="ipdel" value=<?=$row1["v_name"]?>>
         		<input type=submit value="삭제" >
-        		</form>
-        		<form method=post id="editid" name="edit" action="addip.php">
-        			<input type="hidden" name="vname">
-	    			<!--<input type="submit" value="수정">-->
+			</form>
+			</div>
+			<div style="float:right;">
+        	<form method=post id="editid" name="edit" action="addip.php" style="display:inline;">
+        		<input type="hidden" name="vname">
 				<input type="button" value="EDIT" onclick="popup_edit('<?=$row1["v_name"]?>')">
-        		</form>
+			</form>
+			</div>
 		</td>
-    		<td> MEMO </td>
-    	</tr>
+    	<td> MEMO </td>
+    </tr>
 	<?php 
 			}
 		}
 	?>
 </table>
 <div align="center">
-<input type="button" value="ADD" onclick="popup_open()";">
+<br>
+<input type="button" value="ADD" onclick="popup_open()" style="width:200; height:30;">
 </div>

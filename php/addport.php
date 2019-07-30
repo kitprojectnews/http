@@ -1,3 +1,4 @@
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <?php
     include 'dbconn.php';
     $vname = $_POST["vname"];
@@ -35,14 +36,14 @@
         } 
     ?>
 >
-<h1>ADD Port Variable</h1>
+<div align=center>
 <table border=1>
 <tr>
-    <td>NAME</td>
+    <th>NAME</th>
     <td><input type="text" name="portname" <?php if($vname != "") { ?> readonly <?php } ?> value="<?=substr($vname, 1)?>" ></td>
     </tr>
     </tr>
-    <td>VALUE</td>
+    <th>VALUE</th>
     <td>
         <input type="text" size=3 id="var_value_port1" name="port1" 
 		onkeydown="return onlyNumber(event)" 
@@ -68,3 +69,4 @@
         <?php } ?>
 
 </form>
+</div>

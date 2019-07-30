@@ -49,7 +49,12 @@
 			$sql="insert into sig_port_variables values('$".$portname."','".$port."');";
 		    $result = $conn->query($sql);
 		?>
-		<meta http-equiv="refresh" content="0,portvar.php">
+			<script type="text/javascript">
+			window.opener.location.reload();
+			window.close();
+			</script>
+	
+
 		<?php
 			}
 		}//port end

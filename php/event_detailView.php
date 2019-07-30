@@ -75,6 +75,7 @@ function asciifilter($payload)
                 continue;
             }
             echo ($payload[$i]);
+            continue;
         }
         if ($i % 16 == 0) {
             echo ("<br>");
