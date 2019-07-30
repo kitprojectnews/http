@@ -2,6 +2,7 @@
    include 'dbconn.php';
 ?>
 <!DOCTYPE html>
+<link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <html>
 <head>
 </head>
@@ -15,24 +16,28 @@
     </div>
     <br>   
     <table border=1 align=center>
-            <?php 
-				$sql="select gname from sig_group;";
-				$result = $conn->query($sql);
-				if ($result->num_rows > 0) {
-					// output data of each row
-					while($row = $result->fetch_assoc()) {
-			?>
-			<tr>
-            <td><?=$row["gname"]?></td><?php if($row["gname"]=="DEFAULT") continue; ?>
-            <form method=post action=groupEx.php>
-            <input type=hidden value=<?=$row["gname"]?> name="del">
-            <td><input type=submit value="삭제" ></td>
-            </form>
-            </tr>
-			<?php 
-					}
+        <tr>
+            <th>Group Name</th>
+            <th>DELETE</th>
+        </tr>
+        <?php 
+		$sql="select gname from sig_group;";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+		?>
+		<tr>
+           <td><?=$row["gname"]?></td><?php if($row["gname"]=="DEFAULT") continue; ?>
+           <form method=post action=groupEx.php>
+           <input type=hidden value=<?=$row["gname"]?> name="del">
+           <td><input type=submit value="삭제" ></td>
+           </form>
+           </tr>
+		<?php 
 				}
-			?>
+			}
+		?>
 </table>
 </body>
 </html>
