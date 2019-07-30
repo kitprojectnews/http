@@ -20,10 +20,6 @@ session_start();
 // {
 //     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
 // }
-// if(!$_SESSION['r_sel'])//룰 확인 여부
-// {
-//     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
-// }
 // if(!$_SESSION['r_update'])//룰 추가 수정 삭제 가능 여부
 // {
 //     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
@@ -34,11 +30,8 @@ $pass = $_POST["pass"];
 
 $hashpw = base64_encode(hash('sha256', $pass, true));
 
-$sql = "SELECT u_num, u_id, u_active, u_update, r_sel, r_update FROM test.account WHERE u_id = '$user' and u_pw = '$hashpw'";
+$sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM test.account WHERE u_id = '$user' and u_pw = '$hashpw'";
 $result = $conn->query($sql);
-
-// $result->fetch_assoc();
-//  echo $row["u_id"];
 
 if ($result->num_rows != 0) {
     // output data of each row
@@ -48,13 +41,11 @@ if ($result->num_rows != 0) {
         $_SESSION['u_id']  = $row["u_id"];
         $_SESSION['u_active'] = $row["u_active"];
         $_SESSION['u_update'] = $row["u_update"];
-        $_SESSION['r_sel']    = $row["r_sel"];
         $_SESSION['r_update'] = $row["r_update"];
-
 
         $conn->close();
         
-        Header("Location:../default.php");
+       Header("Location:../default.php");
     }
 } 
 else {

@@ -9,18 +9,15 @@
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <?php
 session_start();
-// if (!isset($_SESSION['user_num']))//세션 확인
-// {
-//     header('Location:../index.html');
-// }
-// if(!$_SESSION['u_active'])//활성 유저 여부 
-// {
-//     echo " <script>alert('비활성화된 사용자입니다. '); history.back(); </script>";
-// }
-// if(!$_SESSION['u_update'])//유저 관리권한 여부
-// {
-//     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
-// }
+
+if(!$_SESSION['u_active'])//활성 유저 여부 
+{
+    echo " <script>alert('비활성화된 사용자입니다. '); history.back(); </script>";
+}
+if(!$_SESSION['u_update'])//유저 관리권한 여부
+{
+    echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
+}
 ?>
     <title>유저 수정 페이지 </title>
     </head>
@@ -43,7 +40,7 @@ if ($result->num_rows > 0) {
         <tr><th>활성여부</th><td><input name="u_active" type='checkbox' value="1" <?php if($row["u_active"] == "1") { ?> checked <?php } ?>></td></tr>
         <tr><th>관리권한</th><td><input name="u_update" type='checkbox' <?php if($row["u_update"] == "1") { ?> checked <?php } ?>></td></tr>
         <tr><th>룰 추가/수정/삭제</th><td><input name="r_update" type='checkbox' <?php if($row["r_update"] == "1") { ?> checked <?php } ?>></td></tr>
-        <tr><td colspan="2"><input type="submit" value="수정">&nbsp;&nbsp;<button onClick="<script> self.close(); </script>">취소</button> </td></tr>
+        <tr><td colspan="2"><input type="submit" value="수정">&nbsp;&nbsp;<input type="button" value="취소" onClick="window.close();"></td></tr>
         <?php
         }
 } else {

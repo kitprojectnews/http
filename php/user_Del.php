@@ -6,18 +6,14 @@
 <link rel="stylesheet" type="text/css" href="../css/Observer_user_Manage.css">
 <?php
 session_start();
-// if (!isset($_SESSION['user_num']))//세션 확인
-// {
-//     header('Location:../index.html');
-// }
-// if(!$_SESSION['u_active'])//활성 유저 여부 
-// {
-//     echo " <script>alert('비활성화된 사용자입니다. '); history.back(); </script>";
-// }
-// if(!$_SESSION['u_update'])//유저 관리권한 여부
-// {
-//     echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
-// }
+if(!$_SESSION['u_active'])//활성 유저 여부 
+{
+    echo " <script>alert('비활성화된 사용자입니다. '); history.back(); </script>";
+}
+if(!$_SESSION['u_update'])//유저 관리권한 여부
+{
+    echo " <script>alert('접근권한이 없습니다. '); history.back(); </script>";
+}
 include "dbconn.php";
 if (isset($_GET["u_num"])) {
     $u_num = $_GET["u_num"];
@@ -31,7 +27,7 @@ if ($conn->query($sql) === TRUE) {
 }
 $conn->close();
 echo "<script type='text/javascript'>
-opener.parent.location='user_Manage.php';
+window.opener.location.reload();
 window.close();
 </script>"
 ?>
