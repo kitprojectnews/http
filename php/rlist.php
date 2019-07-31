@@ -13,6 +13,7 @@
 ?>
 <!DOCTYPE html>
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
+<link href="../css/Observer_switch.css" rel="stylesheet" type='text/css'>
 <html>
 <head>
 <script src="../js/jquery-3.4.1.min.js"></script>
@@ -41,6 +42,7 @@
 </select><br>
 <table border="1" cellspacing="0" id="myTable">
     <thead align="center">
+	<th width=30>Use</th>
         <th width=150 onclick="sortTable(0)">Rule name</th>
         <th width=30 onclick="sortTable(1)">Sid</th>
         <th width=150 onclick="sortTable(2)">Group Name</th>
@@ -62,6 +64,14 @@
                 while($row = $result->fetch_assoc()) {
         ?>
 		<tr>
+	<td>
+	<div>
+    	<label class="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      	</label>
+  	</div>
+	</td>
         <td><?php echo $row["sig_msg"] ?>
         <td align=center><?php echo $row["sig_sid"] ?>
         <td align=center>
