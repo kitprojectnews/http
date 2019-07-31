@@ -54,6 +54,22 @@
         window.open('event_detailView.php?eid=' + eid + '&sig_id=' + sig_id, 'detailViewer', 'width = 1000, height = 800, menubar = no, status = no, toolbar = no ');
     }
     //SELECT * FROM event,signature,(SELECT src_ip, dst_ip, data.eid as eid, src_port, dst_port FROM data,iphdr,tcphdr WHERE data.eid=iphdr.eid and data.eid=tcphdr.eid) AS tmp WHERE event.eid=tmp.eid
+    /*
+    use test;
+
+    CREATE VIEW base_view AS
+    select event_view.eid, time,sig_msg, src_ip, dst_ip, sig_protocol  
+    from (select eid, time, sig_protocol, sig_msg from event, signature where event.sig_id=signature.sig_id) as event_view, iphdr 
+    where iphdr.eid=event_view.eid;
+
+
+    (select base_view.eid, time,sig_msg, src_ip, src_port, dst_ip, dst_port from base_view, tcphdr where base_view.eid=tcphdr.eid)
+    union
+    (select base_view.eid, time,sig_msg, src_ip, src_port, dst_ip, dst_port from base_view, udphdr where base_view.eid=udphdr.eid)
+    union 
+    (select eid, time, sig_msg, src_ip, null as src_port, dst_ip, null as dst_port  from base_view where sig_protocol='icmp')
+    order by eid;
+    */
 </script>
 
 </html>
