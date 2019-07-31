@@ -54,25 +54,12 @@ function makeString()
 	
 	// Source IP
 	id = document.getElementById("srcip_v");
-	if((document.getElementById("s1c").checked != true) && (id.options[id.selectedIndex].value == "any"))
-	{
-		str += "any ";
-	}
-	else
+	
+	if(document.getElementById("s1c").checked == true)
 	{
 		if(document.getElementById("s1not").checked == true)
 			str += "!";
-		
-		if(document.getElementById("s1c").checked == false)
-		{
-			str += "$";
-			id = document.getElementById("srcip_v");
-			str += id.options[id.selectedIndex].value;
-			str += space;
-		}
-		else
-		{
-			str += document.getElementById("src_ip1").value;
+		str += document.getElementById("src_ip1").value;
         	str += dot;
         	str += document.getElementById("src_ip2").value;
         	str += dot;
@@ -84,7 +71,18 @@ function makeString()
         	{
         	    str += "/";
         	    str += document.getElementById("src_sm").value;
-			}
+		}
+		str += space;
+	}
+	else
+	{
+		if(id.options[id.selectedIndex].value == "any")
+			str += "any ";
+		else
+		{
+			str += "$";
+			id = document.getElementById("srcip_v");
+			str += id.options[id.selectedIndex].value;
 			str += space;
 		}
 	}
