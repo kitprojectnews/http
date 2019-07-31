@@ -5,16 +5,16 @@
     $data_date=DataPerDate();
     date_default_timezone_set("Asia/Seoul");
     for ($i=0; $i < 5; $i++) { 
-        $days[$i]=date("Y-m-d", strtotime("-$i day"));
-        if( !array_key_exists($days[$i], $data_date))
-            $data_date[$days[$i]]=0;
+        $dayset[$i]=date("Y-m-d", strtotime("-$i day"));
+        if( !array_key_exists($dayset[$i], $data_date))
+            $data_date[$dayset[$i]]=0;
     }
     $data_hour=DataPerHour();
     for ($i=0; $i < 24; $i++) { 
         $j=23-$i;
-        $hours[$i]=date("Y-m-d G", strtotime("-$j hour"));
-        if( !array_key_exists($hours[$i], $data_hour))
-            $data_hour[$hours[$i]]=0;
+        $hourset[$i]=date("Y-m-d G", strtotime("-$j hour"));
+        if( !array_key_exists($hourset[$i], $data_hour))
+            $data_hour[$hourset[$i]]=0;
     }
     $str   = @file_get_contents('/proc/uptime');
     $num   = floatval($str);
@@ -23,7 +23,6 @@
     $mins  = $num % 60;      $num = intdiv($num, 60);
     $hours = $num % 24;      $num = intdiv($num, 24);
     $days  = $num;
-
 ?>
 <html>
     <head>
@@ -105,20 +104,20 @@
             data: {
                 labels:[
                     <?php 
-                        echo "'".date("m/d",strtotime($days[4]))."'";
+                        echo "'".date("m/d",strtotime($dayset[4]))."'";
                         for ($i=3; $i >= 0; $i--) { 
                             echo ",";
-                            echo "'".date("m/d",strtotime($days[$i]))."'";
+                            echo "'".date("m/d",strtotime($dayset[$i]))."'";
                         }
                     ?>
                 ],
                 datasets: [{
                     data: [
                         <?php 
-                            echo $data_date[$days[4]];
+                            echo $data_date[$dayset[4]];
                             for ($i=3; $i >= 0; $i--) { 
                                 echo ",";
-                                echo $data_date[$days[$i]];
+                                echo $data_date[$dayset[$i]];
                             }
                         ?>
                     ],
@@ -165,20 +164,20 @@
             data: {
                 labels: [
                     <?php 
-                        echo "'".explode ( " ", $hours[0] )[1]."'";
+                        echo "'".explode ( " ", $hourset[0] )[1]."'";
                         for ($i=1; $i < 24; $i++) { 
                             echo ",";
-                            echo "'".explode ( " ", $hours[$i] )[1]."'";
+                            echo "'".explode ( " ", $hourset[$i] )[1]."'";
                         }
                     ?>
                 ],
                 datasets: [{ 
                     data: [
                         <?php 
-                            echo $data_hour[$hours[0]];
+                            echo $data_hour[$hourset[0]];
                             for ($i=1; $i < 24; $i++) { 
                                 echo ",";
-                                echo $data_hour[$hours[$i]];
+                                echo $data_hour[$hourset[$i]];
                             }
                         ?>
                     ],
