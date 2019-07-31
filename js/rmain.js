@@ -54,7 +54,11 @@ function makeString()
 	
 	// Source IP
 	id = document.getElementById("srcip_v");
-	if(id.options[id.selectedIndex].value != "any")
+	if((document.getElementById("s1c").checked != true) && (id.options[id.selectedIndex].value == "any"))
+	{
+		str += "any ";
+	}
+	else
 	{
 		if(document.getElementById("s1not").checked == true)
 			str += "!";
@@ -84,12 +88,15 @@ function makeString()
 			str += space;
 		}
 	}
-	else
-		str += "any ";
 	
 	// Source Port
 	id = document.getElementById("srcport_v");
-	if(id.options[id.selectedIndex].value != "any")
+	
+	if((document.getElementById("s2c").checked != true) && (id.options[id.selectedIndex].value == "any"))
+	{
+		str += "any ";
+	}
+	else
 	{
 		if(document.getElementById("s2not").checked == true)
 			str += "!";
@@ -112,8 +119,6 @@ function makeString()
 			str += space;
 		}
 	}
-	else
-		str += "any ";
 	
 	// Direction
 	id = document.getElementById("direction");
@@ -122,7 +127,11 @@ function makeString()
 
 	// Destination IP
 	id = document.getElementById("dstip_v");
-	if(id.options[id.selectedIndex].value != "any")
+	if((document.getElementById("d1c").checked != true) && (id.options[id.selectedIndex].value == "any"))
+	{
+		str += "any ";
+	}
+	else
 	{
 		if(document.getElementById("d1not").checked == true)
 			str += "!";
@@ -152,12 +161,15 @@ function makeString()
 			str += space;
 		}
 	}
-	else
-		str += "any ";
+
 
 	// Destination Port
 	id = document.getElementById("dstport_v");
-	if(id.options[id.selectedIndex].value != "any")
+	if((document.getElementById("d2c").checked != true) && (id.options[id.selectedIndex].value == "any"))
+	{
+		str += "any ";
+	}
+	else
 	{
 		if(document.getElementById("d2not").checked == true)
 			str += "!";
@@ -180,8 +192,6 @@ function makeString()
 			str += space;
 		}
 	}
-	else
-		str += "any ";
 
 	return str;
 
