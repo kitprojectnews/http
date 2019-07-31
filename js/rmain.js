@@ -80,6 +80,8 @@ function makeString()
 			str += "any ";
 		else
 		{
+			if(document.getElementById("s1not").checked == true)
+				str += "!";
 			str += "$";
 			id = document.getElementById("srcip_v");
 			str += id.options[id.selectedIndex].value;
