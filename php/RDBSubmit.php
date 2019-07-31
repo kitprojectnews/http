@@ -8,6 +8,7 @@
     $Rule_header=$_POST["__full_header"];
     $Rule_option=$_POST["__full_option"];
     $Rule_rev=1;
+    $sig_run=true;
     $header = explode(' ', $Rule_header);
     /*
     0 : action
@@ -42,9 +43,10 @@
     }else{
         $Rule_num=1;
     }
+    
     //룰 삽입
-    $sql =$conn->prepare("INSERT INTO signature(sig_msg,sig_rev,sig_sid,sig_gid,sig_action,sig_protocol,sig_srcIP,sig_srcPort,sig_direction,sig_dstIP,sig_dstPort,sig_rule_option) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
-    $sql->bind_param("siiissssssss",$Rule_name,$Rule_rev,$Rule_num,$Rule_GroupNum,$header[0],$header[1],$header[2],$header[3],$header[4],$header[5],$header[6],$Rule_option);
+    $sql =$conn->prepare("INSERT INTO signature(sig_run,sig_msg,sig_rev,sig_sid,sig_gid,sig_action,sig_protocol,sig_srcIP,sig_srcPort,sig_direction,sig_dstIP,sig_dstPort,sig_rule_option) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $sql->bind_param("isiiissssssss",$sig_run,$Rule_name,$Rule_rev,$Rule_num,$Rule_GroupNum,$header[0],$header[1],$header[2],$header[3],$header[4],$header[5],$header[6],$Rule_option);
     $sql->execute();
     $sql->close();
     $conn->close();

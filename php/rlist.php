@@ -42,7 +42,7 @@
 </select><br>
 <table border="1" cellspacing="0" id="myTable">
     <thead align="center">
-	<th width=30>Use</th>
+	    <th width=30>Use</th>
         <th width=150 onclick="sortTable(0)">Rule name</th>
         <th width=30 onclick="sortTable(1)">Sid</th>
         <th width=150 onclick="sortTable(2)">Group Name</th>
@@ -54,7 +54,7 @@
         <th width=70 onclick="sortTable(8)">direction</th>
         <th width=100 onclick="sortTable(9)">dstIP</th>
         <th width=100 onclick="sortTable(10)">dstPort</th>
-        <th width=500 onclick="sortTable(11)">Rule Option</th>
+        <th width=250 onclick="sortTable(11)">Rule Option</th>
         <th width=85  onclick="sortTable(12)">Edit</th>
     </thead>
     <tbody>
@@ -65,9 +65,19 @@
         ?>
 		<tr>
 	<td>
+    <script>
+        function runner(id){
+            if(run.checked==true){
+                ifTarget.location.href="run.php?sig_id="+id+"&chk=true";
+            }else{
+                ifTarget.location.href="run.php?sig_id="+id+"&chk=false";
+            }
+        }
+    </script>
 	<div>
-    	<label class="switch">
-        <input type="checkbox">
+    	<label class="switch"> <?php $num = $row['sig_id']; ?>
+        <input type="checkbox" id="run<?=json_encode($row['sig_id'])?>" onclick="runner('<?=$num?>')" 
+    <?php if($row['sig_run'] == true) { ?> checked <?php  } ?> >
         <span class="slider"></span>
       	</label>
   	</div>
@@ -185,3 +195,4 @@
     }
  }
 </script>
+<iframe id="ifTarget" name="ifTarget" style="width:0px; height:0px; display:none"></iframe>
