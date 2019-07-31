@@ -1,0 +1,60 @@
+.switch input {
+    display: none;
+  }
+  
+  .switch {
+    display: inline-block;
+    width: 30px; /*=w*/
+    height: 15px; /*=h*/
+    margin: 8px;
+    transform: translateY(50%);
+    position: relative;
+  }
+  
+  .slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 30px;
+    box-shadow: 0 0 0 2px #777, 0 0 4px #777;
+    cursor: pointer;
+    border: 4px solid transparent;
+    overflow: hidden;
+    transition: 0.4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #777;
+    border-radius: 30px;
+    transform: translateX(-15px); /*translateX(-(w-h))*/
+    transition: 0.4s;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(15px); /*translateX(w-h)*/
+    background-color: limeGreen;
+  }
+  
+  input:checked + .slider {
+    box-shadow: 0 0 0 2px limeGreen, 0 0 8px limeGreen;
+  }
+
+
+/*
+사용 방법
+<div>
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider"></span>
+  </label> Switch 1
+</div>
+*/
+
+
+
