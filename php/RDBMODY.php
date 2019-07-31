@@ -56,6 +56,15 @@
     $sql->bind_param("siiissssssssi",$Rule_name,$Rule_rev,$Rule_num,$Rule_GroupNum,$header[0],$header[1],$header[2],$header[3],$header[4],$header[5],$header[6],$Rule_option,$Rule_id);
     $sql->execute();
     $sql->close();
+
+    //소켓 연동
+    $address = "localhost";                                             
+    $port = 5252;
+    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP); 
+    $result = socket_connect($socket, $address, $port);
+    $i = "UPDATE sig_id=".$Rule_id.", header=".$Rule_header.", option=".$Rule_option."\n"; 
+    socket_write($socket, $i, strlen($i)); 
+    socket_close($socket);
     $conn->close();
 ?>
 <meta http-equiv="refresh" content="0,rlist.php">
