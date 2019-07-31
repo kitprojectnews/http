@@ -7,7 +7,6 @@
 #home_div_info{
     width:var(--chart-width);
     height: 50%;
-    background-color: rgb(192, 192, 192);
     float: left;
     position: relative;
 }
@@ -29,6 +28,21 @@
     float: right;
     position: relative;
 }
+#nt{
+    color: gray;
+    text-shadow: 1px 1px 2px black, 0 0 25px gray, 0 0 5px darkgrey;
+}
+#dt{
+    text-shadow: 1px 1px 2px black, 0 0 25px gray, 0 0 5px darkgrey;
+}
+#utt{
+    color: rgb(182, 176, 176);
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px darkgrey;
+}
+#ut{
+    color: gray;
+    text-shadow: 1px 1px 2px black, 0 0 25px gray, 0 0 5px gray;
+}
 .center {
     margin: 0;
     position: absolute;
@@ -37,5 +51,5 @@
     transform: translate(-50%, -50%);
 }
 canvas{
-    width:500px;
+    width:650px;
 }
