@@ -236,12 +236,23 @@ function printClock() {
         hours=0;
         days++;
     }
-    var uptime;
+    var uptime="";
     if(days>0){
-        uptime=days+"d "+hours+":"+mins+":"+secs;
-    }else{
-        uptime=hours+":"+mins+":"+secs;
+        uptime+=days+"d ";
     }
+    if(hours<10){
+        uptime+="0";
+    }
+    uptime+=hours+":";
+    if(mins<10){
+        uptime+="0";
+    }
+    uptime+=mins+":";
+    if(secs<10){
+        uptime+="0";
+    }
+    uptime+=secs;
+    
     clock.innerHTML ="<span style='font-size:120px;' id=nt>"+currentHours+":"+currentMinute+":"+currentSeconds+"</span>"+ amPm+"</span><br><div align=center><span style='font-size:30px;' id=utt>UP Time : </span><span style='font-size:30px;' id=ut>"+uptime+"</span></div>"; //날짜를 출력해 줌
     
     setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출

@@ -30,18 +30,18 @@
 }
 #nt{
     color: gray;
-    text-shadow: 1px 1px 2px black, 0 0 25px gray, 0 0 5px darkgrey;
+    text-shadow: 2px 2px 2px black;
 }
 #dt{
-    text-shadow: 1px 1px 2px black, 0 0 25px gray, 0 0 5px darkgrey;
+    text-shadow: 1px 1px 2px black;
 }
 #utt{
-    color: rgb(182, 176, 176);
-    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px darkgrey;
+    color: black;
+    text-shadow: 1px 1px 2px black;
 }
 #ut{
     color: gray;
-    text-shadow: 1px 1px 2px black, 0 0 25px gray, 0 0 5px gray;
+    text-shadow: 1px 1px 2px black;
 }
 .center {
     margin: 0;
