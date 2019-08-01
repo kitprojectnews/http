@@ -55,7 +55,7 @@
     $port = 5252;
     $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP); 
     $result = socket_connect($socket, $address, $port);
-    $i = "UPDATE sig_id=".$Rule_id.", header=".$Rule_header.", option=".$Rule_option."\n"; 
+    $i = "R_UPDATE sig_id=".$Rule_id.", header=".$Rule_header.", option=".$Rule_option; 
     socket_write($socket, $i, strlen($i)); 
     socket_close($socket);
     

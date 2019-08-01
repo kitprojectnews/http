@@ -48,7 +48,15 @@
 		<?php
 			}else{
 			$sql="insert into sig_port_variables values('$".$portname."','".$port."','".$desc."');";
-		    $result = $conn->query($sql);
+			$result = $conn->query($sql);
+			//소켓 연동
+    		$address = "localhost";                                             
+    		$port = 5252;
+    		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+    		$result = socket_connect($socket, $address, $port);
+    		$i = "OI_INSERT name='".$portname."' value='".$port."'";  
+    		socket_write($socket, $i, strlen($i)); 
+    		socket_close($socket);
 		?>
 			<script type="text/javascript">
 			window.opener.location.reload();

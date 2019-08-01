@@ -10,7 +10,7 @@
     $port = 5252;
     $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
     $result = socket_connect($socket, $address, $port);
-    $i = "DELETE sig_id=".$del."\n";  
+    $i = "R_DELETE sig_id=".$del;  
     socket_write($socket, $i, strlen($i)); 
     socket_close($socket);
     

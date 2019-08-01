@@ -59,7 +59,7 @@
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $sig_id=$row["sig_id"];
-    $i = "INSERT sig_id=".$sig_id.", header=".$Rule_header.", option=".$Rule_option."\n";  
+    $i = "R_INSERT sig_id=".$sig_id.", header=".$Rule_header.", option=".$Rule_option;  
     socket_write($socket, $i, strlen($i)); 
     socket_close($socket);
     $conn->close();
