@@ -37,7 +37,7 @@
     		$port = 5252;
     		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
     		$result = socket_connect($socket, $address, $port);
-    		$i = "OI_UPDATE name='".$ipname."' value='".$ip."'";  
+    		$i = "OI_UPDATE name=$".$ipname." value=".$ip;  
     		socket_write($socket, $i, strlen($i)); 
 			socket_close($socket);
 			//sql
