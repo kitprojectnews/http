@@ -43,6 +43,13 @@
     }else{
         $Rule_num=1;
     }
+    
+    //룰 삽입
+    $sql =$conn->prepare("INSERT INTO signature(sig_run,sig_msg,sig_rev,sig_sid,sig_gid,sig_action,sig_protocol,sig_srcIP,sig_srcPort,sig_direction,sig_dstIP,sig_dstPort,sig_rule_option) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $sql->bind_param("isiiissssssss",$sig_run,$Rule_name,$Rule_rev,$Rule_num,$Rule_GroupNum,$header[0],$header[1],$header[2],$header[3],$header[4],$header[5],$header[6],$Rule_option);
+    $sql->execute();
+    $sql->close();
+
     //소켓 연동
     $address = "localhost";                                             
     $port = 5252;
@@ -55,12 +62,6 @@
     $i = "INSERT sig_id=".$sig_id.", header=".$Rule_header.", option=".$Rule_option."\n";  
     socket_write($socket, $i, strlen($i)); 
     socket_close($socket);
-
-    //룰 삽입
-    $sql =$conn->prepare("INSERT INTO signature(sig_run,sig_msg,sig_rev,sig_sid,sig_gid,sig_action,sig_protocol,sig_srcIP,sig_srcPort,sig_direction,sig_dstIP,sig_dstPort,sig_rule_option) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $sql->bind_param("isiiissssssss",$sig_run,$Rule_name,$Rule_rev,$Rule_num,$Rule_GroupNum,$header[0],$header[1],$header[2],$header[3],$header[4],$header[5],$header[6],$Rule_option);
-    $sql->execute();
-    $sql->close();
     $conn->close();
 
 
