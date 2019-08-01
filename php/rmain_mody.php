@@ -408,7 +408,7 @@ table, th, td {
 			
 			if($row["sig_dstPort"] == "any")
 			{
-				$dpptk[0] = "";
+				$dpttk[0] = "";
 			}
 		?>
 
@@ -417,8 +417,6 @@ table, th, td {
 				<input type="checkbox" id="d2c" onchange="div_hidden_cbox('d2c', 'dstport_div1', 'dstport_div2')" <?php if($dstpthid) { ?> checked <?php } ?>>직접 입력하기
 				&nbsp;&nbsp;&nbsp;
 		                <input type="checkbox" id="d2not" <?php if(strchr($row["sig_dstPort"], '!')) { ?> checked <?php } ?> >NOT
-				<!--<input type="radio" checked name="d2" onclick="div_hidden('dstport_div1', 'dstport_div2')">직접입력 |
-				<input type="radio" name="d2"  onclick="div_hidden('dstport_div2', 'dstport_div1')">변수 -->
 				<div id="dstport_div1" <?php if($dstpthid) { ?> style="display:none" <?php } ?>>
 					<select id="dstport_v" style="width:300px;height:20px;">
 						<option value="none">NONE</option>
@@ -439,7 +437,7 @@ table, th, td {
 				</div>
 			
 				<div id="dstport_div2" <?php if($dstpthid) { ?> style="display:block" <?php } else { ?> style="display:none" <?php } ?>>
-				<input type="text" id="dest_port1" size=5   value="<?=$dpttk[0]?>"
+				<input type="text" id="dest_port1" size=5 value="<?=$dpttk[0]?>" 
 				onkeydown="return onlyNumber(event)" 
 				onkeyup="removeChar(event)" 
 				onfocusout="removeChar(event)" 
