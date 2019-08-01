@@ -833,7 +833,7 @@ function addoption(opt){
 	}
 	else if(opt=="detection_filter"){
 		coption[count]="detection_filter";
-		text+="<select id=df_opt"+count+"><option value='by_src'>source</option><option value='by_dst'>destination</option></select>&nbsp;";
+		text+="<select id=df_opt"+count+"><option value='by_all'>all</option><option value='by_src'>source</option><option value='by_dst'>destination</option></select>&nbsp;";
 		text+="count:&nbsp;<input type=text id=df_count"+count+" size=12 onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' onfocusout='removeChar(event)' oninput='uint32Range(this)' style='ime-mode:disabled'>&nbsp;";
 		text+="seconds:&nbsp;<input type=text id=df_sec"+count+" size=12 onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' onfocusout='removeChar(event)' oninput='uint32Range(this)' style='ime-mode:disabled'>";
 	}
@@ -1500,10 +1500,13 @@ function getoption()
 		else if(coption[i] == "detection_filter"){
 				fulloption+="detection_filter:track ";
 			var gdfopt=document.getElementById("df_opt"+i);
-			if(gdfopt.options[gdfopt.selectedIndex].value == "by_src")
+			if(gdfopt.options[gdfopt.selectedIndex].value == "by_all")
+				fulloption+="by_all, ";
+			else if(gdfopt.options[gdfopt.selectedIndex].value == "by_src")
 				fulloption+="by_src, ";
 			else if(gdfopt.options[gdfopt.selectedIndex].value == "by_dst")
 				fulloption+="by_dst, ";
+			
 			var gdf_count=document.getElementById("df_count"+i);
 			if(gdf_count.value==""){
                     alert("detection_filter의 count 값을 입력하십시오");
