@@ -148,7 +148,6 @@
  function group_change(){
     var group=document.getElementById("rule_group_name");
     var show_by_group=group.options[group.selectedIndex].value;
-    $(function() {$( '#myTable > tbody').empty();});
     if(show_by_group=='all'){
         location.href="rlist.php";
     }else{
