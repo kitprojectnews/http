@@ -8,9 +8,20 @@
     //$conn->query($sql);
     //}
     $allGroup;
+    $group=$_GET["group"];
+    if($group !=""){
+        $sql="select gname from sig_group where gid=".$group.";";
+        $chkresult = $conn->query($sql);
+        $chk_group = $chkresult->fetch_assoc()["gname"];
+
+        $sql="select * from signature where sig_gid=".$group.";";
+    }
+    else{
     $sql="select * from signature;";
+    }
     $result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <link href="../css/Observer_switch.css" rel="stylesheet" type='text/css'>
@@ -19,6 +30,16 @@
 <script src="../js/jquery-3.4.1.min.js"></script>
 <script src="../js/colResizable-1.6.min.js"></script>
 <script src="../js/tableaction.js"></script>
+<script>
+        function runner(id){
+            var run=document.getElementById("run"+id);
+            if(run.checked ==true){
+                ifTarget.location.href="run.php?sig_id="+id+"&chk=true";
+            }else{
+                ifTarget.location.href="run.php?sig_id="+id+"&chk=false";
+            }
+        }
+</script>
 </head>
 <body>
 
@@ -34,7 +55,7 @@
 			// output data of each row
 			while($grow = $gresult->fetch_assoc()) {
 	?>
-		    <option><?=$grow["gname"]?></option>
+		    <option <?php if($chk_group ==$grow["gname"]) {?> selected <?php } ?> ><?=$grow["gname"]?></option>
 	<?php 
 			}
 		}
@@ -65,18 +86,9 @@
         ?>
 		<tr>
 	<td>
-    <script>
-        function runner(id){
-            if(run.checked==true){
-                ifTarget.location.href="run.php?sig_id="+id+"&chk=true";
-            }else{
-                ifTarget.location.href="run.php?sig_id="+id+"&chk=false";
-            }
-        }
-    </script>
 	<div>
     	<label class="switch"> <?php $num = $row['sig_id']; ?>
-        <input type="checkbox" id="run<?=json_encode($row['sig_id'])?>" onclick="runner('<?=$num?>')" 
+        <input type="checkbox" id="run<?=$num?>" onclick="runner('<?=$num?>')"
     <?php if($row['sig_run'] == true) { ?> checked <?php  } ?> >
         <span class="slider"></span>
       	</label>
@@ -121,7 +133,7 @@
                 }
             } else {
         ?>
-        <td colspan=13 align=center>
+        <td colspan=15 align=center>
         <?php
                 echo "NO Rules";
             }
@@ -138,21 +150,7 @@
     var show_by_group=group.options[group.selectedIndex].value;
     $(function() {$( '#myTable > tbody').empty();});
     if(show_by_group=='all'){
-        <?php
-            $nsql="select * from signature;";
-            $nresult = $conn->query($nsql);
-            if ($nresult->num_rows > 0) {
-                // output data of each row
-                while($nrow = $nresult->fetch_assoc()) {
-                    $nssql="select gname from sig_group where gid=".$nrow["sig_gid"].";";
-                    $nsgid = $conn->query($nssql);
-                    $ngrow = $nsgid->fetch_assoc();
-        ?>
-        $(function() {$('#myTable > tbody:last').append('<tr><td><?=$nrow["sig_msg"]?><td><?=$nrow["sig_sid"]?><td><?=$ngrow["gname"];?><td><?=$nrow["sig_rev"] ?><td><?=$nrow["sig_action"] ?><td><?=$nrow["sig_protocol"]?><td><?=$nrow["sig_srcIP"]?><td><?=$nrow["sig_srcPort"]?><td><?=$nrow["sig_direction"]?><td><?=$nrow["sig_dstIP"] ?><td><?php echo $nrow["sig_dstPort"] ?><td><?=$nrow["sig_rule_option"]?></td><td><div style="float:left;"><form method=post action="rmain_mody.php" style="display:inline;"><input type="hidden" name="sid" value=<?=$nrow["sig_id"]?>><input type="submit" value="수정"></form></div><div style="float:right;"><form method=post action="rlistd.php" style="display:inline;"><input type="hidden" name="del" value=<?=$nrow["sig_id"]?>><input type="submit" value="삭제"></form></div></tr>');});
-        <?php 
-                }
-            }
-        ?> 
+        location.href="rlist.php";
     }else{
         <?php
             $ggssql="select gname from sig_group;";
@@ -173,21 +171,8 @@
                 $nssql="select gid from sig_group where gname='".$allGroup[$i]."';";
                 $nsgid = $conn->query($nssql);
                 $ngrow = $nsgid->fetch_assoc();
-                $asql="select * from signature where sig_gid=".$ngrow["gid"].";";
-                $result = $conn->query($asql);
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($nrow = $result->fetch_assoc()) {
                 ?>
-                        $(function() {$('#myTable > tbody:last').append('<tr><td><?=$nrow["sig_msg"]?><td><?=$nrow["sig_sid"]?><td><?=$ngrow["gname"];?><td><?=$nrow["sig_rev"] ?><td><?=$nrow["sig_action"] ?><td><?=$nrow["sig_protocol"]?><td><?=$nrow["sig_srcIP"]?><td><?=$nrow["sig_srcPort"]?><td><?=$nrow["sig_direction"]?><td><?=$nrow["sig_dstIP"] ?><td><?php echo $nrow["sig_dstPort"] ?><td><?=$nrow["sig_rule_option"]?></td><td><div style="float:left;"><form method=post action="rmain_mody.php" style="display:inline;"><input type="hidden" name="sid" value=<?=$nrow["sig_id"]?>><input type="submit" value="수정"></form></div><div style="float:right;"><form method=post action="rlistd.php" style="display:inline;"><input type="hidden" name="del" value=<?=$nrow["sig_id"]?>><input type="submit" value="삭제"></form></div></tr>');});
-                <?php 
-                    }
-                }else{
-                ?>
-                    $(function() {$('#myTable > tbody:last').append('<tr><td colspan=14 align=center>No Rules</td></tr>');});
-                <?php
-                }
-                ?> 
+                location.href="rlist.php?group="+<?=$ngrow["gid"]?>;
                 }
         <?php
             }

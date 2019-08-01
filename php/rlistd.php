@@ -3,10 +3,8 @@
 
     //삭제가 들어왔을 시
     $del=$_POST["del"];
+    
     if($del){
-    $sql="delete from signature where sig_id='".$del."' ;";
-    $conn->query($sql);
-    }
     //소켓 연동
     $address = "localhost";                                             
     $port = 5252;
@@ -15,6 +13,10 @@
     $i = "DELETE sig_id=".$del."\n";  
     socket_write($socket, $i, strlen($i)); 
     socket_close($socket);
+    
+    $sql="delete from signature where sig_id='".$del."' ;";
+    $conn->query($sql);
+    }
     $conn->close();
 ?>
 <meta http-equiv="refresh" content="0,rlist.php">
