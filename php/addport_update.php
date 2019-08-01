@@ -37,9 +37,9 @@
 		if($portname && $port){
 			//소켓 연동
     		$address = "localhost";                                             
-    		$port = 5252;
+    		$sport = 5252;
     		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    		$result = socket_connect($socket, $address, $port);
+    		$result = socket_connect($socket, $address, $sport);
     		$i = "OP_UPDATE name=$".$portname." value=".$port;  
     		socket_write($socket, $i, strlen($i)); 
     		socket_close($socket);
