@@ -5,11 +5,12 @@
     <title>SYSLOG</title>
     <body>
         <form>
+            <div id='root_div'>
             <table class="syslogTable">
                 <thead>
                     <tr>
                         <th scope="cols">Time</th>
-                        <th scope="cols">Action</th>
+                        <th scope="cols">Message</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,7 @@
                     ?>
                 </tbody>
             </table>
+            </div>
         </form>
     </body>
 </html>

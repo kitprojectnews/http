@@ -1,9 +1,12 @@
+#root_div{
+    margin: 20px 10px;
+}
 table.syslogTable {
     border-collapse: collapse;
-    text-align: left;
+    text-align: center;
     line-height: 1.3;
     border-left: 1px solid #ccc;
-    margin: 20px 10px;
+    width:100%;
 }
 
 table.syslogTable thead th {
@@ -15,16 +18,16 @@ table.syslogTable thead th {
     background: #dcdcd1;
 }
 table.syslogTable tbody th {
-    width: 150px;
     padding: 3px;
     font-weight: bold;
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     background: #ececec;
+    width:150px;
 }
 table.syslogTable td {
-    width: 3000px;
+    text-align: left;
     padding: 5px;
     vertical-align: top;
     border-right: 1px solid #ccc;

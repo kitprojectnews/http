@@ -2,28 +2,34 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="../css/Observer_event.css" />
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/colResizable-1.6.min.js"></script>
+    <script src="../js/tableaction.js"></script>
 </head>
 
 <title></title>
 
 <body>
     <form target="_blank">
+        <div id="root_div">
         <table class="eventTable">
             <thead>
                 <tr>
-                    <th scope="cols">eid</th>
-                    <th scope="cols">time</th>
+                    <th scope="cols" width="20px">eid</th>
+                    <th scope="cols" width="150px">time</th>
                     <th scope="cols">sig_msg</th>
-                    <th scope="cols">src_ip</th>
-                    <th scope="cols">dst_ip</th>
-                    <th scope="cols">protocol</th>
+                    <th scope="cols" width="120px">src_ip</th>
+                    <th scope="cols" width="80px">src_port</th>
+                    <th scope="cols" width="120px">dst_ip</th>
+                    <th scope="cols" width="80px">dst_port</th>
+                    <th scope="cols" width="80px">protocol</th>
                     <th scope="cols">ETC</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 include 'dbconn.php';
-                $sql = 'SELECT * FROM event,signature,(SELECT src_ip, dst_ip, data.eid as eid FROM data,iphdr WHERE data.eid=iphdr.eid) AS tmp WHERE event.eid=tmp.eid;';
+                $sql = 'SELECT * FROM event_view';
 
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -31,9 +37,11 @@
                         echo ("<tr>");
                         echo ("<th scope='row'>" . $row["eid"] . "</th>");
                         echo ("<td>" . $row["time"] . "</td>");
-                        echo ("<td>" . $row['sig_msg'] . "</td>");
+                        echo ("<td align='left'>" . $row['sig_msg'] . "</td>");
                         echo ("<td>" . long2ip($row["src_ip"]) . "</td>");
+                        echo ("<td>" . $row['src_port'] . "</td>");
                         echo ("<td>" . long2ip($row["dst_ip"]) . "</td>");
+                        echo ("<td>" . $row['dst_port'] . "</td>");
                         echo ("<td>" . $row["sig_protocol"] . "</td>");
                         echo ("<td> <input type=button value=자세히 onClick='detail(" . $row["eid"] . "," . $row["sig_id"] . ")' /></td>");
                         echo ("</tr>");
@@ -46,6 +54,7 @@
                 ?>
             </tbody>
         </table>
+        </div>
     </form>
 </body>
 <script launguage='JAVASCRIPT'>

@@ -1,9 +1,12 @@
+#root_div{
+    margin: 20px 10px;
+}
 table.eventTable {
+    width: 100%;
     border-collapse: collapse;
-    text-align: left;
+    text-align: center;
     line-height: 1.3;
     border-left: 1px solid #ccc;
-    margin: 20px 10px;
 }
 
 table.eventTable thead th {
@@ -15,7 +18,6 @@ table.eventTable thead th {
     background: #dcdcd1;
 }
 table.eventTable tbody th {
-    width: 100px;
     padding: 3px;
     font-weight: bold;
     vertical-align: top;
@@ -24,9 +26,12 @@ table.eventTable tbody th {
     background: #ececec;
 }
 table.eventTable td {
-    width: 3000px;
     padding: 5px;
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
+
+input[type=button]{color: #fff; text-align: center; background-color: #7e8c8d; border-color: #7e8c8d;}
+input[type=button]:hover{color: #fff; text-align: center; background-color:#6a7879;}
+input[type=button]:active{color: #fff; text-align: center; top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
