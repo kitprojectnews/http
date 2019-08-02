@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 </head>
 <?php
-    include 'dbconn.php';
+	include 'dbconn.php';
+	session_start();
 ?>
 
 <script src="../js/rmain.js"></script>
@@ -47,7 +48,13 @@
 	<tr>
 		<th>Value Name</th>
 		<th>Values</th>
+		<?php
+             if($_SESSION["r_update"]==1){
+		?>
 		<th>Edit</th>
+		<?php
+    		}
+		?>
 		<th>Description</th>
 	</tr>   <?php 
 		$sql1="select * from sig_ip_variables;";
@@ -59,7 +66,9 @@
 		<td><?=substr($row1["v_name"],1)?></td>
 		
 		<td><?=$row1["v_value"]?></td>
-    	
+    	<?php
+             if($_SESSION["r_update"]==1){
+		?>
 		<td>
 			<div style="float:left;">
         	<form method=post action="delip.php" style="display:inline;">
@@ -70,10 +79,13 @@
 			<div style="float:right;">
         	<form method=post id="editid" name="edit" action="addip.php" style="display:inline;">
         		<input type="hidden" name="vname">
-				<input type="button" value="EDIT" onclick="popup_edit('<?=$row1["v_name"]?>')">
+				<input type="button" value="수정" onclick="popup_edit('<?=$row1["v_name"]?>')">
 			</form>
 			</div>
 		</td>
+		<?php
+    		}
+		?>
     	<td><?=$row1["v_description"]?></td>
     </tr>
 	<?php 
@@ -81,7 +93,13 @@
 		}
 	?>
 </table>
+<?php
+    if($_SESSION["r_update"]==1){
+?>
 <div align="center">
 <br>
 <input type="button" value="ADD" onclick="popup_open()" style="width:200; height:30;">
 </div>
+<?php
+    }
+?>

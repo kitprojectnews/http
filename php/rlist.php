@@ -1,12 +1,6 @@
 <?php
     include 'dbconn.php';
-
-    //삭제가 들어왔을 시
-    //$del=$_GET["del"];
-    //if($del){
-    //$sql="delete from signature where sig_id='".$del."' ;";
-    //$conn->query($sql);
-    //}
+    session_start();
     $allGroup;
     $group=$_GET["group"];
     if($group !=""){
@@ -20,6 +14,7 @@
     $sql="select * from signature;";
     }
     $result = $conn->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +40,13 @@
 
 <h1 align=center>Rule List</h1>
 <div style="margin-left:15px">
+<?php
+    if($_SESSION["r_update"]==1){
+?>
 <input type=button onclick='location.href="rmain.php"' value='룰 추가'>
+<?php
+    }
+?>
 <select id="rule_group_name" onchange="group_change()"> <!--그룹명 combo_box-->
     <option value="all">전체</option>
 	<?php 
@@ -63,7 +64,13 @@
 </select><br>
 <table border="1" cellspacing="0" id="myTable">
     <thead align="center">
+        <?php
+            if($_SESSION["r_update"]==1){
+        ?>
 	    <th width=30>Use</th>
+        <?php 
+            }
+        ?>
         <th width=150 onclick="sortTable(0)">Rule name</th>
         <th width=30 onclick="sortTable(1)">Sid</th>
         <th width=150 onclick="sortTable(2)">Group Name</th>
@@ -76,7 +83,14 @@
         <th width=100 onclick="sortTable(9)">dstIP</th>
         <th width=100 onclick="sortTable(10)">dstPort</th>
         <th width=250 onclick="sortTable(11)">Rule Option</th>
+        <?php
+             if($_SESSION["r_update"]==1){
+        ?>
         <th width=85  onclick="sortTable(12)">Edit</th>
+        <?php 
+            }
+        ?>
+        
     </thead>
     <tbody>
         <?php
@@ -85,15 +99,21 @@
                 while($row = $result->fetch_assoc()) {
         ?>
 		<tr>
-	<td>
-	<div>
-    	<label class="switch"> <?php $num = $row['sig_id']; ?>
-        <input type="checkbox" id="run<?=$num?>" onclick="runner('<?=$num?>')"
-    <?php if($row['sig_run'] == true) { ?> checked <?php  } ?> >
-        <span class="slider"></span>
-      	</label>
-  	</div>
-	</td>
+        <?php
+            if($_SESSION["r_update"]==1){
+        ?>
+	    <td>
+	    <div>
+    	    <label class="switch"> <?php $num = $row['sig_id']; ?>
+            <input type="checkbox" id="run<?=$num?>" onclick="runner('<?=$num?>')"
+                <?php if($row['sig_run'] == true) { ?> checked <?php  } ?> >
+            <span class="slider"></span>
+      	    </label>
+  	    </div>
+	    </td>
+        <?php
+            }
+        ?>
         <td><?php echo $row["sig_msg"] ?>
         <td align=center><?php echo $row["sig_sid"] ?>
         <td align=center>
@@ -114,6 +134,9 @@
         <td align=center><?php if($row["sig_dstPort"][0]=='$'){ echo substr($row["sig_dstPort"],1);} else if($row["sig_dstPort"][1]=='$'){ echo "!".substr($row["sig_dstPort"],2);} else{ echo $row["sig_dstPort"];}?>
         <td><?php echo $row["sig_rule_option"] ?></td>
         <td>
+        <?php
+             if($_SESSION["r_update"]==1){
+        ?>
         <div style="float:left;">
         <form method=post action="rmain_mody.php" style="display:inline;">
         <input type="hidden" name="sid" value=<?=$row["sig_id"]?>>
@@ -128,6 +151,9 @@
         <!--<input type=button value="삭제" onclick=location.href='rlist.php?del='></td>-->
         </form> 
         </div>
+        <?php 
+            }
+        ?>
 		</tr>
         <?php
                 }

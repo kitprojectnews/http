@@ -1,7 +1,8 @@
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 
 <?php
-    include 'dbconn.php';
+	include 'dbconn.php';
+	session_start();
 ?>
 
 <script src="../js/rmain.js"></script>
@@ -39,7 +40,18 @@
 
 <table border=1 align=center>
 	<tr><th colspan=4 align=center>Port tables</tr>
-	<tr><th>Value Name<th>Values<th>Edit<th>Description</tr>
+	<tr>
+		<th>Value Name
+		<th>Values
+		<?php
+        if($_SESSION["r_update"]==1){
+		?>
+		<th>Edit
+		<?php
+		}
+		?>
+		<th>Description
+	</tr>
 	<?php 
 		$sql2="select * from sig_port_variables;";
 		$result2 = $conn->query($sql2);
@@ -50,6 +62,9 @@
 	<tr>
     <td><?=substr($row2["v_name"],1)?>
 	<td><?=$row2["v_value"]?>
+	<?php
+        if($_SESSION["r_update"]==1){
+	?>
     <td>
 	    <div style="float:left;">
     <form method=post action=delport.php style="display:inline;">
@@ -60,10 +75,13 @@
 	    <div style="float:right;">
     <form method=post id="editid" name="edit" action=addport.php style="display:inline;">
         <input type="hidden" name="vname">
-	<input type="button" value="EDIT" onclick="popup_edit('<?=$row2["v_name"]?>')">
+	<input type="button" value="수정" onclick="popup_edit('<?=$row2["v_name"]?>')">
     </form>
 	    </div>
     </td>
+	<?php
+		}
+	?>
     <td><?=$row2["v_description"]?></td>
     </tr>
 	<?php 
@@ -72,6 +90,12 @@
 	?>
 </table>
 <br>
+<?php
+    if($_SESSION["r_update"]==1){
+?>
 <div align="center">
 <input type="button" value="ADD" onclick="popup_open()" style="width:200; height:30;">
 </div>
+<?php
+	}
+?>
