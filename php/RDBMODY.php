@@ -50,6 +50,15 @@
             $Rule_num=1;
         }
     }
+    //소켓 연동
+    $address = "localhost";                                             
+    $port = 5252;
+    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP); 
+    $result = socket_connect($socket, $address, $port);
+    $i = "R_UPDATE sig_id=".$Rule_id.", header=".$Rule_header.", option=".$Rule_option; 
+    socket_write($socket, $i, strlen($i)); 
+    socket_close($socket);
+    
     //룰 삽입
     //$sql =$conn->prepare("INSERT INTO signature(sig_msg,sig_rev,sig_sid,sig_gid,sig_action,sig_protocol,sig_srcIP,sig_srcPort,sig_direction,sig_dstIP,sig_dstPort,sig_rule_option) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
     $sql =$conn->prepare("update signature SET sig_msg=?, sig_rev=?, sig_sid=?, sig_gid=?, sig_action=?, sig_protocol=?, sig_srcIP=?, sig_srcPort=?, sig_direction=?, sig_dstIP=?, sig_dstPort=?, sig_rule_option=? where sig_id=?");    
@@ -57,5 +66,8 @@
     $sql->execute();
     $sql->close();
     $conn->close();
+
+    
+    
 ?>
 <meta http-equiv="refresh" content="0,rlist.php">

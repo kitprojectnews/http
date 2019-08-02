@@ -1,16 +1,22 @@
 <?php
     include 'dbconn.php';
-
-    //삭제가 들어왔을 시
-    //$del=$_GET["del"];
-    //if($del){
-    //$sql="delete from signature where sig_id='".$del."' ;";
-    //$conn->query($sql);
-    //}
+    session_start();
     $allGroup;
+    $group=$_GET["group"];
+    if($group !=""){
+        $sql="select gname from sig_group where gid=".$group.";";
+        $chkresult = $conn->query($sql);
+        $chk_group = $chkresult->fetch_assoc()["gname"];
+
+        $sql="select * from signature where sig_gid=".$group.";";
+    }
+    else{
     $sql="select * from signature;";
+    }
     $result = $conn->query($sql);
+
 ?>
+
 <!DOCTYPE html>
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <link href="../css/Observer_switch.css" rel="stylesheet" type='text/css'>
@@ -19,12 +25,28 @@
 <script src="../js/jquery-3.4.1.min.js"></script>
 <script src="../js/colResizable-1.6.min.js"></script>
 <script src="../js/tableaction.js"></script>
+<script>
+        function runner(id){
+            var run=document.getElementById("run"+id);
+            if(run.checked ==true){
+                ifTarget.location.href="run.php?sig_id="+id+"&chk=true";
+            }else{
+                ifTarget.location.href="run.php?sig_id="+id+"&chk=false";
+            }
+        }
+</script>
 </head>
 <body>
 
 <h1 align=center>Rule List</h1>
 <div style="margin-left:15px">
+<?php
+    if($_SESSION["r_update"]==1){
+?>
 <input type=button onclick='location.href="rmain.php"' value='룰 추가'>
+<?php
+    }
+?>
 <select id="rule_group_name" onchange="group_change()"> <!--그룹명 combo_box-->
     <option value="all">전체</option>
 	<?php 
@@ -34,7 +56,7 @@
 			// output data of each row
 			while($grow = $gresult->fetch_assoc()) {
 	?>
-		    <option><?=$grow["gname"]?></option>
+		    <option <?php if($chk_group ==$grow["gname"]) {?> selected <?php } ?> ><?=$grow["gname"]?></option>
 	<?php 
 			}
 		}
@@ -42,7 +64,13 @@
 </select><br>
 <table border="1" cellspacing="0" id="myTable">
     <thead align="center">
-	<th width=30>Use</th>
+        <?php
+            if($_SESSION["r_update"]==1){
+        ?>
+	    <th width=30>Use</th>
+        <?php 
+            }
+        ?>
         <th width=150 onclick="sortTable(0)">Rule name</th>
         <th width=30 onclick="sortTable(1)">Sid</th>
         <th width=150 onclick="sortTable(2)">Group Name</th>
@@ -54,8 +82,15 @@
         <th width=70 onclick="sortTable(8)">direction</th>
         <th width=100 onclick="sortTable(9)">dstIP</th>
         <th width=100 onclick="sortTable(10)">dstPort</th>
-        <th width=500 onclick="sortTable(11)">Rule Option</th>
+        <th width=250 onclick="sortTable(11)">Rule Option</th>
+        <?php
+             if($_SESSION["r_update"]==1){
+        ?>
         <th width=85  onclick="sortTable(12)">Edit</th>
+        <?php 
+            }
+        ?>
+        
     </thead>
     <tbody>
         <?php
@@ -64,14 +99,21 @@
                 while($row = $result->fetch_assoc()) {
         ?>
 		<tr>
-	<td>
-	<div>
-    	<label class="switch">
-        <input type="checkbox">
-        <span class="slider"></span>
-      	</label>
-  	</div>
-	</td>
+        <?php
+            if($_SESSION["r_update"]==1){
+        ?>
+	    <td>
+	    <div>
+    	    <label class="switch"> <?php $num = $row['sig_id']; ?>
+            <input type="checkbox" id="run<?=$num?>" onclick="runner('<?=$num?>')"
+                <?php if($row['sig_run'] == true) { ?> checked <?php  } ?> >
+            <span class="slider"></span>
+      	    </label>
+  	    </div>
+	    </td>
+        <?php
+            }
+        ?>
         <td><?php echo $row["sig_msg"] ?>
         <td align=center><?php echo $row["sig_sid"] ?>
         <td align=center>
@@ -92,6 +134,9 @@
         <td align=center><?php if($row["sig_dstPort"][0]=='$'){ echo substr($row["sig_dstPort"],1);} else if($row["sig_dstPort"][1]=='$'){ echo "!".substr($row["sig_dstPort"],2);} else{ echo $row["sig_dstPort"];}?>
         <td><?php echo $row["sig_rule_option"] ?></td>
         <td>
+        <?php
+             if($_SESSION["r_update"]==1){
+        ?>
         <div style="float:left;">
         <form method=post action="rmain_mody.php" style="display:inline;">
         <input type="hidden" name="sid" value=<?=$row["sig_id"]?>>
@@ -106,12 +151,15 @@
         <!--<input type=button value="삭제" onclick=location.href='rlist.php?del='></td>-->
         </form> 
         </div>
+        <?php 
+            }
+        ?>
 		</tr>
         <?php
                 }
             } else {
         ?>
-        <td colspan=13 align=center>
+        <td colspan=15 align=center>
         <?php
                 echo "NO Rules";
             }
@@ -126,23 +174,8 @@
  function group_change(){
     var group=document.getElementById("rule_group_name");
     var show_by_group=group.options[group.selectedIndex].value;
-    $(function() {$( '#myTable > tbody').empty();});
     if(show_by_group=='all'){
-        <?php
-            $nsql="select * from signature;";
-            $nresult = $conn->query($nsql);
-            if ($nresult->num_rows > 0) {
-                // output data of each row
-                while($nrow = $nresult->fetch_assoc()) {
-                    $nssql="select gname from sig_group where gid=".$nrow["sig_gid"].";";
-                    $nsgid = $conn->query($nssql);
-                    $ngrow = $nsgid->fetch_assoc();
-        ?>
-        $(function() {$('#myTable > tbody:last').append('<tr><td><?=$nrow["sig_msg"]?><td><?=$nrow["sig_sid"]?><td><?=$ngrow["gname"];?><td><?=$nrow["sig_rev"] ?><td><?=$nrow["sig_action"] ?><td><?=$nrow["sig_protocol"]?><td><?=$nrow["sig_srcIP"]?><td><?=$nrow["sig_srcPort"]?><td><?=$nrow["sig_direction"]?><td><?=$nrow["sig_dstIP"] ?><td><?php echo $nrow["sig_dstPort"] ?><td><?=$nrow["sig_rule_option"]?></td><td><div style="float:left;"><form method=post action="rmain_mody.php" style="display:inline;"><input type="hidden" name="sid" value=<?=$nrow["sig_id"]?>><input type="submit" value="수정"></form></div><div style="float:right;"><form method=post action="rlistd.php" style="display:inline;"><input type="hidden" name="del" value=<?=$nrow["sig_id"]?>><input type="submit" value="삭제"></form></div></tr>');});
-        <?php 
-                }
-            }
-        ?> 
+        location.href="rlist.php";
     }else{
         <?php
             $ggssql="select gname from sig_group;";
@@ -163,21 +196,8 @@
                 $nssql="select gid from sig_group where gname='".$allGroup[$i]."';";
                 $nsgid = $conn->query($nssql);
                 $ngrow = $nsgid->fetch_assoc();
-                $asql="select * from signature where sig_gid=".$ngrow["gid"].";";
-                $result = $conn->query($asql);
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($nrow = $result->fetch_assoc()) {
                 ?>
-                        $(function() {$('#myTable > tbody:last').append('<tr><td><?=$nrow["sig_msg"]?><td><?=$nrow["sig_sid"]?><td><?=$ngrow["gname"];?><td><?=$nrow["sig_rev"] ?><td><?=$nrow["sig_action"] ?><td><?=$nrow["sig_protocol"]?><td><?=$nrow["sig_srcIP"]?><td><?=$nrow["sig_srcPort"]?><td><?=$nrow["sig_direction"]?><td><?=$nrow["sig_dstIP"] ?><td><?php echo $nrow["sig_dstPort"] ?><td><?=$nrow["sig_rule_option"]?></td><td><div style="float:left;"><form method=post action="rmain_mody.php" style="display:inline;"><input type="hidden" name="sid" value=<?=$nrow["sig_id"]?>><input type="submit" value="수정"></form></div><div style="float:right;"><form method=post action="rlistd.php" style="display:inline;"><input type="hidden" name="del" value=<?=$nrow["sig_id"]?>><input type="submit" value="삭제"></form></div></tr>');});
-                <?php 
-                    }
-                }else{
-                ?>
-                    $(function() {$('#myTable > tbody:last').append('<tr><td colspan=14 align=center>No Rules</td></tr>');});
-                <?php
-                }
-                ?> 
+                location.href="rlist.php?group="+<?=$ngrow["gid"]?>;
                 }
         <?php
             }
@@ -185,3 +205,4 @@
     }
  }
 </script>
+<iframe id="ifTarget" name="ifTarget" style="width:0px; height:0px; display:none"></iframe>

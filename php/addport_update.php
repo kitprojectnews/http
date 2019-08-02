@@ -35,8 +35,17 @@
 		}
 	
 		if($portname && $port){
+			//소켓 연동
+    		$address = "localhost";                                             
+    		$sport = 5252;
+    		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+    		$result = socket_connect($socket, $address, $sport);
+    		$i = "OP_UPDATE name=$".$portname." value=".$port;  
+    		socket_write($socket, $i, strlen($i)); 
+    		socket_close($socket);
 			$sql="update sig_port_variables SET v_value='".$port."',v_description='".$desc."' where v_name='$".$portname."' ;";
 			$conn->query($sql);
+			
 		}
 	}
 ?>

@@ -47,7 +47,15 @@
 			else
 			{
 			$sql="insert into sig_ip_variables values('$".$ipname."','".$ip."','".$desc."');";
-      		$result = $conn->query($sql);
+			$result = $conn->query($sql);
+			//소켓 연동
+    		$address = "localhost";                                             
+    		$port = 5252;
+    		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+    		$result = socket_connect($socket, $address, $port);
+    		$i = "OI_INSERT name=$".$ipname." value=".$ip;  
+    		socket_write($socket, $i, strlen($i)); 
+    		socket_close($socket);
 			?>
 			<!--<meta http-equiv="refresh" content="0,ipvar.php">-->
 			<script type="text/javascript">

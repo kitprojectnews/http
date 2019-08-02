@@ -35,7 +35,6 @@
             <?php //echo get_server_up_time();?>
             <div id="home_div_info">
                 <div class="center">
-                    <div id="curtime"></div>
                     <div id="uptime"></div>
                 </div>
             </div>
@@ -215,15 +214,15 @@
     var mins=<?=json_encode($mins)?>;
     var secs=<?=json_encode($secs)?>;
 function printClock() {
-    var clock = document.getElementById("home_div_info");            // 출력할 장소 선택
+    var clock = document.getElementById("uptime");            // 출력할 장소 선택
     var currentDate = new Date();                                     // 현재시간
     var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
-    var amPm = 'AM'; // 초기값 AM
+    var amPm = "<span style='font-size:50px; color:orange;' id=dt  >AM</span>"; // 초기값 AM
     var currentHours = addZeros(currentDate.getHours(),2); 
     var currentMinute = addZeros(currentDate.getMinutes() ,2);
     var currentSeconds =  addZeros(currentDate.getSeconds(),2);
     if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
-    	amPm = 'PM';
+    	amPm = "<span style='font-size:50px; color:darkblue;' id=dt >PM</span>";
     	currentHours = addZeros(currentHours - 12,2);
     }
     secs++;
@@ -237,8 +236,24 @@ function printClock() {
         hours=0;
         days++;
     }
-    var uptime=days+"d "+hours+":"+mins+":"+secs;
-    clock.innerHTML ="<span style='font-size:150px;'>"+currentHours+":"+currentMinute+":"+currentSeconds+"</span><span style='font-size:50px;'>"+ amPm+"</span><br><span style='font-size:30px;'>UP Time:"+uptime+"</span>"; //날짜를 출력해 줌
+    var uptime="";
+    if(days>0){
+        uptime+=days+"d ";
+    }
+    if(hours<10){
+        uptime+="0";
+    }
+    uptime+=hours+":";
+    if(mins<10){
+        uptime+="0";
+    }
+    uptime+=mins+":";
+    if(secs<10){
+        uptime+="0";
+    }
+    uptime+=secs;
+    
+    clock.innerHTML ="<span style='font-size:120px;' id=nt>"+currentHours+":"+currentMinute+":"+currentSeconds+"</span>"+ amPm+"</span><br><div align=center><span style='font-size:30px;' id=utt>UP Time : </span><span style='font-size:30px;' id=ut>"+uptime+"</span></div>"; //날짜를 출력해 줌
     
     setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
 }

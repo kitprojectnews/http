@@ -54,21 +54,12 @@ function makeString()
 	
 	// Source IP
 	id = document.getElementById("srcip_v");
-	if(id.options[id.selectedIndex].value != "any")
+	
+	if(document.getElementById("s1c").checked == true)
 	{
 		if(document.getElementById("s1not").checked == true)
 			str += "!";
-		
-		if(document.getElementById("s1c").checked == false)
-		{
-			str += "$";
-			id = document.getElementById("srcip_v");
-			str += id.options[id.selectedIndex].value;
-			str += space;
-		}
-		else
-		{
-			str += document.getElementById("src_ip1").value;
+		str += document.getElementById("src_ip1").value;
         	str += dot;
         	str += document.getElementById("src_ip2").value;
         	str += dot;
@@ -80,16 +71,32 @@ function makeString()
         	{
         	    str += "/";
         	    str += document.getElementById("src_sm").value;
-			}
+		}
+		str += space;
+	}
+	else
+	{
+		if(id.options[id.selectedIndex].value == "any")
+			str += "any ";
+		else
+		{
+			if(document.getElementById("s1not").checked == true)
+				str += "!";
+			str += "$";
+			id = document.getElementById("srcip_v");
+			str += id.options[id.selectedIndex].value;
 			str += space;
 		}
 	}
-	else
-		str += "any ";
 	
 	// Source Port
 	id = document.getElementById("srcport_v");
-	if(id.options[id.selectedIndex].value != "any")
+	
+	if((document.getElementById("s2c").checked != true) && (id.options[id.selectedIndex].value == "any"))
+	{
+		str += "any ";
+	}
+	else
 	{
 		if(document.getElementById("s2not").checked == true)
 			str += "!";
@@ -112,8 +119,6 @@ function makeString()
 			str += space;
 		}
 	}
-	else
-		str += "any ";
 	
 	// Direction
 	id = document.getElementById("direction");
@@ -122,7 +127,11 @@ function makeString()
 
 	// Destination IP
 	id = document.getElementById("dstip_v");
-	if(id.options[id.selectedIndex].value != "any")
+	if((document.getElementById("d1c").checked != true) && (id.options[id.selectedIndex].value == "any"))
+	{
+		str += "any ";
+	}
+	else
 	{
 		if(document.getElementById("d1not").checked == true)
 			str += "!";
@@ -152,12 +161,15 @@ function makeString()
 			str += space;
 		}
 	}
-	else
-		str += "any ";
+
 
 	// Destination Port
 	id = document.getElementById("dstport_v");
-	if(id.options[id.selectedIndex].value != "any")
+	if((document.getElementById("d2c").checked != true) && (id.options[id.selectedIndex].value == "any"))
+	{
+		str += "any ";
+	}
+	else
 	{
 		if(document.getElementById("d2not").checked == true)
 			str += "!";
@@ -180,8 +192,6 @@ function makeString()
 			str += space;
 		}
 	}
-	else
-		str += "any ";
 
 	return str;
 
@@ -823,7 +833,7 @@ function addoption(opt){
 	}
 	else if(opt=="detection_filter"){
 		coption[count]="detection_filter";
-		text+="<select id=df_opt"+count+"><option value='by_src'>source</option><option value='by_dst'>destination</option></select>&nbsp;";
+		text+="<select id=df_opt"+count+"><option value='by_all'>all</option><option value='by_src'>source</option><option value='by_dst'>destination</option></select>&nbsp;";
 		text+="count:&nbsp;<input type=text id=df_count"+count+" size=12 onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' onfocusout='removeChar(event)' oninput='uint32Range(this)' style='ime-mode:disabled'>&nbsp;";
 		text+="seconds:&nbsp;<input type=text id=df_sec"+count+" size=12 onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' onfocusout='removeChar(event)' oninput='uint32Range(this)' style='ime-mode:disabled'>";
 	}
@@ -1490,10 +1500,13 @@ function getoption()
 		else if(coption[i] == "detection_filter"){
 				fulloption+="detection_filter:track ";
 			var gdfopt=document.getElementById("df_opt"+i);
-			if(gdfopt.options[gdfopt.selectedIndex].value == "by_src")
+			if(gdfopt.options[gdfopt.selectedIndex].value == "by_all")
+				fulloption+="by_all, ";
+			else if(gdfopt.options[gdfopt.selectedIndex].value == "by_src")
 				fulloption+="by_src, ";
 			else if(gdfopt.options[gdfopt.selectedIndex].value == "by_dst")
 				fulloption+="by_dst, ";
+			
 			var gdf_count=document.getElementById("df_count"+i);
 			if(gdf_count.value==""){
                     alert("detection_filter의 count 값을 입력하십시오");

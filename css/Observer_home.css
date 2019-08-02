@@ -7,7 +7,6 @@
 #home_div_info{
     width:var(--chart-width);
     height: 50%;
-    background-color: rgb(192, 192, 192);
     float: left;
     position: relative;
 }
@@ -29,6 +28,21 @@
     float: right;
     position: relative;
 }
+#nt{
+    color: gray;
+    text-shadow: 2px 2px 2px black;
+}
+#dt{
+    text-shadow: 1px 1px 2px black;
+}
+#utt{
+    color: black;
+    text-shadow: 1px 1px 2px black;
+}
+#ut{
+    color: gray;
+    text-shadow: 1px 1px 2px black;
+}
 .center {
     margin: 0;
     position: absolute;
@@ -37,5 +51,5 @@
     transform: translate(-50%, -50%);
 }
 canvas{
-    width:500px;
+    width:650px;
 }
