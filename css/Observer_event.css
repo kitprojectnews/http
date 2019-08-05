@@ -16,6 +16,7 @@ table.eventTable thead th {
     border-right: 1px solid #ccc;
     border-bottom: 2px solid #c00;
     background: #dcdcd1;
+    font-size:20px;
 }
 table.eventTable tbody th {
     padding: 3px;
@@ -24,12 +25,14 @@ table.eventTable tbody th {
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     background: #ececec;
+    font-size:20px;
 }
 table.eventTable td {
     padding: 5px;
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    font-size:20px;
 }
 
 input[type=button]{color: #fff; text-align: center; background-color: #7e8c8d; border-color: #7e8c8d;}
