@@ -11,20 +11,7 @@
     }
 ?>
 
-<script src="../js/rmain.js"></script>
-<form method=post 
-    <?php 
-        if($vname == "")
-        { ?> 
-            action="addport_insert.php" <?php 
-        } 
-        else
-        { ?>
-            action="addport_update.php" <?php 
-        } 
-    ?>
->
-<script src="../js/rmain.js"></script>
+<script src="../js/rmain2.js"></script>
 <form method=post 
     <?php 
         if($vname == "")

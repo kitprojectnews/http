@@ -1653,7 +1653,9 @@ function allCheck()
 	var full_header=document.getElementById('__full_header');
 	var full_option=document.getElementById('__full_option');
 	var full_options;
-	
+	//serverity 설정
+	var srv=document.getElementById('severity');
+	document.getElementById('__severity').value=srv.options[srv.selectedIndex].value;
 	//그룹명 전달
 	var gname=document.getElementById("rule_group_name");
 	RGname.value =gname.options[gname.selectedIndex].value;

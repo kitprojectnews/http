@@ -11,7 +11,7 @@ table, th, td {
 }
 </style>
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
-<script src="../js/rmain.js"></script>
+<script src="../js/rmain2.js"></script>
 </head>
 <body>
 <h1 align="center">Rule Maker</h1>
@@ -40,6 +40,18 @@ table, th, td {
 				}
 			?>
 			</select></td>
+		</tr>
+		<tr>
+			<td>&nbsp;Severity
+			<td>
+				<select id=severity>
+					<option value=1>N/A</option>
+					<option value=2>Low</option>
+					<option value=3>Medium</option>
+					<option value=4>High</option>
+					<option value=5>Critical</option>
+				</select>
+			</td>
 		</tr>
 	</table>
 	
@@ -326,6 +338,7 @@ table, th, td {
 <form id="tosubmit" name="tosubmit" action="RDBSubmit.php" method="POST">
 	<input type="hidden" name="__Rname"  id="__Rname">
 	<input type="hidden" name="__RGname" id="__RGname">
+	<input type="hidden" name="__severity" id="__severity">
 	<input type="hidden" name="__full_header" id="__full_header">
 	<input type="hidden" name="__full_option" id="__full_option">
 	<input type="button" onclick=allCheck() value="값 체크 및 전송" style="height: 50px; width: 650px">

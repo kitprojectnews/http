@@ -14,7 +14,7 @@
     $sql="select * from signature;";
     }
     $result = $conn->query($sql);
-
+    $li=0;
 ?>
 
 <!DOCTYPE html>
@@ -67,26 +67,27 @@
         <?php
             if($_SESSION["r_update"]==1){
         ?>
-	    <th width=30>Use</th>
+	    <th width=30 onclick="sortTable(<?=$li++?>)">Use</th>
         <?php 
             }
         ?>
-        <th width=150 onclick="sortTable(0)">Rule name</th>
-        <th width=30 onclick="sortTable(1)">Sid</th>
-        <th width=150 onclick="sortTable(2)">Group Name</th>
-        <th width=30 onclick="sortTable(3)">Rev</th>
-        <th width=80 onclick="sortTable(4)">action</th>
-        <th width=80 onclick="sortTable(5)">protocol</th>
-        <th width=100 onclick="sortTable(6)">srcIP</th>
-        <th width=100 onclick="sortTable(7)">srcPort</th>
-        <th width=70 onclick="sortTable(8)">direction</th>
-        <th width=100 onclick="sortTable(9)">dstIP</th>
-        <th width=100 onclick="sortTable(10)">dstPort</th>
-        <th width=250 onclick="sortTable(11)">Rule Option</th>
+        <th width=150 onclick="sortTable(<?=$li++?>)">Rule name</th>
+        <th width=50 onclick="sortTable(<?=$li++?>)">Serverity</th>
+        <th width=30 onclick="sortTable(<?=$li++?>)">Sid</th>
+        <th width=150 onclick="sortTable(<?=$li++?>)">Group Name</th>
+        <th width=30 onclick="sortTable(<?=$li++?>)">Rev</th>
+        <th width=80 onclick="sortTable(<?=$li++?>)">action</th>
+        <th width=80 onclick="sortTable(<?=$li++?>)">protocol</th>
+        <th width=100 onclick="sortTable(<?=$li++?>)">srcIP</th>
+        <th width=100 onclick="sortTable(<?=$li++?>)">srcPort</th>
+        <th width=70 onclick="sortTable(<?=$li++?>)">direction</th>
+        <th width=100 onclick="sortTable(<?=$li++?>)">dstIP</th>
+        <th width=100 onclick="sortTable(<?=$li++?>)">dstPort</th>
+        <th width=220 onclick="sortTable(<?=$li++?>)">Rule Option</th>
         <?php
              if($_SESSION["r_update"]==1){
         ?>
-        <th width=85  onclick="sortTable(12)">Edit</th>
+        <th width=90>Edit</th>
         <?php 
             }
         ?>
@@ -115,6 +116,27 @@
             }
         ?>
         <td><?php echo $row["sig_msg"] ?>
+        <td align=center>
+            <?php 
+                switch($row["severity"]){
+                    case 1:
+                        echo '<img src="../images/icons/circle-gray.png" >';
+                        break;
+                    case 2:
+                        echo '<img src="../images/icons/circle-yellow.png" >';
+                        break;
+                    case 3:
+                        echo '<img src="../images/icons/circle-orange.png" >';
+                        break;
+                    case 4:
+                        echo '<img src="../images/icons/circle-dorange.png" >';
+                        break;
+                    case 5:
+                        echo '<img src="../images/icons/circle-red.png" >';
+                        break;
+                }
+            ?>
+        </td>
         <td align=center><?php echo $row["sig_sid"] ?>
         <td align=center>
         <?php
