@@ -1,0 +1,46 @@
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+    color: black;
+    display: none;
+    padding: 25px;
+    text-align: center;
+}
+
+#div_packetview table{
+    border: none;
+    border-collapse: collapse;
+    background: white;
+    align-items:center;
+}
+
+#div_packetview tr{
+    text-align: center;
+}
+#div_packetview td{
+    color:black;
+    background: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    width:20px;
+}
+#div_hextable{
+    float: left;
+}
+#div_asciitable{
+    float: right;
+}
