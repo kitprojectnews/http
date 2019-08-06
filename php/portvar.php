@@ -5,7 +5,7 @@
 	session_start();
 ?>
 
-<script src="../js/rmain.js"></script>
+<script src="../js/rmain2.js"></script>
 <script>
 	w = 500; // POPUP W
 	h = 150; // POPUP H

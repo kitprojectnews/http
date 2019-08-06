@@ -6,6 +6,7 @@
     $Rule_id=$_POST["__sid"];
     $Rule_name=$_POST["__Rname"];
     $Rule_GroupName=$_POST["__RGname"];
+    $severity=$_POST["__severity"];
     $Rule_header=$_POST["__full_header"];
     $Rule_option=$_POST["__full_option"];
     $header = explode(' ', $Rule_header);
@@ -61,8 +62,8 @@
     
     //룰 삽입
     //$sql =$conn->prepare("INSERT INTO signature(sig_msg,sig_rev,sig_sid,sig_gid,sig_action,sig_protocol,sig_srcIP,sig_srcPort,sig_direction,sig_dstIP,sig_dstPort,sig_rule_option) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
-    $sql =$conn->prepare("update signature SET sig_msg=?, sig_rev=?, sig_sid=?, sig_gid=?, sig_action=?, sig_protocol=?, sig_srcIP=?, sig_srcPort=?, sig_direction=?, sig_dstIP=?, sig_dstPort=?, sig_rule_option=? where sig_id=?");    
-    $sql->bind_param("siiissssssssi",$Rule_name,$Rule_rev,$Rule_num,$Rule_GroupNum,$header[0],$header[1],$header[2],$header[3],$header[4],$header[5],$header[6],$Rule_option,$Rule_id);
+    $sql =$conn->prepare("update signature SET sig_msg=?, sig_rev=?, sig_sid=?, sig_gid=?, sig_action=?, sig_protocol=?, sig_srcIP=?, sig_srcPort=?, sig_direction=?, sig_dstIP=?, sig_dstPort=?, sig_rule_option=?, severity=? where sig_id=?");    
+    $sql->bind_param("siiissssssssii",$Rule_name,$Rule_rev,$Rule_num,$Rule_GroupNum,$header[0],$header[1],$header[2],$header[3],$header[4],$header[5],$header[6],$Rule_option,$severity,$Rule_id);
     $sql->execute();
     $sql->close();
     $conn->close();

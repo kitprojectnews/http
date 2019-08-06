@@ -2,120 +2,40 @@
 
 <head>
     <meta charset="UTF-8">
-
     <link rel="stylesheet" type="text/css" href="../css/Observer_tags.css" />
-    <style>
-        .tablink {
-            background-color: #555;
-            color: white;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            font-size: 17px;
-            width: 33%;
-        }
-
-        .tablink:hover {
-            background-color: #777;
-        }
-
-        /* Style the tab content */
-        .tabcontent {
-            color: black;
-            display: none;
-            padding: 25px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/Observer_eventdetail.css" />
 </head>
 <title>DetailViewer</title>
 <!----------------------------------------------------------------->
 <?php
 include 'dbconn.php';
+include 'event_packetview.php';
 $eid = $_GET["eid"];
 $sig_id = $_GET["sig_id"];
 
-$sql = 'SELECT * FROM data';
+$sql = 'SELECT * FROM data where eid='.$eid;
 $result_hex = $conn->query($sql);
-$result_asc = $conn->query($sql);
-function hexfilter($payload)
-{
-    $payload_hex = bin2hex($payload);
-    $payload_hex = strToUpper($payload_hex);
-    for ($i = 0; $i < strlen($payload_hex); $i++) {
-        if ($i == 0) {
-            echo ($payload_hex[$i]);
-            continue;
-        }
-        if ($i % 32 == 0) {
-            echo ("<br>");
-            echo ($payload_hex[$i]);
-        } else if ($i % 16 == 0) {
-            echo ("&nbsp;&nbsp;&nbsp;&nbsp;");
-            echo ($payload_hex[$i]);
-        } else if ($i % 8 == 0) {
-            echo ("&nbsp;&nbsp;");
-            echo ($payload_hex[$i]);
-        } else if ($i % 2 == 0) {
-            echo ("&nbsp;");
-            echo ($payload_hex[$i]);
-        } else {
-            echo ($payload_hex[$i]);
-        }
-    }
+$payload;
+if ($result_hex->num_rows > 0) {
+    $row = $result_hex->fetch_assoc();
+    $payload=$row["data_payload"];
 }
-function asciifilter($payload)
-{
-    for ($i = 0; $i < strlen($payload); $i++) {
-        if ($i == 0) {
-            if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (".");
-                continue;
-            }
-            echo ($payload[$i]);
-            continue;
-        }
-        if ($i % 16 == 0) {
-            echo ("<br>");
-            if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (".");
-                continue;
-            }
-            echo ($payload[$i]);
-        } else if ($i % 8 == 0) {
-            echo ("&nbsp;&nbsp;&nbsp;&nbsp;");
-            if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (".");
-                continue;
-            }
-            echo ($payload[$i]);
-        } else {
-            if (ord($payload[$i]) < 33 || ord($payload[$i]) > 127) {
-                echo (".");
-                continue;
-            }
-            echo ($payload[$i]);
-        }
-    }
-}
-
-$sql = 'SELECT * FROM signature';
+$result_hex->close();
+$sql = 'SELECT * FROM signature where sig_id='.$sig_id;
 $result_sigRule = $conn->query($sql);
-
 ?>
 <!----------------------------------------------------------------->
 
 <body>
     <button class="tablink" onclick="openView('RuleView', this, 'gray')" id="defaultOpen">RuleView</button>
     <button class="tablink" onclick="openView('Header', this, 'gray')">Header</button>
-    <button class="tablink" onclick="openView('PacketView', this, 'gray')">PacketView</button>
+    <button class="tablink" onclick="openView('TextView', this, 'gray')">TextView</button>
+    <button class="tablink" onclick="openView('HexView', this, 'gray')">HexView</button>
 
     <div id="RuleView" class="tabcontent">
         <br />
         <h1>RuleView</h1>
-        <table width=90%>
+        <table width=90% align='center'>
             <tr>
                 <th>id</th>
                 <th>msg</th>
@@ -132,7 +52,7 @@ $result_sigRule = $conn->query($sql);
                 <th>rule_option</th>
             </tr>
 
-            <tr>
+            <tr align='center'>
                 <?php
                 if ($result_sigRule->num_rows > 0) {
                     while ($row = $result_sigRule->fetch_assoc()) {
@@ -167,7 +87,7 @@ $result_sigRule = $conn->query($sql);
         <br />
 
         <h2>IP Header</h2>
-        <table width=70%>
+        <table width=70% align='center'>
             <tr>
                 <th>src_ip</th>
                 <th>dst_ip</th>
@@ -176,7 +96,7 @@ $result_sigRule = $conn->query($sql);
                 <th>more_frag</th>
                 <th>dont_frag</th>
             </tr>
-            <tr>
+            <tr align='center'>
                 <?php
                 $sql = 'SELECT * FROM iphdr WHERE iphdr.eid=' . $eid;
                 $result_iphdr = $conn->query($sql);
@@ -206,7 +126,7 @@ $result_sigRule = $conn->query($sql);
                 while ($row = $result_tcphdr->fetch_assoc()) {
                     if ($eid == $row["eid"]) {
                         echo ("<h2>TCP Header</h2>");
-                        echo ("<table width=70%>");
+                        echo ("<table width=70% align='center'>");
                         echo ("<tr>");
                         echo ("<th>src_port</th>");
                         echo ("<th>dst_port</th>");
@@ -219,7 +139,7 @@ $result_sigRule = $conn->query($sql);
                         echo ("<th>syn</th>");
                         echo ("<th>fin</th>");
                         echo ("<th>win_size</th>");
-                        echo ("</tr><tr>");
+                        echo ("</tr><tr align='center'>");
 
                         echo ("<td>" . $row["src_port"] . "</td>");
                         echo ("<td>" . $row["dst_port"] . "</td>");
@@ -244,7 +164,7 @@ $result_sigRule = $conn->query($sql);
                 while ($row = $result_udphdr->fetch_assoc()) {
                     if ($eid == $row["eid"]) {
                         echo ("<h2>UDP Header</h2>");
-                        echo ("<table width=70%>");
+                        echo ("<table width=70% align='center'>");
                         echo ("<tr>");
 
                         echo ("<th>src_port</th>");
@@ -265,7 +185,7 @@ $result_sigRule = $conn->query($sql);
                 while ($row = $result_icmphdr->fetch_assoc()) {
                     if ($eid == $row["eid"]) {
                         echo ("<h2>ICMP Header</h2>");
-                        echo ("<table width=70%>");
+                        echo ("<table width=70% align='center'>");
                         echo ("<tr >");
 
                         echo ("<th>type</th>");
@@ -284,37 +204,43 @@ $result_sigRule = $conn->query($sql);
 
     </div>
 
-    <div id="PacketView" class="tabcontent">
+    <div id="TextView" class="tabcontent">
         <br />
-        <h1>Packet Payload View</h1>
-        <table width=80%>
-            <tr>
-                <td style="text-align: left;">
-                    <?php
-                    if ($result_hex->num_rows > 0) {
-                        while ($row = $result_hex->fetch_assoc()) {
-                            if ($eid == $row["eid"]) {
-                                hexfilter($row["data_payload"]);
-                            }
-                        }
-                        $result_hex->close();
-                    }
-                    ?>
-                </td>
-                <td style="text-align: left;">
-                    <?php
-                    if ($result_asc->num_rows > 0) {
-                        while ($row = $result_asc->fetch_assoc()) {
-                            if ($eid == $row["eid"]) {
-                                asciifilter($row["data_payload"]);
-                            }
-                        }
-                        $result_asc->close();
-                    }
-                    ?>
-                </td>
-            </tr>
-        </table>
+        <h1>Packet Payload Text View</h1>
+        <br/>
+        <div id='div_textview'>
+        <?php
+            viewtext($payload);
+        ?>
+        </div>
+    </div>
+
+    <div id="HexView" class="tabcontent">
+        <br />
+        <h1>Packet Payload Hex View</h1>
+        <br/>
+        <div id='div_packetview'>
+        <?php
+            echo "<div id='div_hextable'>";
+            hexfilter($payload);
+            echo"</div>";
+            echo "<div id='div_asciitable'>";
+            asciifilter($payload);
+            echo"</div>";
+        ?>
+        <script>
+            function highlightBG(element, color) {
+                var x = document.getElementsByClassName( element );
+                for( var i = 0; i < x.length; i++ ) {
+                    x[i].style.backgroundColor=color;
+                    if(color=="white")
+                        x[i].style.color="black";
+                    else
+                        x[i].style.color="white";
+                }
+            }
+        </script>
+        </div>
     </div>
 
 </body>
