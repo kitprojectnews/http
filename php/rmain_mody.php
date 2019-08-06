@@ -50,7 +50,7 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
-<script src="../js/rmain.js"></script>
+<script src="../js/rmain2.js"></script>
 </head>
 <body onload=lastoptions_parse()>
 <input type=hidden id=hidden_loption value='<?=$row["sig_rule_option"]?>'>
@@ -89,6 +89,18 @@ table, th, td {
 				}
 			?>
 			</select></td>
+		</tr>
+		<tr>
+			<td>&nbsp;Severity
+			<td>
+				<select id=severity>
+					<option value=1 <?php if($row["severity"]==1){?> selected <?php }?>>N/A</option>
+					<option value=2 <?php if($row["severity"]==2){?> selected <?php }?>>Low</option>
+					<option value=3 <?php if($row["severity"]==3){?> selected <?php }?>>Medium</option>
+					<option value=4 <?php if($row["severity"]==4){?> selected <?php }?>>High</option>
+					<option value=5 <?php if($row["severity"]==5){?> selected <?php }?>>Critical</option>
+				</select>
+			</td>
 		</tr>
 	</table>
 	
@@ -489,6 +501,7 @@ table, th, td {
   <input type="hidden" name="__sid" id="__sid" value='<?=(int)$sig_id?>'>
 	<input type="hidden" name="__Rname"  id="__Rname">
 	<input type="hidden" name="__RGname" id="__RGname">
+	<input type="hidden" name="__severity" id="__severity">
 	<input type="hidden" name="__full_header" id="__full_header">
 	<input type="hidden" name="__full_option" id="__full_option">
 	<input type="button" onclick=allCheck() value="값 체크 및 전송" style="height: 50px; width: 650px">
