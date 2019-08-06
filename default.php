@@ -8,13 +8,22 @@
     {
         header('Location:./index.html');
     }
+    $_SESSION['eid'] = -1;
     ?>
 </head>
-<body>
+<body onload="showCustomer()">
     <div id="div_root">
         <div id="div_head">
             <div id="div_banner">
                 Observer
+            </div>
+            <div id="div_eventalert">
+            <iframe id="eventiframe" name="eventiframe" src="php/event_alert.php" width="100%" height="90%" frameborder="0"></iframe>
+            </div>
+            <div id="div_alertcheckbox">
+            <form>
+                <input type="button" id="clear" name="clear" value="®" onClick="clear()">
+            </form>
             </div>
             <div id="div_login">
                 <table width=100% height=100%><tr><td>
@@ -63,5 +72,11 @@
     </div>
 </body>
 <script src="js/menu.js">
+</script>
+<script launguage='JAVASCRIPT'>
+    function clear()
+    {
+        document.getElementById("eventiframe").contentDocument.location.reload(true);
+    }
 </script>
 </html>
