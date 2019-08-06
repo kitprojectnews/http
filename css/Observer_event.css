@@ -1,6 +1,37 @@
-#root_div{
-    margin: 20px 10px;
+:root{
+    --select-height:30px;
+    --select-width:450px;
 }
+#root_div{
+    margin-left: 20px;
+    width:calc(100% - 20px);
+}
+#select_div{
+    height:var(--select-height);
+}
+.select_radio{
+    float:right;
+    width:250px;
+    height:100%;
+}
+.select_time{
+    text-align:right;
+    width:var(--select-width);
+    float:right;
+    height:100%;
+}
+.select_date{
+    text-align:right;
+    width:var(--select-width);
+    float:right;
+    height:100%;
+}
+
+#table_div{
+    width:100%;
+    height:calc(100% - var(--select-height));
+}
+
 table.eventTable {
     width: 100%;
     border-collapse: collapse;
@@ -38,3 +69,11 @@ table.eventTable td {
 input[type=button]{color: #fff; text-align: center; background-color: #7e8c8d; border-color: #7e8c8d;}
 input[type=button]:hover{color: #fff; text-align: center; background-color:#6a7879;}
 input[type=button]:active{color: #fff; text-align: center; top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+
+input[type="date"]::-webkit-inner-spin-button,input[type="date"]::-webkit-clear-button{
+    display: none;
+    -webkit-appearance: none;
+}
+input[type="number"] {
+    width:35px;
+ }

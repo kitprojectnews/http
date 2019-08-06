@@ -38,8 +38,8 @@ function asciifilter($payload)
 }
 function viewtext($payload)
 {
-    echo "<p align='left'>";
+    echo "<pre align='left' style='font-size: 15px'>";
     echo $payload;
-    echo "</p>";
+    echo "</pre>";
 }
 ?>
