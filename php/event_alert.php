@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION['eid'] = -1;
+?>
 <form id=div_alertcheckbox>
 
 </form>
@@ -14,7 +18,7 @@
         };
         xhttp.open("GET", "event_alert_server.php", true);
         xhttp.send();
-        window.scrollBy(0,99999);
+        window.scrollBy(0,999999);
 
     }, 1000);
 </script>
