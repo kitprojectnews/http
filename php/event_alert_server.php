@@ -1,5 +1,7 @@
 <?php
 include "dbconn.php";
+session_start();
+
 if($_SESSION['eid']==-1)
 {
     $sql = "SELECT eid FROM alert_view ORDER BY eid DESC limit 1";
@@ -18,9 +20,10 @@ if($_SESSION['eid']==-1)
  if ($result->num_rows > 0) {
     echo "<table border=1 width=100%>";
      while ($row = $result->fetch_assoc()) {
-        $_SESSION['eid'] = $row["eid"];
             if($row["sig_action"]=="alert"){
             echo("<tr>");
+            echo("<td align=center>".$row["eid"]."</td>");
+
             echo("<td align=center width=300>".$row["time"]."</td>");
             echo("<td align=center>".$row["sig_msg"]."</td>");
             echo("</tr>");     
@@ -29,6 +32,6 @@ if($_SESSION['eid']==-1)
          echo "</table>";
      }
  else {
-     echo "0 r2esults<br>";
+     echo "0 r2sults<br>";
  }
 ?>

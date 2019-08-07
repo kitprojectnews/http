@@ -8,7 +8,6 @@
     {
         header('Location:./index.html');
     }
-    $_SESSION['eid'] = -1;
     ?>
 </head>
 <body onload="showCustomer()">
@@ -22,7 +21,7 @@
             </div>
             <div id="div_alertcheckbox">
             <form>
-                <input type="button" id="clear" name="clear" value="®" onClick="clear()">
+                <input type="button" id="clear" name="clear" value="®" onClick="clearframe()">
             </form>
             </div>
             <div id="div_login">
@@ -74,9 +73,9 @@
 <script src="js/menu.js">
 </script>
 <script launguage='JAVASCRIPT'>
-    function clear()
+    function clearframe()
     {
-        document.getElementById("eventiframe").contentDocument.location.reload(true);
+                document.getElementById("eventiframe").contentDocument.location.reload(true);
     }
 </script>
 </html>
