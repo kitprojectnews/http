@@ -9,7 +9,7 @@
         <div class='select_time' id='time'>
             <table align='right'><tr>
                 <td>범위:&nbsp최근&nbsp</td>
-                <td><input type='number' min='0' value='0' name="hour" id='time_hour'></td><td>시간</td>
+                <td><input type='number' min='0' value='0' name="hour" id='time_hour'>시간</td>
                 <td><input type='number' min='0' max='59' value='30' name="minute" id='time_minute'>분&nbsp&nbsp</td>
                 <td>새로고침 간격: </td>
                 <td>
@@ -23,10 +23,12 @@
             </tr></table>
         </div>
         <div class='select_date' id='date' style ='display:none'>
-            <input type="date" value='<?php echo date('Y-m-d');?>' id='date_from' onChange='changedatefrom();'>
-            ~
-            <input type="date" value='<?php echo date('Y-m-d');?>' id='date_to' onChange='changedateto();'>
-            <input type="button" value='조회' onClick='selectDate();'>
+            <table align='right'><tr>
+                <td><input type="date" value='<?php echo date('Y-m-d');?>' id='date_from' onChange='changedatefrom();'></td>
+                <td>~</td>
+                <td><input type="date" value='<?php echo date('Y-m-d');?>' id='date_to' onChange='changedateto();'></td>
+                <td><input type="button" value='조회' onClick='selectDate();'></td>
+            </tr></table>
         </div>
         <div class='select_radio'>
             <table align='right'><tr>
@@ -59,7 +61,7 @@
     }
     function selectDate(){
         var OnOff=document.getElementById('OnOff');
-        OnOff.value='▶';
+        OnOff.value='►';
         isrefresh=false;
         clearInterval(interval);
         var frame=document.getElementById('table');
@@ -80,7 +82,7 @@
         if(isrefresh==true)
         {
             var OnOff=document.getElementById('OnOff');
-            OnOff.value='▶';
+            OnOff.value='►';
             isrefresh=false;
             clearInterval(interval);
         }
