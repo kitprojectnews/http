@@ -10,7 +10,7 @@ if($_SESSION['eid']==-1)
     {
         while ($row = $result->fetch_assoc()) 
         {
-            $_SESSION['eid'] = $row["eid"];
+            $_SESSION['eid'] = $row["eid"]+1;
         }
     }
 }
@@ -21,6 +21,7 @@ if($_SESSION['eid']==-1)
      while ($row = $result->fetch_assoc()) {
             if($row["sig_action"]=="alert"){
             echo("<tr>");
+            $_SESSION['eid'] = $row["eid"]+1;
             echo("<td align=center width=300 style='border-bottom: 1px solid #666666;'>".$row["time"]."</td>");
             echo("<td align=center style='border-bottom: 1px solid #666666;'>".$row["sig_msg"]."</td>");
             echo("</tr>");     
@@ -29,6 +30,5 @@ if($_SESSION['eid']==-1)
          echo "</table>";
      }
  else {
-     echo "0 r2sults<br>";
  }
 ?>
