@@ -62,7 +62,7 @@ table, th, td {
 		</tr>
 		<tr>
 			<td style="width:40%">&nbsp;Rule Name</td>
-			<td><input type="text" id="rule_name" value=<?=$row["sig_msg"]?>></td>
+			<td><input type="text" id="rule_name" value=<?=json_encode($row["sig_msg"])?>></td>
 		</tr>
 		<tr>
 			<td>&nbsp;Rule Group Name</td>
