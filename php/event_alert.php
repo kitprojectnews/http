@@ -13,7 +13,7 @@ $_SESSION['eid'] = -1;
         xhttp.onreadystatechange = function() 
         {
             if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("div_alertcheckbox").innerHTML = this.responseText;
+            document.getElementById("div_alertcheckbox").innerHTML += this.responseText;
             }
         };
         xhttp.open("GET", "event_alert_server.php", true);

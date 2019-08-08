@@ -21,7 +21,7 @@
             </div>
             <div id="div_alertcheckbox">
             <form>
-                <input type="button" id="clear" name="clear" value="®" onClick="clearframe()">
+                <input type="button" id="clear" name="clear" value="clear" onClick="clearframe()">
             </form>
             </div>
             <div id="div_login">
