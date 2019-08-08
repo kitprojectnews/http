@@ -55,6 +55,7 @@
             </div>
         </div>
     </body>
+    <script src="../js/update_chart.js"></script>
     <script>
         var sysinfo = document.getElementById('sysinfo');
         var sysChart = new Chart(sysinfo, {
@@ -62,7 +63,7 @@
             data: {
                 labels: ['CPU', 'Memory', 'Disk'],
                 datasets: [{
-                    data: [<?php echo (double)get_server_cpu_usage();?>, <?php echo (double)get_server_memory_usage();?>, <?php echo (double)get_server_disk_usage();?>],
+                    data: [<?php echo (double)get_server_cpu_usage2();?>, <?php echo (double)get_server_memory_usage();?>, <?php echo (double)get_server_disk_usage();?>],
                     backgroundColor: [
                         'rgba(17, 125, 187, 0.2)',
                         'rgba(139, 18, 174, 0.2)',
@@ -158,7 +159,7 @@
             }
         });
         var log_amount_hour= document.getElementById('log_amount_hour');
-        var logChart = new Chart(log_amount_hour, {
+        var logChart2 = new Chart(log_amount_hour, {
             type: 'line',
             data: {
                 labels: [
@@ -206,6 +207,19 @@
                 }
             }
         });
+    
+        var interval = setInterval(function (){
+            var xhttp; 
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                            updateCharts(this);
+                    }
+                };
+                xhttp.open("GET", "home_updateChart.php", true);
+                xhttp.send();
+            }, 3000);
+        
     </script>
 </html>
 <script>
