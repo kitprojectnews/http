@@ -4,7 +4,9 @@
     --hr-height:10px;
     --login-width:400px;
     --banner-margin:20px;
+    --banner-width:400px;
     --title-font:80px;
+    --eventalert-width:700px;
 }
 
 @font-face {
@@ -25,10 +27,12 @@
 #div_head{
     width:100%;
     height: var(--head-height);
+    display: grid;
+    grid-template-columns: 1fr 4fr 0.7fr 1fr;
 }
 
 #div_banner{
-    width:calc(100% - var(--login-width));
+    width:var(--banner-width);
     height:100%;
     margin-left: var(--banner-margin);
     line-height: var(--title-font);
@@ -37,12 +41,28 @@
     font-family: "title_font";
     float: left;
 }
-
-
+#div_eventalert{
+    margin: 0 auto;
+    width:  var(--eventalert-width);  
+    text-align: center;
+    float: center;
+    overflow:auto;
+    height: 100%;
+}
+#div_eventalert iframe{
+    border: none;
+}
+#div_alertcheckbox{
+    margin-right: var(--banner-margin);
+    text-align: left;
+    width:  var(30px);
+    float: left;    
+}
 #div_login{
-    width:calc(var(--login-width) - var(--banner-margin));
+    margin-right: var(--banner-margin);
+    width:var(--login-width );
     height:100%;
-    float: left;
+    float: right;
     position: relative;
 }
 #div_login a{

@@ -1,6 +1,13 @@
 #root_div{
-    margin: 20px 10px;
+    margin-left: 20px;
+    width:calc(100% - 20px);
 }
+
+#table_div{
+    width:100%;
+    height:calc(100% - var(--select-height));
+}
+
 table.eventTable {
     width: 100%;
     border-collapse: collapse;
@@ -16,23 +23,21 @@ table.eventTable thead th {
     border-right: 1px solid #ccc;
     border-bottom: 2px solid #c00;
     background: #dcdcd1;
-    font-size:20px;
+    font-size:15px;
 }
 table.eventTable tbody th {
     padding: 3px;
     font-weight: bold;
-    vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     background: #ececec;
-    font-size:20px;
+    font-size:15px;
 }
 table.eventTable td {
     padding: 5px;
-    vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    font-size:20px;
+    font-size:15px;
 }
 
 input[type=button]{color: #fff; text-align: center; background-color: #7e8c8d; border-color: #7e8c8d;}
