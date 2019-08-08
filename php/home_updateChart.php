@@ -50,7 +50,7 @@ $root->appendChild($time_log);
 for ($i=0; $i <24; $i++) { 
     $time_data[$i] = $doc->createElement("time_amount", $data_hour[$hourset[$i]]);
     $time_attr[$i]=$doc->createAttribute("time");
-    $time_attr[$i]->value="'".explode ( " ", $hourset[$i] )[1]."'";
+    $time_attr[$i]->value=explode ( " ", $hourset[$i] )[1];
     $time_data[$i] ->appendChild($time_attr[$i]);
     $time_log->appendChild($time_data[$i]);
 }
