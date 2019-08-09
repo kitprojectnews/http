@@ -15,7 +15,7 @@
                 <td>
                 <select onChange='TimeChange(this);'>
                     <option value=10000>10초</option>
-                    <option value=30000>30초</option>
+                    <option value=30000 selected>30초</option>
                     <option value=60000>1분</option>
                     <option value=300000>5분</option>
                 </select>
