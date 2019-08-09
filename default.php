@@ -17,7 +17,7 @@
                 Observer
             </div>
             <div id="div_eventalert">
-            <iframe id="eventiframe" name="eventiframe" src="php/event_alert.php" width="100%" height="90%" frameborder="0"></iframe>
+            <iframe id="eventiframe" name="eventiframe" src="php/event_alert.php" width="100%" height="95%" frameborder="0"></iframe>
             </div>
             <div id="div_alertcheckbox">
             <form>
