@@ -13,10 +13,11 @@
                 <td><input type='number' min='0' max='59' value='30' name="minute" id='time_minute'>분&nbsp&nbsp</td>
                 <td>새로고침 간격: </td>
                 <td>
-                <select>
-                    <option>30초</option>
-                    <option>1분</option>
-                    <option>5분</option>
+                <select onChange='TimeChange(this);'>
+                    <option value=10000>10초</option>
+                    <option value=30000>30초</option>
+                    <option value=60000>1분</option>
+                    <option value=300000>5분</option>
                 </select>
                 </td>
                 <td><input type="button" value='||' onClick='selectTimeStart();' id='OnOff'></td>
@@ -45,6 +46,7 @@
 </div>
 </body>
 <script>
+    var refreshTime=30000;
     function selectType(radio){
         var time = document.getElementById("time");
         var date = document.getElementById("date");
@@ -91,11 +93,17 @@
             var OnOff=document.getElementById('OnOff');
             OnOff.value='||';
             isrefresh=true;
-            interval=setInterval(function(){selectTime();}, 3000);
+            interval=setInterval(function(){selectTime();}, refreshTime);
             selectTime();
         }
     }
+    function TimeChange(time){
+        refreshTime = time.options[time.selectedIndex].value;
+        clearInterval(interval);
+        interval=setInterval(function(){selectTime();}, refreshTime);
+        selectTime();
+    }
     var isrefresh=true;
-    var interval=setInterval(function(){selectTime();}, 3000);
+    var interval=setInterval(function(){selectTime();}, refreshTime);
 </script>
 </html>

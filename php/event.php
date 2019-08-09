@@ -43,7 +43,25 @@
                         while ($row = $result->fetch_assoc()) {
                             echo ("<tr>");
                             echo ("<th scope='row'>" . $row["eid"] . "</th>");
-                            echo ("<td>" . $row["severity"] . "</td>");
+                            echo ("<td>");
+                            switch($row["severity"]){
+                                case 1:
+                                    echo '<img src="../images/icons/circle-gray.png" >';
+                                    break;
+                                case 2:
+                                    echo '<img src="../images/icons/circle-yellow.png" >';
+                                    break;
+                                case 3:
+                                    echo '<img src="../images/icons/circle-orange.png" >';
+                                    break;
+                                case 4:
+                                    echo '<img src="../images/icons/circle-dorange.png" >';
+                                    break;
+                                case 5:
+                                    echo '<img src="../images/icons/circle-red.png" >';
+                                    break;
+                            }
+                            echo ("</td>");
                             echo ("<td>" . $row["time"] . "</td>");
                             echo ("<td align='left'>" . $row['sig_msg'] . "</td>");
                             echo ("<td>" . long2ip($row["src_ip"]) . "</td>");
