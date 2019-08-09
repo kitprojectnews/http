@@ -43,10 +43,10 @@ input[type="date"]::-webkit-inner-spin-button,input[type="date"]::-webkit-clear-
     -webkit-appearance: none;
 }
 input[type="date"] {
-    width:100px;
+    width:120px;
 }
 input[type="number"] {
-    width:35px;
+    width:40px;
 }
 input[type=button]{
     color: #fff; 
