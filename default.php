@@ -19,11 +19,7 @@
             <div id="div_eventalert">
             <iframe id="eventiframe" name="eventiframe" src="php/event_alert.php" width="100%" height="95%" frameborder="0"></iframe>
             </div>
-            <div id="div_alertcheckbox">
-            <form>
-                <input type="button" id="clear" name="clear" value="clear" onClick="clearframe()">
-            </form>
-            </div>
+            
             <div id="div_login">
                 <table width=100% height=100%><tr><td>
                 <div class="login_text">
