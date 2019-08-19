@@ -29,15 +29,15 @@
                     <th scope="cols">ETC</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id='tablebody'>
                 <?php
                     include 'dbconn.php';
                     if( array_key_exists("select_ago", $_GET))
-                        $sql = 'SELECT * FROM event_view where  time>SUBDATE(NOW(), INTERVAL '.$_GET['select_ago'].' MINUTE) ORDER BY eid desc';
+                        $sql = 'SELECT * FROM event_view where  time>SUBDATE(NOW(), INTERVAL '.$_GET['select_ago'].' MINUTE) ORDER BY eid desc limit 30';
                     else if( array_key_exists("select_from", $_GET)&&array_key_exists("select_to", $_GET))
-                        $sql = 'SELECT * FROM event_view where  date(time)>="'.$_GET['select_from'].'"and date(time)<="'.$_GET['select_to'].'" ORDER BY eid desc';
+                        $sql = 'SELECT * FROM event_view where  date(time)>="'.$_GET['select_from'].'"and date(time)<="'.$_GET['select_to'].'" ORDER BY eid desc limit 30';
                     else
-                        $sql = 'SELECT * FROM event_view where  time>SUBDATE(NOW(), INTERVAL 60 MINUTE) ORDER BY eid desc';
+                        $sql = 'SELECT * FROM event_view where  time>SUBDATE(NOW(), INTERVAL 30 MINUTE) ORDER BY eid desc limit 30';
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
@@ -73,6 +73,7 @@
                             echo ("<td>" . $row["true_rate"] . "</td>");
                             echo ("<td> <input type=button value=자세히 onClick='detail(" . $row["eid"] . "," . $row["sig_id"] . ")' /></td>");
                             echo ("</tr>");
+                            $lasteid=$row["eid"];
                         }
                     }
                     $result->close();
@@ -88,6 +89,36 @@
         var popupY= (window.screen.height / 2) - 400;
         window.open('event_detailView.php?eid=' + eid + '&sig_id=' + sig_id, 'detailViewer', 'width = 1000, height = 800, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no ');
     }
-</script>
 
+    function GetMoreEvent(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+                                        if (this.readyState == 4 && this.status == 200) {
+                                            var allbody=this.responseText.split("&&");
+                                            if(allbody[0]=="")
+                                                $(window).off("scroll", scrollFunction);
+                                            document.getElementById("tablebody").innerHTML += allbody[0];
+                                            Lasteid=parseInt(allbody[1]);
+                                        }
+                                    };
+        <?php
+            if( array_key_exists("select_ago", $_GET))
+                echo 'xhttp.open("GET", "event_more.php?select_ago='.$_GET['select_ago'].'&lasteid="+Lasteid, true);';
+            else if( array_key_exists("select_from", $_GET)&&array_key_exists("select_to", $_GET))
+                echo 'xhttp.open("GET", "event_more.php?select_from='.$_GET['select_from'].'&select_to='.$_GET['select_to'].'&lasteid="+Lasteid, true);';
+            else
+                echo 'xhttp.open("GET", "event_more.php?select_ago=30&lasteid="+Lasteid, true);';
+        ?>
+        xhttp.send();
+    }
+
+    var scrollFunction=function() {
+        if ($(window).scrollTop() > $(document).height() - $(parent.window).height()) {			
+            GetMoreEvent();
+        }
+    }
+
+    $(window).on("scroll", scrollFunction);
+    var Lasteid=<?php echo $lasteid;?>;
+</script>
 </html>
