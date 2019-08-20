@@ -11,7 +11,7 @@ if($_SESSION['eid']==-1)
         while ($row = $result->fetch_assoc()) 
         {
             $_SESSION['eid'] = $row["eid"]+1;
-            $_SESSION['eidset'] = $row["eid"]+1;
+            $_SESSION['eidset'] = $row["eid"];
         }
     }
 }
@@ -21,9 +21,9 @@ if($_SESSION['eid']==-1)
     echo "<table align=center border=0 width=100%  style='border-collapse: collapse;'>";
      while ($row = $result->fetch_assoc()) {
             if($row["sig_action"]=="alert"){
-            echo("<tr>");
+            echo("<tr  id='note'>");
             $_SESSION['eid'] = $row["eid"];
-            echo("<td id='note' align=center width=90% bgcolor=ff0000  style='border-bottom: 1px solid #666666;'>".($_SESSION['eid']-$_SESSION['eidset'])." Rules event logged</td><td id='note' align=center width=10%><a href='#' onclick='javascript:location.reload(true)'>X</a></td>");
+            echo("<td align=center width=90%>".($_SESSION['eid']-$_SESSION['eidset'])." Rules event logged</td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td>");
             // echo("<td align=center style='border-bottom: 1px solid #666666;'>".$row["sig_msg"]."</td>");
             echo("</tr>");     
             }
