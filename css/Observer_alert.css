@@ -1,6 +1,7 @@
 #note {
     position: relative;
     z-index: 101;
+    margin:0;
     top: 0;
     left: 0;
     right: 0;
@@ -12,6 +13,16 @@
     -moz-box-shadow:    0 0 5px black;
     box-shadow:         0 0 5px black;
 }
+td, th, table {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-spacing: 0,0;
+    padding:-10,-10,0,0; 
+    margin:0,0,0,0;
+    border-collapse: collapse;
+}
 .css-cancel {
     display: inline-block;
     position: relative;
@@ -19,7 +30,7 @@
     padding: 0;
     width: 4px;
     height: 20px;
-    background: #000;
+    background: #fff;
     transform: rotate(45deg);
 }
 .css-cancel:before {
@@ -32,5 +43,5 @@
     width: 20px;
     height: 4px;
     margin-top: -2px;
-    background: #000;
+    background: #fff;
 }

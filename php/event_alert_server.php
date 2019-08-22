@@ -11,7 +11,6 @@ if($_SESSION['eid']==-1)
         while ($row = $result->fetch_assoc()) 
         {
             $_SESSION['eid'] = $row["eid"]+1;
-            $_SESSION['eidset'] = $row["eid"];
         }
     }
 }
@@ -23,7 +22,15 @@ if($_SESSION['eid']==-1)
             if($row["sig_action"]=="alert"){
             echo("<tr  id='note'>");
             $_SESSION['eid'] = $row["eid"];
-            echo("<td align=center width=90%>".($_SESSION['eid']-$_SESSION['eidset'])." Rules event logged</td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td>");
+            if(strlen($row["sig_msg"])>24)
+            {
+                $msg=substr($row["sig_msg"] ,0 ,24);
+                $msg.="...";
+            }
+            else {
+                $msg=$row["sig_msg"];
+            }
+            echo("<td align=center width=90%>Rule [ ".$msg." ] is Matched.</td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td>");
             // echo("<td align=center style='border-bottom: 1px solid #666666;'>".$row["sig_msg"]."</td>");
             echo("</tr>");     
             }
