@@ -115,7 +115,7 @@
         <?php
             }
         ?>
-        <td><?php echo $row["sig_msg"] ?>
+        <td><?php echo htmlentities($row["sig_msg"]) ?>
         <td align=center>
             <?php 
                 switch($row["severity"]){
@@ -154,7 +154,7 @@
         <td align=center><?php echo $row["sig_direction"] ?>
         <td align=center><?php if($row["sig_dstIP"][0]=='$'){ echo substr($row["sig_dstIP"],1);} else if($row["sig_dstIP"][1]=='$'){ echo "!".substr($row["sig_dstIP"],2);} else{ echo $row["sig_dstIP"];}?>
         <td align=center><?php if($row["sig_dstPort"][0]=='$'){ echo substr($row["sig_dstPort"],1);} else if($row["sig_dstPort"][1]=='$'){ echo "!".substr($row["sig_dstPort"],2);} else{ echo $row["sig_dstPort"];}?>
-        <td><?php echo $row["sig_rule_option"] ?></td>
+        <td><?php echo htmlentities($row["sig_rule_option"]) ?></td>
         <td>
         <?php
              if($_SESSION["r_update"]==1){
