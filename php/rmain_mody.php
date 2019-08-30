@@ -1,5 +1,13 @@
 <?php
-
+session_start();
+if(!$_SESSION['u_active'])//활성 유저 여부 
+{
+ header('Location:../index.html');
+}
+if(!$_SESSION['r_update'])//룰 추가 수정 삭제 가능 여부
+{
+   die('접근권한이 없습니다. ');
+}
 include 'dbconn.php';
 
 //수정이 들어왔을 시
