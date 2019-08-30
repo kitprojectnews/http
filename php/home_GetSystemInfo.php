@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!$_SESSION['u_active'])//활성 유저 여부 
+{
+ header('Location:../index.html');
+}
     function get_server_memory_usage(){
 
         $exec_free = explode("\n", trim(shell_exec('free')));
