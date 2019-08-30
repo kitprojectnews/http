@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!$_SESSION['u_active'])//활성 유저 여부 
+{
+ header('Location:../index.html');
+}
 $_SESSION['eid'] = -1;
 $_SESSION['eidset'] = -1;
 ?>
