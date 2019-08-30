@@ -1,6 +1,14 @@
 <?php
    include 'dbconn.php';
-   session_start();
+session_start();
+if(!$_SESSION['u_active'])//활성 유저 여부 
+{
+ header('Location:../index.html');
+}
+if(!$_SESSION['r_update'])//룰 추가 수정 삭제 가능 여부
+{
+   die('접근권한이 없습니다. ');
+}
 ?>
 <!DOCTYPE html>
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
@@ -10,7 +18,7 @@
 <body>
 <h2 align=center>Group List</h2>
     <?php
-        if($_SESSION["u_update"]==1){
+        if($_SESSION["r_update"]==1){
     ?>
     <div align=center>
         <form method=post action=groupEx.php>
@@ -25,7 +33,7 @@
         <tr>
             <th>Group Name</th>
             <?php
-                if($_SESSION["u_update"]==1){
+                if($_SESSION["r_update"]==1){
             ?>
             <th>DELETE</th>
             <?php
@@ -42,7 +50,7 @@
 		<tr>
             <td><?=$row["gname"]?></td><?php if($row["gname"]=="DEFAULT") continue; ?>
             <?php
-                if($_SESSION["u_update"]==1){
+                if($_SESSION["r_update"]==1){
             ?>
             <form method=post action=groupEx.php>
             <input type=hidden value=<?=$row["gname"]?> name="del">
