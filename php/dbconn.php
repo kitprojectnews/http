@@ -2,7 +2,7 @@
     $servername="localhost";
     $username="jwh";
     $password="Qwer!234";
-    $dbname="test";
+    $dbname="Observer";
     //Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     //Check connection
