@@ -23,7 +23,23 @@ if($_SESSION['eid']==-1)
     echo "<table align=center border=0 width=100%  style='border-collapse: collapse;'>";
      while ($row = $result->fetch_assoc()) {
             if($row["sig_action"]=="alert"){
-            echo("<tr  id='note'>");
+                switch($row["severity"]){
+                    case 1:
+                    echo("<tr  id='NA'>");
+                        break;
+                    case 2:
+                    echo("<tr  id='Low'>");
+                        break;
+                    case 3:
+                    echo("<tr  id='Medium'>");
+                        break;
+                    case 4:
+                    echo("<tr  id='High'>");
+                        break;
+                    case 5:
+                    echo("<tr  id='Critical'>");
+                        break;
+                }
             $_SESSION['eid'] = $row["eid"];
             if(strlen($row["sig_msg"])>24)
             {

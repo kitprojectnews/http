@@ -1,11 +1,71 @@
-#note {
+#NA {
     position: relative;
     z-index: 101;
     margin:0;
     top: 0;
     left: 0;
     right: 0;
-    background: #FF4259;
+    background: #D3D3D3;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+}
+#Low {
+    position: relative;
+    z-index: 101;
+    margin:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #FFFF0D;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+}
+#Medium {
+    position: relative;
+    z-index: 101;
+    margin:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffa500;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+}
+#High {
+    position: relative;
+    z-index: 101;
+    margin:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ff770f;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+}
+#Critical {
+    position: relative;
+    z-index: 101;
+    margin:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #FF0000;
     text-align: center;
     line-height: 2.5;
     overflow: hidden; 
