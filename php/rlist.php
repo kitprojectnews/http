@@ -159,10 +159,10 @@ $allGroup;
         <td align=center><?php if($row["sig_dstIP"][0]=='$'){ echo substr($row["sig_dstIP"],1);} else if($row["sig_dstIP"][1]=='$'){ echo "!".substr($row["sig_dstIP"],2);} else{ echo $row["sig_dstIP"];}?>
         <td align=center><?php if($row["sig_dstPort"][0]=='$'){ echo substr($row["sig_dstPort"],1);} else if($row["sig_dstPort"][1]=='$'){ echo "!".substr($row["sig_dstPort"],2);} else{ echo $row["sig_dstPort"];}?>
         <td><?php echo htmlentities($row["sig_rule_option"]) ?></td>
-        <td>
         <?php
              if($_SESSION["r_update"]==1){
         ?>
+	<td>
         <div style="float:left;">
         <form method=post action="rmain_mody.php" style="display:inline;">
         <input type="hidden" name="sid" value=<?=$row["sig_id"]?>>
