@@ -4,12 +4,9 @@
 	<meta charset="UTF-8">
 </head>
 <?php
+	include 'ReSession.php';
+	session_start();
 	include 'dbconn.php';
-session_start();
-if(!$_SESSION['u_active'])//활성 유저 여부 
-{
- header('Location:../index.html');
-}
 ?>
 
 <script src="../js/rmain2.js"></script>

@@ -5,11 +5,8 @@
 <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <link rel="stylesheet" type="text/css" href="../css/Observer_tags.css">
 <?php
+include 'ReSession.php';
 session_start();
-if(!$_SESSION['u_active'])//활성 유저 여부 
-{
- header('Location:../index.html');
-}
 if(!$_SESSION['u_update'])//유저 관리권한 여부
 {
    die('접근권한이 없습니다. ');

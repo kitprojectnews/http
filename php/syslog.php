@@ -1,11 +1,8 @@
 <html>
     <?php
-    session_start();
-if(!$_SESSION['u_active'])//활성 유저 여부 
-{
- header('Location:../index.html');
-}
-    ?>
+include 'ReSession.php';
+session_start();
+?>
     <head>
         <link rel="stylesheet" type="text/css" href="../css/Observer_syslog.css" />
     </head>

@@ -1,10 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <?php
+include 'ReSession.php';
 session_start();
-if(!$_SESSION['u_active'])//활성 유저 여부 
-{
- header('Location:../index.html');
-}
 if(!$_SESSION['u_update'])//유저 관리권한 여부
 {
    die('접근권한이 없습니다. ');

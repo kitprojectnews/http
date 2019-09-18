@@ -3,15 +3,8 @@
     <link rel="stylesheet" type="text/css" href="css/Observer_animaiton.css" />
     <link rel="stylesheet" type="text/css" href="css/Observer_div.css" />
     <?php
+    include 'ReSession.php';
     session_start();
-    if (!isset($_SESSION['u_num'])) 
-    {
-        header('Location:./index.html');
-    }
-    if(!$_SESSION['u_active'])//활성 유저 여부 
-    {
-     header('Location:./index.html');
-    }
     ?>
 </head>
 <body onload="showCustomer()">

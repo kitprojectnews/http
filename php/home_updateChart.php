@@ -1,9 +1,5 @@
 <?php
-session_start();
-if(!$_SESSION['u_active'])//활성 유저 여부 
-{
- header('Location:../index.html');
-}
+
 include "home_GetSystemInfo.php";
 include "home_log_amount.php";
 

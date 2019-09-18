@@ -8,12 +8,9 @@ include "dbconn.php";
 
 //How to use - 세션 확인 + 활성 유저 여부 + 각각 필요한 권한
 session_start();
-$user = $_POST["user"];
-$pass = $_POST["pass"];
+$uid = $_SESSION['u_id'];
 
-$hashpw = base64_encode(hash('sha256', $pass, true));
-
-$sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM test.account WHERE u_id = '$user' and u_pw = '$hashpw'";
+$sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM test.account WHERE u_id = '$uid'";
 $result = $conn->query($sql);
 
 if ($result->num_rows != 0) {
@@ -25,22 +22,17 @@ if ($result->num_rows != 0) {
         $_SESSION['u_active'] = $row["u_active"];
         $_SESSION['u_update'] = $row["u_update"];
         $_SESSION['r_update'] = $row["r_update"];
-
-        $conn->close();
     }
+    $conn->close();
     if(!$_SESSION['u_active'])//활성 유저 여부 
-    {
-        echo " <script>alert('해당 사용자가 비활성화 되었습니다.'); history.back(); </script>";
-    }else{
-        Header("Location:../default.php");
-    }
+        {
+            echo " <script>alert('사용하시던 사용자가 비활성화 되었습니다.'); parent.location.href='../index.html'; </script>";            
+        }
 } 
 else {
     $conn->close();
-    echo " <script>alert('USERNAME 또는 PASSWORD 틀림'); history.back(); </script>";
+    echo " <script>alert('사용자를 확인해주세요'); parent.location.href='../index.html'; </script>";
 }
-
-
 ?>
 </body>
 </html>
