@@ -1,18 +1,6 @@
 <?php
-include 'ReSession.php';
-session_start();
-if($_SESSION['eid']==-1)
-{
-    $sql = "SELECT eid FROM alert_view ORDER BY eid DESC limit 1";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) 
-    {
-        while ($row = $result->fetch_assoc()) 
-        {
-            $_SESSION['eid'] = $row["eid"]+1;
-        }
-    }
-}
+include "dbconn.php";
+
  $sql = "SELECT * FROM alert_view WHERE eid >= '".$_SESSION['eid']."' order by eid desc limit 1";
  $result = $conn->query($sql);
  if ($result->num_rows > 0) {

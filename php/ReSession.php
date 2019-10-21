@@ -1,7 +1,3 @@
-<html>
-<head>
-</head>
-<body>
 <?php
 include "dbconn.php";
 
@@ -33,5 +29,3 @@ else {
     echo " <script>alert('사용자를 확인해주세요'); parent.location.href='../index.html'; </script>";
 }
 ?>
-</body>
-</html>
