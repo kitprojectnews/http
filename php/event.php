@@ -29,7 +29,6 @@ session_start();
                     <th scope="cols" width="80px">dst_port</th>
                     <th scope="cols" width="80px">protocol</th>
                     <th scope="cols" width="100px">payload_size</th>
-                    <th scope="cols" width="50px">정탐률</th>
                     <th scope="cols">ETC</th>
                 </tr>
             </thead>
@@ -74,7 +73,6 @@ session_start();
                             echo ("<td>" . $row['dst_port'] . "</td>");
                             echo ("<td>" . $row["sig_protocol"] . "</td>");
                             echo ("<td>" . $row["payload_size"] . "</td>");
-                            echo ("<td>" . $row["true_rate"] . "</td>");
                             echo ("<td> <input type=button value=자세히 onClick='detail(" . $row["eid"] . "," . $row["sig_id"] . ")' /></td>");
                             echo ("</tr>");
                             $lasteid=$row["eid"];

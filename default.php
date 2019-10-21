@@ -11,7 +11,7 @@
     <div id="div_root">
         <div id="div_head">
             <div id="div_banner">
-                Observer
+                <a href="php/home.php" target="frame" style="text-decoration:none;color:inherit;">Observer</a>
             </div>
             <div id="div_eventalert">
             <iframe id="eventiframe" name="eventiframe" src="php/event_alert.php" width="100%" height="95%" frameborder="0"></iframe>

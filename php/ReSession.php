@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<html>
 <head>
 </head>
 <body>
