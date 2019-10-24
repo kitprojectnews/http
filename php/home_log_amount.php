@@ -4,7 +4,7 @@ function DataPerDate()
 {
     include "dbconn.php";
     $data_date=array();
-    $sql = "SELECT DATE(`time`) AS `date`, count(`eid`) AS `amount` FROM test.event GROUP BY `date` having `date` > date_add(now(),interval -5 day)";
+    $sql = "SELECT DATE(`time`) AS `date`, count(`eid`) AS `amount` FROM event GROUP BY `date` having `date` > date_add(now(),interval -5 day)";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -18,7 +18,7 @@ function DataPerHour()
 {
     include "dbconn.php";
     $data_hour=array();
-    $sql = "SELECT DATE(`time`) AS `date`, HOUR(`time`) AS `hour`, count(`eid`) AS `amount` FROM test.event where `time`>SUBDATE(NOW(), INTERVAL 23 HOUR) GROUP BY `date`, `hour`";
+    $sql = "SELECT DATE(`time`) AS `date`, HOUR(`time`) AS `hour`, count(`eid`) AS `amount` FROM event where `time`>SUBDATE(NOW(), INTERVAL 23 HOUR) GROUP BY `date`, `hour`";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {

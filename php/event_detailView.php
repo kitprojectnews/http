@@ -18,7 +18,8 @@ $sig_id = $_GET["sig_id"];
 $sql = 'SELECT * FROM data where eid='.$eid;
 $result_hex = $conn->query($sql);
 $payload;
-if ($result_hex->num_rows > 0) {
+if ($result_hex->num_rows > 0)
+{
     $row = $result_hex->fetch_assoc();
     $payload=$row["data_payload"];
 }
