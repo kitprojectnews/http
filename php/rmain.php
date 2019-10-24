@@ -332,6 +332,7 @@ table, th, td {
 					<option value=icode>ICMP_Code</option>
 					<option value=detection_filter>Detection_Filter</option>
 					<option value=nation>Nation</option>
+					<option value=ml>ML_match</option>
 				</select>
 				&nbsp;
 				<input type="button" name="add_option_button" value="추가" onclick="AddOption()">

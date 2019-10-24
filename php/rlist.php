@@ -18,7 +18,6 @@
     $li=0;
 ?>
 
-<!DOCTYPE html>
 <link href="../css/Observer_tags.css" rel="stylesheet" type='text/css'>
 <link href="../css/Observer_switch.css" rel="stylesheet" type='text/css'>
 <html>

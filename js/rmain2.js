@@ -412,6 +412,8 @@ function AddOption()
 		option_name="detection_filter";
 	else if(option.options[option.selectedIndex].value == "nation")
 		option_name="nation";
+	else if(option.options[option.selectedIndex].value == "ml")
+		option_name="ml";
 	else {
 		return -1;
 	}
@@ -691,6 +693,34 @@ function lastoptions_parse(){
 			lcount++;
 			continue;
 		}
+		else if(p_col[0]=="ml"){
+			if(content_flag){
+				content_flag=false;
+				lcount++;
+			}
+			addoption("ml");
+			mlopt=document.getElementById("ml_opt"+lcount);
+			mlmod=document.getElementById("mlmod"+lcount);
+			mlopti=document.getElementById("ml_opt_input"+lcount);
+			var mlchk=true;
+			for(var j=0; j<mlopt.options.length;j++){
+				if(mlopt.options[j].value==p_col[1]){
+					mlopt.options[j].selected=true;
+					mlchk = false;
+					break;
+				}
+			}
+			if(mlchk==true){
+				ml1="ml1"+lcount;
+				ml2="ml2"+lcount;
+				mlm="mlmod"+lcount;
+				div_hidden(ml2,ml1);
+				mlmod.checked=true;
+				mlopti.value=p_col[1];				
+			}
+			lcount++;
+			continue;
+		}
 
 		if(p_col[0]=="content"){
 			if(content_flag){
@@ -809,7 +839,7 @@ function addoption(opt){
 	}
 	else if(opt=="itype"){
 		coption[count]="itype";
-		text+="<input type=radio id='itype<"+count+"' name=itypeRadio"+count+" value='<' onclick=div_hidden('itype1"+count+"','itype2"+count+"')><&nbsp;"
+		text+="<input type=radio id='itype<"+count+"' name=itypeRadio"+count+" value='<' onclick=div_hidden('itype1"+count+"','itype2"+count+"')>모듈선택&nbsp;"
 		text+="<input type=radio id='itype>"+count+"' name=itypeRadio"+count+" value='>' onclick=div_hidden('itype1"+count+"','itype2"+count+"')>>&nbsp;"
 		text+="<input type=radio id='itype="+count+"' name=itypeRadio"+count+" value='=' onclick=div_hidden('itype1"+count+"','itype2"+count+"')>=&nbsp;"
 		text+="<input type=radio id='itype~"+count+"' name=itypeRadio"+count+" value='~' onclick=div_hidden('itype2"+count+"','itype1"+count+"')>~&nbsp;"
@@ -1090,6 +1120,17 @@ function addoption(opt){
 		text+="<option value=ZM>잠비아</option>";
 		text+="<option value=ZW>짐바브웨</option>";
 		text+="</select>";
+	}
+	else if(opt=="ml"){
+		coption[count]="ml";
+		text+="<input type=checkbox id='mlmod"+count+"' name=mlmod"+count+" onclick=div_hidden_cbox('mlmod"+count+"','ml1"+count+"','ml2"+count+"')>모듈선택<br>";
+		text+="<div id=ml1"+count+">";
+		text+="&nbsp;<select id=ml_opt"+count+">";
+		text+="<option value=sqli>SQL_injection</option>";
+		text+="</select></div>";
+		text+="<div id=ml2"+count+" style='display:none'>";
+		text+="&nbsp;<input type=text size=15 id=ml_opt_input"+count+">";
+		text+="</select></div>";
 	}
 	text+="</td></tr></table>";
 	tr.innerHTML=text;
@@ -1528,6 +1569,22 @@ function getoption()
 			fulloption+=gnaopt.options[gnaopt.selectedIndex].value;
 			fulloption+="; ";
 		}//nation
+		else if(coption[i] == "ml"){
+			fulloption+="ml:";
+			var gmlopt=document.getElementById("ml_opt"+i);
+			var gmlmod=document.getElementById("mlmod"+i);
+			var gmlmodi=document.getElementById("ml_opt_input"+i);
+			if(gmlmod.checked== true){
+				if(gmlmodi.value ==""){
+					alert("ml의 값을 입력하십시오");
+					return -1;
+				}
+				fulloption+=gmlmodi.value;
+			}else{
+				fulloption+=gmlopt.options[gmlopt.selectedIndex].value;
+			}
+			fulloption+="; ";
+		}
 	}//for
 	return fulloption;
 }//getoption()
