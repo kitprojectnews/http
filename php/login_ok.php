@@ -13,7 +13,7 @@ $pass = $_POST["pass"];
 
 $hashpw = base64_encode(hash('sha256', $pass, true));
 
-$sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM test.account WHERE u_id = '$user' and u_pw = '$hashpw'";
+$sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM account WHERE u_id = '$user' and u_pw = '$hashpw'";
 $result = $conn->query($sql);
 
 if ($result->num_rows != 0) {

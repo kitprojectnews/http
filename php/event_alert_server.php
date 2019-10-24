@@ -1,7 +1,21 @@
 <?php
 include "dbconn.php";
 
- $sql = "SELECT * FROM alert_view WHERE eid >= '".$_SESSION['eid']."' order by eid desc limit 1";
+session_start();
+if($_SESSION['eid']==-1)
+{
+    $sql = "SELECT eid FROM alert_view ORDER BY eid DESC limit 1";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) 
+    {
+        while ($row = $result->fetch_assoc()) 
+        {
+            $_SESSION['eid'] = $row["eid"]+1;
+        }
+    }
+}
+ $sql = "SELECT *,event_view.sig_id FROM alert_view INNER JOIN event_view ON alert_view.eid = '".$_SESSION['eid']."' order by alert_view.eid desc limit 1";
+ //$sql = "SELECT * FROM alert_view WHERE eid >= '".$_SESSION['eid']."' order by eid desc limit 1";
  $result = $conn->query($sql);
  if ($result->num_rows > 0) {
     echo "<table align=center border=0 width=100%  style='border-collapse: collapse;'>";
@@ -19,23 +33,22 @@ include "dbconn.php";
                 switch($row["severity"]){
                     case 1:
                     echo("<tr  id='NA'>");
-                    echo("<td align=center width=90%>Rule [ ".$msg." ] is Matched.</td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");
-                        break;
+                    echo("<td align=center width=90%><a href=javascript:detail(".$row["eid"].",".$row["sig_id"].");>Rule [ ".$msg." ] is Matched.</a></td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");                        break;
                     case 2:
                     echo("<tr  id='Low'>");
-                    echo("<td align=center width=90%>Rule [ ".$msg." ] is Matched.</td><td align=center width=10%><span class='css-cancely' onclick='javascript:location.reload(true)'></span></td></tr>");
+                    echo("<td align=center width=90%><a href=javascript:detail(".$row["eid"].",".$row["sig_id"].");>Rule [ ".$msg." ] is Matched.</a></td><td align=center width=10%><span class='css-cancely' onclick='javascript:location.reload(true)'></span></td></tr>");                        break;
                         break;
                     case 3:
                     echo("<tr  id='Medium'>");
-                    echo("<td align=center width=90%>Rule [ ".$msg." ] is Matched.</td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");
+                    echo("<td align=center width=90%><a href=javascript:detail(".$row["eid"].",".$row["sig_id"].");>Rule [ ".$msg." ] is Matched.</a></td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");                        break;
                         break;
                     case 4:
                     echo("<tr  id='High'>");
-                    echo("<td align=center width=90%>Rule [ ".$msg." ] is Matched.</td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");
+                    echo("<td align=center width=90%><a href=javascript:detail(".$row["eid"].",".$row["sig_id"].");>Rule [ ".$msg." ] is Matched.</a></td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");                        break;
                         break;
                     case 5:
                     echo("<tr  id='Critical'>");
-                    echo("<td align=center width=90%>Rule [ ".$msg." ] is Matched.</td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");
+                    echo("<td align=center width=90%><a href=javascript:detail(".$row["eid"].",".$row["sig_id"].");>Rule [ ".$msg." ] is Matched.</a></td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");                        break;
                         break;
                 }
             

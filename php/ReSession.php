@@ -5,7 +5,7 @@ include "dbconn.php";
 session_start();
 $uid = $_SESSION['u_id'];
 
-$sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM test.account WHERE u_id = '$uid'";
+$sql = "SELECT u_num, u_id, u_active, u_update, r_update FROM account WHERE u_id = '$uid'";
 $result = $conn->query($sql);
 
 if ($result->num_rows != 0) {
@@ -18,7 +18,7 @@ if ($result->num_rows != 0) {
         $_SESSION['u_update'] = $row["u_update"];
         $_SESSION['r_update'] = $row["r_update"];
     }
-    $conn->close();
+    //$conn->close();
     if(!$_SESSION['u_active'])//활성 유저 여부 
         {
             echo " <script>alert('사용하시던 사용자가 비활성화 되었습니다.'); parent.location.href='../index.html'; </script>";            
