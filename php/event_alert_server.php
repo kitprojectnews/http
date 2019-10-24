@@ -36,7 +36,7 @@ if($_SESSION['eid']==-1)
                     echo("<td align=center width=90%><a href=javascript:detail(".$row["eid"].",".$row["sig_id"].");>Rule [ ".$msg." ] is Matched.</a></td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");                        break;
                     case 2:
                     echo("<tr  id='Low'>");
-                    echo("<td align=center width=90%><a href=javascript:detail(".$row["eid"].",".$row["sig_id"].");>Rule [ ".$msg." ] is Matched.</a></td><td align=center width=10%><span class='css-cancel' onclick='javascript:location.reload(true)'></span></td></tr>");                        break;
+                    echo("<td align=center width=90%><a href=javascript:detail(".$row["eid"].",".$row["sig_id"].");>Rule [ ".$msg." ] is Matched.</a></td><td align=center width=10%><span class='css-cancely' onclick='javascript:location.reload(true)'></span></td></tr>");                        break;
                         break;
                     case 3:
                     echo("<tr  id='Medium'>");
@@ -60,11 +60,3 @@ if($_SESSION['eid']==-1)
  else {
  }
 ?>
-<script launguage='JAVASCRIPT'>
-    //sig_msg에 하이퍼링크 걸기, 패킷뷰에 탭넣어서 ipheader들 볼수있게 TODOTODO
-    function detail(eid, sig_id) {
-        var popupX = (window.screen.width / 2) - 500;
-        var popupY= (window.screen.height / 2) - 400;
-        window.open('event_detailView.php?eid=' + eid + '&sig_id=' + sig_id, 'detailViewer', 'width = 1000, height = 800, left ='+popupX+' , top ='+popupY+', menubar = no, status = no, toolbar = no ');
-    }
-</script>
