@@ -23,7 +23,12 @@ if (isset($_POST["r_update"])) {
 if (isset($_POST["u_pw"])) {
     $u_pw = $_POST["u_pw"];
 }
-
+if ($u_num == 1) //if admin
+{
+    $u_active = 1;
+    $u_update = 1;
+    $r_update = 1;
+}
 if($u_pw!="")
 {
     $hashpw = base64_encode(hash('sha256', $u_pw, true));

@@ -9,7 +9,7 @@ $sql = "CREATE TABLE IF NOT EXISTS account (
     u_update TINYINT(1) NOT NULL DEFAULT 0, #유저 변경 권한 여부
     r_update TINYINT(1) NOT NULL DEFAULT 0, #룰 추가/수정/삭제 가능 여부
     PRIMARY KEY (u_num))";
-
+//admin hash pw = jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=
 if ($conn->query($sql) == TRUE) {
     echo "ok<br>";
 } else {
