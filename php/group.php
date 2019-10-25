@@ -24,11 +24,11 @@
     <br>   
     <table border=1 align=center>
         <tr>
-            <th>Group Name</th>
+            <th colspan=2>Group Name</th>
             <?php
                 if($_SESSION["r_update"]==1){
             ?>
-            <th>DELETE</th>
+            <!--<th>DELETE</th>-->
             <?php
                 }
             ?>
@@ -41,7 +41,8 @@
 			while($row = $result->fetch_assoc()) {
 		?>
 		<tr>
-            <td><?=$row["gname"]?></td><?php if($row["gname"]=="DEFAULT") continue; ?>
+            <?php if($row["gname"]=="DEFAULT") continue;?>
+            <td><?=$row["gname"]?></td> <?php //if($row["gname"]=="DEFAULT") continue; ?>
             <?php
                 if($_SESSION["r_update"]==1){
             ?>

@@ -20,7 +20,7 @@ session_start();
                 <tbody>
                     <?php
                         echo ('<tr><th scope="row">');
-                        $all = shell_exec('grep Observer /var/log/messages | sort -r');
+                        $all = shell_exec('grep "\[Observer\]" /var/log/messages | sort -r');
                         $line = str_replace(PHP_EOL, '</td></tr><tr><th scope="row">', $all);
                         $tmp1 = preg_replace("/localhost \[Observer\]\[[0-9]{3,6}\]: /", "", $line);
                         $tmp2 = preg_replace("/ \[/","</th><td>[",$tmp1);

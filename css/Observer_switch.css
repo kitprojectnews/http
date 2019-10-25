@@ -6,7 +6,9 @@
     display: inline-block;
     width: 30px; /*=w*/
     height: 15px; /*=h*/
-    margin: 8px;
+    margin: 15;
+    margin-top: auto;
+    margin-left: auto + 5;
     transform: translateY(50%);
     position: relative;
   }
