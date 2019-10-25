@@ -763,7 +763,7 @@ function addoption(opt){
 	//var tr=document.createElement("table");
 	var tr=document.createElement("div");
 	var option=document.getElementById("addingoption");		
-	var text="<table id=op"+count+" ><tr><td width=150>"+opt+"&nbsp;</td><td width=800><input type='button' value='삭제' onClick='removeoption("+count+")'>&nbsp;";
+	var text="<table id=op"+count+" ><tr><td width=170>"+opt+"&nbsp;</td><td width=639><input type='button' value='삭제' onClick='removeoption("+count+")'>&nbsp;";
 	if(opt=="content"){
 		coption[count]="content";
 		text+="<select id=httpopt"+count+"><option>선택</option><option>http_client_body</option><option>http_cookie</option><option>http_header</option>";
@@ -1125,11 +1125,11 @@ function addoption(opt){
 		coption[count]="ml";
 		text+="<input type=checkbox id='mlmod"+count+"' name=mlmod"+count+" onclick=div_hidden_cbox('mlmod"+count+"','ml1"+count+"','ml2"+count+"')>모듈선택<br>";
 		text+="<div id=ml1"+count+">";
-		text+="&nbsp;<select id=ml_opt"+count+">";
+		text+="<select id=ml_opt"+count+">";
 		text+="<option value=sqli>SQL_injection</option>";
 		text+="</select></div>";
 		text+="<div id=ml2"+count+" style='display:none'>";
-		text+="&nbsp;<input type=text size=15 id=ml_opt_input"+count+">";
+		text+="<input type=text size=15 id=ml_opt_input"+count+">";
 		text+="</select></div>";
 	}
 	text+="</td></tr></table>";
