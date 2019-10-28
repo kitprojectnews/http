@@ -763,7 +763,7 @@ function addoption(opt){
 	//var tr=document.createElement("table");
 	var tr=document.createElement("div");
 	var option=document.getElementById("addingoption");		
-	var text="<table id=op"+count+" ><tr><td width=170>"+opt+"&nbsp;</td><td width=639><input type='button' value='삭제' onClick='removeoption("+count+")'>&nbsp;";
+	var text="<table id=op"+count+" ><tr><td width=170>"+opt+"&nbsp;</td><td width=659><input type='button' value='삭제' onClick='removeoption("+count+")'>&nbsp;";
 	if(opt=="content"){
 		coption[count]="content";
 		text+="<select id=httpopt"+count+"><option>선택</option><option>http_client_body</option><option>http_cookie</option><option>http_header</option>";
